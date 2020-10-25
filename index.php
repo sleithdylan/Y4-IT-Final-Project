@@ -228,12 +228,28 @@
 				</div>
 			</div>
 		</div>
-		<!-- Scripts -->
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="./assets/js/argon-design-system.min.js"></script>
-		<script src="./assets/js/main.js"></script>
+	</div>
+	<!-- CTA -->
+	<div id="cta" class="py-5">
+		<div class="container">
+			<div class="row">
+				<h4 class="col-md text-left text-primary mt-5">Ready to get started?</h4>
+			</div>
+			<div class="row">
+				<h4 class="col-md text-left">Get in touch or create an account.</h4>
+				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
+					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
+					<button type="button" class="btn btn-secondary text-capitalize px-5">Contact Us</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="./assets/js/argon-design-system.min.js"></script>
+	<script src="./assets/js/main.js"></script>
 </body>
 
 </html>
