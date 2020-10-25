@@ -17,6 +17,9 @@
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="assets/css/argon-design-system.min.css">
+	<link rel="stylesheet" href="assets/css/argon-design-system-extras.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 </head>
 
 <body>
@@ -155,8 +158,8 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			<div class="row py-5">
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
+			<div class="row py-5 owl-carousel">
+				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -173,7 +176,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
+				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -190,7 +193,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
+				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -207,7 +210,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
+				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -236,8 +239,8 @@
 			<div class="row">
 				<h4 class="col-md text-left">Get in touch or create an account.</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<button type="button" class="btn btn-primary text-capitalize px-5 mr-3">Sign Up</button>
-					<button type="button" class="btn btn-secondary text-capitalize px-5">Contact Us</button>
+					<button type="button" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</button>
+					<button type="button" class="btn btn-secondary text-capitalize px-4">Contact Us</button>
 				</div>
 			</div>
 		</div>
@@ -279,7 +282,7 @@
 								<a class="nav-link py-2" href="./index.php#features">Features</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link py-2" href="#support">Contact Support</a>
+								<a class="nav-link py-2" href="./index.php#testimonials">Testimonials</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link py-2" href="#sitemap">Sitemap</a>
@@ -331,7 +334,36 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="./assets/js/argon-design-system.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	<script src="./assets/js/main.js"></script>
+	<script>
+		// Carousel
+		$(document).ready(function() {
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				responsiveClass: true,
+				autoplay: true,
+				smartSpeed: 500,
+				responsive: {
+					0: {
+						items: 1,
+						dots: true,
+						loop: true,
+					},
+					600: {
+						items: 2,
+						dots: false,
+						loop: true,
+					},
+					1000: {
+						items: 4,
+						dots: true,
+						loop: true,
+					},
+				},
+			});
+		});
+	</script>
 </body>
 
 </html>
