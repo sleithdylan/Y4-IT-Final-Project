@@ -79,9 +79,8 @@
 		</div>
 	</nav>
 	<!-- Hero -->
-	<div id="home" class="d-flex flex-column justify-content-around align-items-center py-5">
+	<div id="home" class="py-5">
 		<div class="container">
-			<div class="col-md-1"></div>
 			<div class="row d-flex justify-content-center align-items-center py-5">
 				<div class="col-md-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
@@ -89,10 +88,9 @@
 					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
 				</div>
 				<div class="col-md-5">
-					<img style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
+					<img class="d-none d-sm-none d-md-block" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
 				</div>
 			</div>
-			<div class="col-md-1"></div>
 		</div>
 	</div>
 	<!-- Features -->
@@ -148,7 +146,7 @@
 	</div>
 	<!-- Testimonials -->
 	<div id="testimonials" class="py-5">
-		<div class="container d-flex flex-column justify-content-around align-items-center">
+		<div class="container">
 			<div class="row">
 				<h6 class="col-md text-center text-primary mt-5">Testimonials</h6>
 			</div>
@@ -158,7 +156,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row py-5">
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4 d-flex flex-column">
+				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -175,7 +173,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4 d-flex flex-column">
+				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -192,7 +190,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4 d-flex flex-column">
+				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -209,7 +207,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 my-4 d-flex flex-column">
+				<div class="col-lg-3 col-md-4 col-sm-6 my-4">
 					<div class="card">
 						<div class="card-body shadow py-5">
 							<div class="icon icon-lg text-primary">
@@ -238,7 +236,7 @@
 			<div class="row">
 				<h4 class="col-md text-left">Get in touch or create an account.</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
+					<button type="button" class="btn btn-primary text-capitalize px-5 mr-3">Sign Up</button>
 					<button type="button" class="btn btn-secondary text-capitalize px-5">Contact Us</button>
 				</div>
 			</div>
