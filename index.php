@@ -84,14 +84,14 @@
 	<!-- Hero -->
 	<div id="home" class="py-5">
 		<div class="container">
-			<div class="row d-flex justify-content-center align-items-center py-5">
-				<div class="col-md-5">
+			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
+				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
 					<p class="text-left">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer congue neque eu consectetur congue.</p>
 					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
 				</div>
-				<div class="col-md-5">
-					<img class="d-none d-sm-none d-md-block" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
+				<div class="col-md-8 col-lg-5">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
 				</div>
 			</div>
 		</div>
@@ -161,7 +161,7 @@
 			<div class="row py-5 owl-carousel">
 				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
-						<div class="card-body shadow py-5">
+						<div class="card-body shadow-sm py-5">
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
@@ -178,7 +178,7 @@
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
-						<div class="card-body shadow py-5">
+						<div class="card-body shadow-sm py-5">
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
@@ -195,7 +195,7 @@
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
-						<div class="card-body shadow py-5">
+						<div class="card-body shadow-sm py-5">
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
@@ -212,7 +212,7 @@
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 my-4">
 					<div class="card">
-						<div class="card-body shadow py-5">
+						<div class="card-body shadow-sm py-5">
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
