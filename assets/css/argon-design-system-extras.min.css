@@ -1,7 +1,21 @@
+body {
+  overflow-x: hidden;
+}
+
 .owl-carousel {
   width: 101.75% !important;
 }
 
 .owl-stage-outer {
   padding: 1rem 0;
+}
+
+.section-shaped {
+  position: relative;
+  background: url(../images/hinterrhein.png) no-repeat center left fixed;
+  background-size: cover;
+}
+
+.btn-wrapper > a > i {
+  font-size: 1.3rem;
 }
