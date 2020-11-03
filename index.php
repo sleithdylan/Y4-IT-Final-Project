@@ -62,9 +62,9 @@
 							Log in
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">As Student</a>
-							<a class="dropdown-item" href="#">As Parent</a>
-							<a class="dropdown-item" href="#">As Staff</a>
+							<a class="dropdown-item" href="./login.php">As Student</a>
+							<a class="dropdown-item" href="./login.php">As Parent</a>
+							<a class="dropdown-item" href="./login.php">As Staff</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -90,7 +90,7 @@
 					<p class="text-left">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer congue neque eu consectetur congue.</p>
 					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
 				</div>
-				<div class="col-md-8 col-lg-5">
+				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
 				</div>
 			</div>
@@ -231,7 +231,7 @@
 		</div>
 	</div>
 	<!-- CTA -->
-	<div id="cta" class="pb-5">
+	<div id="cta" class="pb-5 mb-5">
 		<div class="container">
 			<div class="row">
 				<h4 class="col-md text-left text-primary mt-5">Ready to get started?</h4>
@@ -247,7 +247,7 @@
 	</div>
 	<!-- Footer -->
 	<footer>
-		<nav class="bg-white navbar-light border-top mt-5">
+		<nav class="bg-white navbar-light border-top">
 			<div class="container py-5">
 				<div class="row">
 					<div class="col-md-4 col-sm-12">
