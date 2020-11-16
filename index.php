@@ -63,7 +63,6 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="./login.php">As Student</a>
-							<a class="dropdown-item" href="./login.php">As Parent</a>
 							<a class="dropdown-item" href="./login.php">As Staff</a>
 						</div>
 					</li>
@@ -73,7 +72,6 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="./signup.php">As Student</a>
-							<a class="dropdown-item" href="./signup.php">As Parent</a>
 							<a class="dropdown-item" href="./signup.php">As Staff</a>
 						</div>
 					</li>
