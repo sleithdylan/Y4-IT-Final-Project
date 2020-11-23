@@ -99,7 +99,7 @@
 										<img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=White&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale' />
 									</span>
 									<div class="media-body  ml-2  d-none d-lg-block">
-										<span class="mb-0 text-sm  font-weight-bold">David</span>
+										<span class="mb-0 text-sm font-weight-bold">David</span>
 									</div>
 								</div>
 							</a>
@@ -127,135 +127,84 @@
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="card">
-						<div class="card-header bg-transparent">
+						<div class="card-header">
 							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">
-										Your Grade Point Average
-									</h5>
+								<div class="col-8">
+									<h3 class="mb-0">Edit profile </h3>
+								</div>
+								<div class="col-4 text-right">
+									<a href="#" class="badge badge-pill badge-lg badge-primary">Settings</a>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Bar Chart -->
-							<div class="chart">
-								<canvas id="bar-chart" width="800" height="450"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Data -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xl-8">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h3 class="mb-0">Your Subjects</h3>
+							<form>
+								<h6 class="heading-small text-muted mb-4">Basic information</h6>
+								<div class="pl-lg-4">
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label class="form-control-label" for="input-username">Profile Picture</label>
+												<input type="file" id="input-picture" class="form-control" name="student-picture" placeholder="Insert Image">
+											</div>
+											<div class="form-group">
+												<label class="form-control-label" for="input-first-name">Full Name</label>
+												<input type="text" id="input-first-name" class="form-control" placeholder="First Name, e.g. John Doe" value="David Ryan">
+											</div>
+											<div class="form-group">
+												<label class="form-control-label" for="input-email">Email Address</label>
+												<input type="email" id="input-email" class="form-control" placeholder="Email Address e.g. jdoe@gmail.com" value="david.ryan@gmail.com" disabled>
+											</div>
+											<div class="form-group">
+												<label class="form-control-label" for="input-email">Phone Number</label>
+												<input type="text" class="form-control" id="student-phone" name="student-phone" placeholder="Phone Number, e.g. 0891234567" value="0892861635">
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Table of Subjects -->
-							<div class="table-responsive">
-								<table class="table align-items-center table-flush">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">Subject</th>
-											<th scope="col">Average Grade</th>
-											<th scope="col">Attendance</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">
-												English
-											</th>
-											<td>
-												70%
-											</td>
-											<td>
-												95%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Maths
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												History
-											</th>
-											<td>
-												80%
-											</td>
-											<td>
-												95%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Geography
-											</th>
-											<td>
-												75%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Science
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Gaeilge
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">Your Attendance</h5>
+								<hr class="my-4" />
+								<!-- Address -->
+								<h6 class="heading-small text-muted mb-4">Contact information</h6>
+								<div class="pl-lg-4">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="form-control-label" for="input-address">Address</label>
+												<input id="input-address" class="form-control" placeholder="Home Address" value="93 Park Street, Dundalk, County Louth, A91 P868" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label class="form-control-label" for="input-city">City</label>
+												<input type="text" id="input-city" class="form-control" placeholder="City" value="Dundalk">
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label class="form-control-label" for="input-country">Country</label>
+												<input type="text" id="input-country" class="form-control" placeholder="Country" value="Ireland">
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<div class="form-group">
+												<label class="form-control-label" for="input-country">Eircode</label>
+												<input type="text" id="input-postal-code" class="form-control" placeholder="Eircode" value="A91 P868">
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Pie Chart -->
-							<div class="chart">
-								<canvas id="pie-chart" class="chart-canvas"></canvas>
-							</div>
+								<hr class="my-4" />
+								<!-- Description -->
+								<h6 class="heading-small text-muted mb-4">About me</h6>
+								<div class="pl-lg-4">
+									<div class="form-group">
+										<label class="form-control-label">About Me</label>
+										<textarea rows="4" class="form-control" placeholder="Tell us about youself..."></textarea>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
