@@ -1,7 +1,8 @@
 <nav id="navbar-main" class="navbar navbar-expand-lg bg-white navbar-light sticky-top">
 	<div class="container">
 		<a class="navbar-brand" href="./index.php">
-			<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
+			<img src="assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+			<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
