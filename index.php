@@ -35,11 +35,26 @@
 			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
-					<p class="text-left">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer congue neque eu consectetur congue.</p>
+					<p class="text-left">Student’s online second home – participate in quizes, communicate with teachers, complete your work online! Get comfortable with us</p>
 					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
 				</div>
 				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Who we are -->
+	<div id="home" class="py-5">
+		<div class="container">
+			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
+				<div class="col-md-8 col-lg-6">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 400px" src="./assets/images/text-img.png" alt="CA-galway">
+				</div>
+				<div class="col-md-8 col-lg-5">
+					<h6 class="col-md text-left text-primary mt-5">Who we are</h6>
+					<p class="text-left">CloseApart is a student portal driven by students. Our team’s goal is to help out students complete their work online when coming into school is simply not possible. With the difficult times of Covid-19 pandemic, we understand how important it is for the students not to miss out on any school work.</p>
+					<p>As a team, we offer a space for the students to have a chance to communicate with their teachers by uploading their work online and vice versa. With CloseApart it has never been easier</p>
 				</div>
 			</div>
 		</div>
@@ -51,7 +66,7 @@
 				<h6 class="col-md text-left text-primary mt-5">Features</h6>
 			</div>
 			<div class="row">
-				<h4 class="col-md-5 text-left">Vivamus eget est quis urna fermentum ornare.</h4>
+				<h4 class="col-md-5 text-left">Here's what you can expect</h4>
 			</div>
 		</div>
 		<div class="container">
@@ -61,8 +76,8 @@
 						<i class='bx bxs-dashboard'></i>
 					</div>
 					<div class="pt-4">
-						<h6>Feature</h6>
-						<p>Cras sodales malesuada turpis, et cursus ipsum accumsan vel.</p>
+						<h6>Portal</h6>
+						<p>Get comfortable with us. Customise your profile</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 my-4 d-flex flex-column">
@@ -70,8 +85,8 @@
 						<i class='bx bx-stats'></i>
 					</div>
 					<div class="pt-4">
-						<h6>Feature</h6>
-						<p>Cras sodales malesuada turpis, et cursus ipsum accumsan vel.</p>
+						<h6>Communicate</h6>
+						<p>Share your thoughts. Upload informations for everyone</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 my-4 d-flex flex-column">
@@ -79,8 +94,8 @@
 						<i class='bx bxs-game'></i>
 					</div>
 					<div class="pt-4">
-						<h6>Feature</h6>
-						<p>Cras sodales malesuada turpis, et cursus ipsum accumsan vel.</p>
+						<h6>Quizes</h6>
+						<p>Take part in online quizes and earn rewards</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 my-4 d-flex flex-column">
@@ -88,8 +103,8 @@
 						<i class='bx bxs-cloud-upload'></i>
 					</div>
 					<div class="pt-4">
-						<h6>Feature</h6>
-						<p>Cras sodales malesuada turpis, et cursus ipsum accumsan vel.</p>
+						<h6>Upload media</h6>
+						<p>Upload your work, share it with your teacher or class</p>
 					</div>
 				</div>
 			</div>
@@ -102,7 +117,7 @@
 				<h6 class="col-md text-center text-primary mt-5">Testimonials</h6>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-center">Proin aliquet, mauris eu tempor <br /> hendrerit, lorem ligul.</h4>
+				<h4 class="col-md text-center">What do you think of us?<br />Let us know!</h4>
 			</div>
 		</div>
 		<div class="container-fluid">
@@ -113,7 +128,7 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">Aenean fringilla velit libero, vitae viverra dui aliquet vel. Pellentesque pulvinar elementum ullamcorper.</p>
+							<p class="card-text">My students absolutely love it here! It is so easy for me to communicate with them on a daily basis</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/sarah.jpg" alt="picture of sarah">
 								<div class="d-flex flex-column ml-3 mt-3">
@@ -130,7 +145,7 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">Aenean fringilla velit libero, vitae viverra dui aliquet vel. Pellentesque pulvinar elementum ullamcorper.</p>
+							<p class="card-text">My son enjoys his new way of working. This whole online thing was a step in the right direction!</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/david.jpg" alt="picture of david">
 								<div class="d-flex flex-column ml-3 mt-3">
@@ -147,7 +162,7 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">Aenean fringilla velit libero, vitae viverra dui aliquet vel. Pellentesque pulvinar elementum ullamcorper.</p>
+							<p class="card-text">CloseApart comes in clutch. It solved so many problems due to the global pandemic. My class and I love it!</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/john.jpg" alt="picture of john">
 								<div class="d-flex flex-column ml-3 mt-3">
@@ -164,7 +179,7 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">Aenean fringilla velit libero, vitae viverra dui aliquet vel. Pellentesque pulvinar elementum ullamcorper.</p>
+							<p class="card-text">This is the best idea ever! It takes so much pressure off my shoulders and ensures my kids are still being educated</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/rebecca.jpg" alt="picture of rebecca">
 								<div class="d-flex flex-column ml-3 mt-3">
@@ -185,7 +200,7 @@
 				<h4 class="col-md text-left text-primary mt-5">Ready to get started?</h4>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-left">Get in touch or create an account.</h4>
+				<h4 class="col-md text-left">Get in touch with us or create an account</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
 					<button type="button" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</button>
 					<button type="button" class="btn btn-secondary text-capitalize px-4">Contact Us</button>

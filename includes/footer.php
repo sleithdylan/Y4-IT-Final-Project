@@ -66,13 +66,13 @@
 				</div>
 				<div class="col-md-2">
 					<div class="socials mb-3 d-flex justify-content-sm-start justify-content-md-between">
-						<a class="text-dark h4" href="#">
+						<a class="text-dark h4" href="https://www.twitter.com/ApartClose">
 							<i class='bx bxl-twitter'></i>
 						</a>
-						<a class="text-dark h4 mx-4" href="#">
+						<a class="text-dark h4 mx-4" href="https://www.facebook.com/close.apart.77">
 							<i class='bx bxl-facebook-square'></i>
 						</a>
-						<a class="text-dark h4" href="#">
+						<a class="text-dark h4" href="https://www.instagram.com/closeapart1/">
 							<i class='bx bxl-instagram'></i>
 						</a>
 					</div>
