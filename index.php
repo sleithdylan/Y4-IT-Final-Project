@@ -6,7 +6,7 @@
 	<title>CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="About CloseApart..">
+	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -35,7 +35,7 @@
 			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
-					<p class="text-left">Student’s online second home – participate in quizes, communicate with teachers, complete your work online! Get comfortable with us</p>
+					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</p>
 					<button type="button" class="btn btn-primary text-capitalize px-5">Sign Up</button>
 				</div>
 				<div class="col-md-8 col-lg-6">
@@ -47,14 +47,14 @@
 	<!-- Who we are -->
 	<div id="home" class="py-5">
 		<div class="container">
-			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
-				<div class="col-md-8 col-lg-6">
-					<img class="d-none d-sm-none d-md-block mt-4" style="height: 400px" src="./assets/images/text-img.png" alt="CA-galway">
+			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
+				<div class="col-md col-lg-5">
+					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/text-img.png" alt="CA-galway">
 				</div>
-				<div class="col-md-8 col-lg-5">
-					<h6 class="col-md text-left text-primary mt-5">Who we are</h6>
-					<p class="text-left">CloseApart is a student portal driven by students. Our team’s goal is to help out students complete their work online when coming into school is simply not possible. With the difficult times of Covid-19 pandemic, we understand how important it is for the students not to miss out on any school work.</p>
-					<p>As a team, we offer a space for the students to have a chance to communicate with their teachers by uploading their work online and vice versa. With CloseApart it has never been easier</p>
+				<div class="col-md col-lg">
+					<h6 class="text-left text-primary mt-3">Who we are</h6>
+					<p class="text-left"><strong>CloseApart</strong> is a student portal driven by students. Our team’s goal is to help out students complete their work online when coming into school is simply not possible. With the difficult times of Covid-19 pandemic, we understand how important it is for the students not to miss out on any school work.</p>
+					<p>As a team, we offer a space for the students to have a chance to communicate with their teachers by uploading their work online and vice versa. With CloseApart it has never been easier.</p>
 				</div>
 			</div>
 		</div>
@@ -94,8 +94,8 @@
 						<i class='bx bxs-game'></i>
 					</div>
 					<div class="pt-4">
-						<h6>Quizes</h6>
-						<p>Take part in online quizes and earn rewards</p>
+						<h6>Quizzes</h6>
+						<p>Take part in online quizzes and earn rewards</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 my-4 d-flex flex-column">
