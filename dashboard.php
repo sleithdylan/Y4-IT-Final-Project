@@ -9,6 +9,10 @@
 	<meta name="description" content="About CloseApart..">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
@@ -24,8 +28,9 @@
 	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
-				<a class="navbar-brand" href="./index.php">
-					<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
+				<a class="navbar-brand d-flex justify-content-center" href="./index.php">
+					<img src="assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
 			<div class="navbar-inner">
