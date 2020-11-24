@@ -6,7 +6,7 @@
 	<title>CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="About CloseApart..">
+	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
