@@ -24,61 +24,7 @@
 
 <body>
 	<!-- Navigation -->
-	<nav id="navbar-main" class="navbar navbar-expand-lg bg-white navbar-light sticky-top">
-		<div class="container">
-			<a class="navbar-brand" href="./index.php">
-				<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="navbar-collapse collapse" id="navbarDropdown">
-				<div class="navbar-collapse-header">
-					<div class="row">
-						<div class="col-6 collapse-brand">
-							<a class="navbar-brand" href="./index.php">
-								<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
-							</a>
-						</div>
-						<div class="col-6 collapse-close">
-							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-								<span></span>
-								<span></span>
-							</button>
-						</div>
-					</div>
-				</div>
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="./index.php#features">Features</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./index.php#testimonials">Testimonials</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Log in
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="./login.php">As Student</a>
-							<a class="dropdown-item" href="./login.php">As Staff</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Sign up
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="./signup.php">As Student</a>
-							<a class="dropdown-item" href="./signup.php">As Staff</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<?php include('includes/nav.php'); ?>
 	<!-- Hero -->
 	<div id="home" class="py-5">
 		<div class="container">
@@ -244,89 +190,7 @@
 		</div>
 	</div>
 	<!-- Footer -->
-	<footer>
-		<nav class="bg-white navbar-light border-top">
-			<div class="container py-5">
-				<div class="row">
-					<div class="col-md-4 col-sm-12">
-						<div class="d-flex flex-column">
-							<a class="navbar-brand mb-5" href="./index.php">
-								<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
-							</a>
-						</div>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Product</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#use-cases">Use Cases</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#help-centre">Help Centre</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#status">Status</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Company</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="./index.php#features">Features</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="./index.php#testimonials">Testimonials</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#sitemap">Sitemap</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Legal</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#terms">Terms & Conditions</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#privacy">Privacy Policy</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#disclaimer">Disclaimer</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md">
-						<div class="d-flex flex-column">
-							<p class="text-dark">&copy; CloseApart</p>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="socials mb-3 d-flex justify-content-sm-start justify-content-md-between">
-							<a class="text-dark h4" href="#">
-								<i class='bx bxl-twitter'></i>
-							</a>
-							<a class="text-dark h4 mx-4" href="#">
-								<i class='bx bxl-facebook-square'></i>
-							</a>
-							<a class="text-dark h4" href="#">
-								<i class='bx bxl-instagram'></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</footer>
+	<?php include('includes/footer.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
