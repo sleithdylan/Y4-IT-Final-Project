@@ -24,16 +24,21 @@ $query = "select * from `mathschoices` where question_number = $number";
 $choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
 
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<!-- Basic Page Needs -->
 	<title>CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="About CloseApart..">
+	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
@@ -42,179 +47,161 @@ $choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<!-- <link rel="stylesheet" href="css/style.css" type="text/css" /> -->
-	<link rel="stylesheet" href="../../assets/css/argon-design-system.min.css">
-	<link rel="stylesheet" href="../../assets/css/argon-design-system-extras.min.css">
+	<link rel="stylesheet" href="../../assets/css/argon.min.css">
 </head>
 
 <body>
-	<!-- Navigation -->
-	<nav id="navbar-main" class="navbar navbar-expand-lg bg-primary navbar-dark">
-		<div class="container">
-			<a class="navbar-brand" href="./index.php">
-				<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="navbar-collapse collapse" id="navbarDropdown">
-				<div class="navbar-collapse-header">
-					<div class="row">
-						<div class="col-6 collapse-brand">
-							<a class="navbar-brand" href="./index.php">
-								<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
+	<!-- Side Navigation -->
+	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+		<div class="scrollbar-inner">
+			<div class="sidenav-header align-items-center">
+				<a class="navbar-brand d-flex justify-content-center" href="../../index.php">
+					<img src="../../assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
+				</a>
+			</div>
+			<div class="navbar-inner">
+				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link active" href="../../dashboard.php">
+								<i class='bx bx-bar-chart-alt'></i>
+								<span class="nav-link-text">Overview</span>
 							</a>
-						</div>
-						<div class="col-6 collapse-close">
-							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-								<span></span>
-								<span></span>
-							</button>
-						</div>
-					</div>
+						</li>
+					</ul>
+					<hr class="my-3">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class='bx bxs-game'></i>
+								<span class="nav-link-text">Quizzes</span>
+							</a>
+							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="./maths.php">Maths</a>
+							</div>
+						</li>
+					</ul>
 				</div>
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="./index.php#features">Features</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./index.php#testimonials">Testimonials</a>
-					</li>
-				</ul>
-				<ul class="navbar-nav">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Log in
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="./login.php">As Student</a>
-							<a class="dropdown-item" href="./login.php">As Staff</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Sign up
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="./signup.php">As Student</a>
-							<a class="dropdown-item" href="./signup.php">As Staff</a>
-						</div>
-					</li>
-				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container my-5 py-5">
-		<div class="row flex-md-column flex-lg-row justify-content-center align-items-center">
-			<div class="col">
-				<h1 class="display-2">Maths Quiz</h1>
-				<div class="current">Question <?php echo $number; ?> of <?php echo $total; ?></div>
-
-			</div>
-			<div class="col">
-				<p class="question display-4">
-					<?php echo $question['question'] ?>
-				</p>
-				<div class="d-flex align-items-center">
-					<form method="post" action="process.php">
-						<ul class="list-group list-group-flush my-4">
-							<?php while ($row = $choices->fetch_assoc()) : ?>
-								<li class="list-group-item"><input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
-									<?php echo $row['choice']; ?>
-								</li>
-							<?php endwhile; ?>
-						</ul>
-						<input type="submit" value="submit" class="btn btn-primary mt-4" />
-						<input type="hidden" name="number" value="<?php echo $number; ?>" />
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Footer -->
-	<footer>
-		<nav class="bg-white navbar-light border-top">
-			<div class="container py-5">
-				<div class="row">
-					<div class="col-md-4 col-sm-12">
-						<div class="d-flex flex-column">
-							<a class="navbar-brand mb-5" href="./index.php">
-								<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
+	<!-- Dashboard -->
+	<div class="main-content">
+		<!-- Top Navigation -->
+		<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav align-items-center ml-auto">
+						<li class="nav-item d-xl-none">
+							<!-- Hamburger Menu -->
+							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+								<div class="sidenav-toggler-inner">
+									<i class="sidenav-toggler-line"></i>
+									<i class="sidenav-toggler-line"></i>
+									<i class="sidenav-toggler-line"></i>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class='bx bxs-bell'></i>
 							</a>
-						</div>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Product</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#use-cases">Use Cases</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#help-centre">Help Centre</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#status">Status</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Company</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="./index.php#features">Features</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="./index.php#testimonials">Testimonials</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#sitemap">Sitemap</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md col-sm-6">
-						<ul class="navbar-nav mb-5">
-							<li class="nav-item">
-								<a class="nav-link active disabled pt-0" href="#">Legal</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#terms">Terms & Conditions</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#privacy">Privacy Policy</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link py-2" href="#disclaimer">Disclaimer</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md">
-						<div class="d-flex flex-column">
-							<p class="text-dark">&copy; CloseApart</p>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="socials mb-3 d-flex justify-content-sm-start justify-content-md-between">
-							<a class="text-dark h4" href="#">
-								<i class='bx bxl-twitter'></i>
+							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right  py-0 overflow-hidden">
+								<div class="px-3 py-3">
+									<h6 class="text-sm text-muted m-0">You have <strong class="text-primary">1</strong> notification.</h6>
+								</div>
+								<div class="list-group list-group-flush">
+									<a href="#" class="list-group-item list-group-item-action">
+										<div class="row align-items-center">
+											<div class="col-auto">
+												<img alt="Image placeholder" src="../../assets/images/faces/john.jpg" class="avatar rounded-circle">
+											</div>
+											<div class="col ml--2">
+												<div class="d-flex justify-content-between align-items-center">
+													<div>
+														<h4 class="mb-0 text-sm">John</h4>
+													</div>
+													<div class="text-right text-muted">
+														<small>4 hrs ago</small>
+													</div>
+												</div>
+												<p class="text-sm mb-0">I uploaded tonight's homework</p>
+											</div>
+										</div>
+									</a>
+								</div>
+								<a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+							</div>
+						</li>
+					</ul>
+					<ul class="navbar-nav align-items-center">
+						<li class="nav-item dropdown">
+							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<div class="media align-items-center">
+									<span class="avatar avatar-sm rounded-circle">
+										<img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=White&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale' />
+									</span>
+									<div class="media-body  ml-2  d-none d-lg-block">
+										<span class="mb-0 text-sm  font-weight-bold">David</span>
+									</div>
+								</div>
 							</a>
-							<a class="text-dark h4 mx-4" href="#">
-								<i class='bx bxl-facebook-square'></i>
-							</a>
-							<a class="text-dark h4" href="#">
-								<i class='bx bxl-instagram'></i>
-							</a>
-						</div>
-					</div>
+							<div class="dropdown-menu  dropdown-menu-right ">
+								<a href="./dashboard.php" class="dropdown-item">
+									<i class="ni ni-settings-gear-65"></i>
+									<span>Overview</span>
+								</a>
+								<a href="./settings.php" class="dropdown-item">
+									<i class="ni ni-settings-gear-65"></i>
+									<span>Profile Settings</span>
+								</a>
+								<div class="dropdown-divider"></div>
+								<a href="./login.php" class="dropdown-item">
+									<i class="ni ni-user-run"></i>
+									<span>Logout</span>
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>
-	</footer>
+		<div class="container mt-5 pt-5">
+			<div class="row flex-md-column flex-lg-row justify-content-center align-items-center mt-5 pt-5">
+				<div class="col">
+					<h1 class="display-2">Maths Quiz</h1>
+					<div class="current">Question <?php echo $number; ?> of <?php echo $total; ?></div>
+
+				</div>
+				<div class="col">
+					<p class="question display-4">
+						<?php echo $question['question'] ?>
+					</p>
+					<div class="d-flex align-items-center">
+						<form method="post" action="process.php">
+							<ul class="list-group list-group-flush my-4">
+								<?php while ($row = $choices->fetch_assoc()) : ?>
+									<li class="list-group-item"><input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
+										<?php echo $row['choice']; ?>
+									</li>
+								<?php endwhile; ?>
+							</ul>
+							<input type="submit" value="submit" class="btn btn-primary mt-4" />
+							<input type="hidden" name="number" value="<?php echo $number; ?>" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+		<script src="../../assets/js/argon-design-system-extras.min.js"></script>
+		<script src="../../assets/js/main.js"></script>
 </body>
 
 </html>
