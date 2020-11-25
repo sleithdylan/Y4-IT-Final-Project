@@ -1,14 +1,15 @@
  <?php include "database.php"; ?>
-<?php session_start(); ?>
-<?php
+ <?php session_start(); ?>
+ <?php
 	//Create Select Query
-	$query="select * from shouts order by time desc limit 100";
-	$shouts = mysqli_query($con,$query);
+	$query = "select * from shouts order by time desc limit 100";
+	$shouts = mysqli_query($con, $query);
 
- ?>
-<!DOCTYPE html>
-<html>
-<head>
+	?>
+ <!DOCTYPE html>
+ <html>
+
+ <head>
  	<!-- Basic Page Needs -->
  	<title>CloseApart</title>
  	<meta charset="utf-8">
@@ -27,15 +28,15 @@
  	<link rel="stylesheet" href="../../assets/css/argon-design-system.min.css">
  	<link rel="stylesheet" href="../../assets/css/argon-design-system-extras.min.css">
  </head>
-  <body>
-    <!-- Navigation -->
+
+ <body>
+ 	<!-- Navigation -->
  	<nav id="navbar-main" class="navbar navbar-expand-lg bg-primary navbar-dark">
  		<div class="container">
  			<a class="navbar-brand" href="./maths.php">
  				<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
  			</a>
- 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown"
- 				aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
  				<span class="navbar-toggler-icon"></span>
  			</button>
  			<div class="navbar-collapse collapse" id="navbarDropdown">
@@ -47,8 +48,7 @@
  							</a>
  						</div>
  						<div class="col-6 collapse-close">
- 							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown"
- 								aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ 							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
  								<span></span>
  								<span></span>
  							</button>
@@ -65,8 +65,7 @@
  				</ul>
  				<ul class="navbar-nav">
  					<li class="nav-item dropdown">
- 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
- 							aria-expanded="false">
+ 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  							Log in
  						</a>
  						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -75,8 +74,7 @@
  						</div>
  					</li>
  					<li class="nav-item dropdown">
- 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
- 							aria-expanded="false">
+ 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  							Sign up
  						</a>
  						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -90,19 +88,19 @@
  	</nav>
 
 
-      <main>
-	<div class="container my-5">
-    <div class="row text-center">
-      <div class="col">
-	     <h2  class="display-2">You are Done!</h2>
-	     <p>Congrats! You have completed the quiz</p>
-	     <p>Final socre: <?php echo $_SESSION['score']; ?></p>
-	     <a href="question.php?n=1" class="start">Take Quiz Again</a>
-       <?php session_destroy(); ?>
-      </div>
-      </div>
-	</div>
-      </main>
+ 	<main>
+ 		<div class="container my-5">
+ 			<div class="row text-center">
+ 				<div class="col">
+ 					<h2 class="display-2">You are Done!</h2>
+ 					<p>Congrats! You have completed the quiz</p>
+ 					<p>Final socre: <?php echo $_SESSION['score']; ?></p>
+ 					<a href="question.php?n=1" class="start">Take Quiz Again</a>
+ 					<?php session_destroy(); ?>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</main>
 
 
  	<!-- Footer -->
@@ -189,5 +187,6 @@
  			</div>
  		</nav>
  	</footer>
-  </body>
-</html>
+ </body>
+
+ </html>

@@ -2,12 +2,12 @@
 
  <?php
 	//Get the total questions
-	$query="select * from mathsquestions";
+	$query = "select * from mathsquestions";
 	//Get Results
-	$results = $mysqli->query($query) or die ($mysqli->error.__LINE__);
+	$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
 	$total = $results->num_rows;
 
- ?>
+	?>
  <!DOCTYPE html>
  <html>
 
@@ -38,8 +38,7 @@
  			<a class="navbar-brand" href="./index.php">
  				<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
  			</a>
- 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown"
- 				aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
  				<span class="navbar-toggler-icon"></span>
  			</button>
  			<div class="navbar-collapse collapse" id="navbarDropdown">
@@ -51,8 +50,7 @@
  							</a>
  						</div>
  						<div class="col-6 collapse-close">
- 							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown"
- 								aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ 							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
  								<span></span>
  								<span></span>
  							</button>
@@ -69,8 +67,7 @@
  				</ul>
  				<ul class="navbar-nav">
  					<li class="nav-item dropdown">
- 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
- 							aria-expanded="false">
+ 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  							Log in
  						</a>
  						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -79,8 +76,7 @@
  						</div>
  					</li>
  					<li class="nav-item dropdown">
- 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
- 							aria-expanded="false">
+ 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  							Sign up
  						</a>
  						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -106,7 +102,7 @@
  						<strong>Type: </strong>Multiple Choice
  					</li>
  					<li class="list-group-item">
- 						<strong>Estimatd Time: </strong> <?php echo $total*0.5; ?> minutes
+ 						<strong>Estimatd Time: </strong> <?php echo $total * 0.5; ?> minutes
  					</li>
  				</ul>
  				<a href="question.php?n=1" class="btn btn-primary mt-3">Start Quiz</a>

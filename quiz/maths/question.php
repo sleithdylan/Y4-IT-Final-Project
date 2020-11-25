@@ -1,29 +1,29 @@
 <?php include "database.php"; ?>
 <?php session_start(); ?>
 <?php
-	//Set question number
-	$number = (int) $_GET['n'];
+//Set question number
+$number = (int) $_GET['n'];
 
-	//Get total number of questions
-	$query = "select * from mathsquestions";
-	$results = $mysqli->query($query) or die($mysqli->error.__LINE__);
-	$total=$results->num_rows;
+//Get total number of questions
+$query = "select * from mathsquestions";
+$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
+$total = $results->num_rows;
 
-	// Get Question
-	$query = "select * from `mathsquestions` where question_number = $number";
+// Get Question
+$query = "select * from `mathsquestions` where question_number = $number";
 
-	//Get result
-	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
-	$question = $result->fetch_assoc();
+//Get result
+$result = $mysqli->query($query) or die($mysqli->error . __LINE__);
+$question = $result->fetch_assoc();
 
 
-	// Get Choices
-	$query = "select * from `mathschoices` where question_number = $number";
+// Get Choices
+$query = "select * from `mathschoices` where question_number = $number";
 
-	//Get results
-	$choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
+//Get results
+$choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
 
- ?>
+?>
 <!DOCTYPE html>
 <html>
 
@@ -54,8 +54,7 @@
 			<a class="navbar-brand" href="./index.php">
 				<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
 			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown"
-				aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse" id="navbarDropdown">
@@ -67,8 +66,7 @@
 							</a>
 						</div>
 						<div class="col-6 collapse-close">
-							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown"
-								aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 								<span></span>
 								<span></span>
 							</button>
@@ -85,8 +83,7 @@
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Log in
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -95,8 +92,7 @@
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Sign up
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -113,19 +109,19 @@
 			<div class="col">
 				<h1 class="display-2">Maths Quiz</h1>
 				<div class="current">Question <?php echo $number; ?> of <?php echo $total; ?></div>
-				
+
 			</div>
 			<div class="col">
-			<p class="question display-4">
+				<p class="question display-4">
 					<?php echo $question['question'] ?>
 				</p>
 				<div class="d-flex align-items-center">
 					<form method="post" action="process.php">
 						<ul class="list-group list-group-flush my-4">
-							<?php while($row=$choices->fetch_assoc()): ?>
-							<li class="list-group-item"><input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
-								<?php echo $row['choice']; ?>
-							</li>
+							<?php while ($row = $choices->fetch_assoc()) : ?>
+								<li class="list-group-item"><input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
+									<?php echo $row['choice']; ?>
+								</li>
 							<?php endwhile; ?>
 						</ul>
 						<input type="submit" value="submit" class="btn btn-primary mt-4" />
