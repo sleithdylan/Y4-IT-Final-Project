@@ -43,6 +43,18 @@
 							</a>
 						</li>
 					</ul>
+					<hr class="my-3">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class='bx bxs-game'></i>
+								<span class="nav-link-text">Quizzes</span>
+							</a>
+							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="./quiz/maths/maths.php">Maths</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
