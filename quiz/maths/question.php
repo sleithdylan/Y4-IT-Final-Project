@@ -167,14 +167,14 @@ $choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
 				</div>
 			</div>
 		</nav>
-		<div class="container mt-5 pt-5">
-			<div class="row flex-md-column flex-lg-row justify-content-center align-items-center mt-5 pt-5">
-				<div class="col">
+		<div class="container my-5 py-5">
+			<div class="row flex-md-column flex-lg-row justify-content-center align-items-center my-5 py-5">
+				<div class="col-md-6 col-sm-12">
 					<h1 class="display-2">Maths Quiz</h1>
 					<div class="current">Question <?php echo $number; ?> of <?php echo $total; ?></div>
 
 				</div>
-				<div class="col">
+				<div class="col-md-6 col-sm-12">
 					<p class="question display-4">
 						<?php echo $question['question'] ?>
 					</p>
