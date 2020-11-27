@@ -1,3 +1,30 @@
+<?php include "database.php"; ?>
+<?php session_start(); ?>
+<?php
+//Set question number
+$number = (int) $_GET['n'];
+
+//Get total number of questions
+$query = "select * from historyquestions";
+$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
+$total = $results->num_rows;
+
+// Get Question
+$query = "select * from `historyquestions` where question_number = $number";
+
+//Get result
+$result = $mysqli->query($query) or die($mysqli->error . __LINE__);
+$question = $result->fetch_assoc();
+
+
+// Get Choices
+$query = "select * from `historychoices` where question_number = $number";
+
+//Get results
+$choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +47,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="assets/css/argon.min.css">
+	<link rel="stylesheet" href="../../assets/css/argon.min.css">
 </head>
 
 <body>
@@ -28,8 +55,8 @@
 	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
-				<a class="navbar-brand d-flex justify-content-center" href="./index.php">
-					<img src="assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+				<a class="navbar-brand d-flex justify-content-center" href="../../index.php">
+					<img src="../../assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
 					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
@@ -37,7 +64,7 @@
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="./dashboard.php">
+							<a class="nav-link active" href="../../dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -51,8 +78,8 @@
 								<span class="nav-link-text">Quizzes</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./quiz/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="./quiz/english/english.php">English</a>
+								<a class="dropdown-item" href="../maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../english/english.php">English</a>
 								<a class="dropdown-item" href="./quiz/history/history.php">History</a>
 							</div>
 						</li>
@@ -90,7 +117,7 @@
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="./assets/images/faces/john.jpg" class="avatar rounded-circle">
+												<img alt="Image placeholder" src="../../assets/images/faces/john.jpg" class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
 												<div class="d-flex justify-content-between align-items-center">
@@ -123,16 +150,16 @@
 								</div>
 							</a>
 							<div class="dropdown-menu  dropdown-menu-right ">
-								<a href="./dashboard.php" class="dropdown-item">
+								<a href="../../dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php" class="dropdown-item">
+								<a href="../../settings.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="./login.php" class="dropdown-item">
+								<a href="../../login.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -142,153 +169,41 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container-fluid mt-4">
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">
-										Your Grade Point Average
-									</h5>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Bar Chart -->
-							<div class="chart">
-								<canvas id="bar-chart" width="800" height="450"></canvas>
-							</div>
-						</div>
+		<div class="container my-5 py-5">
+			<div class="row flex-md-column flex-lg-row justify-content-center align-items-center my-5 py-5">
+				<div class="col-md-6 col-sm-12">
+					<h1 class="display-2">History Quiz</h1>
+					<div class="current">Question <?php echo $number; ?> of <?php echo $total; ?></div>
+
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<p class="question display-4">
+						<?php echo $question['question'] ?>
+					</p>
+					<div class="d-flex align-items-center">
+						<form method="post" action="process.php">
+							<ul class="list-group list-group-flush my-4">
+								<?php while ($row = $choices->fetch_assoc()) : ?>
+									<li class="list-group-item"><input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
+										<?php echo $row['choice']; ?>
+									</li>
+								<?php endwhile; ?>
+							</ul>
+							<input type="submit" value="submit" class="btn btn-primary mt-4" />
+							<input type="hidden" name="number" value="<?php echo $number; ?>" />
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Data -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xl-8">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h3 class="mb-0">Your Subjects</h3>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Table of Subjects -->
-							<div class="table-responsive">
-								<table class="table align-items-center table-flush">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">Subject</th>
-											<th scope="col">Average Grade</th>
-											<th scope="col">Attendance</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">
-												English
-											</th>
-											<td>
-												70%
-											</td>
-											<td>
-												95%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Maths
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												History
-											</th>
-											<td>
-												80%
-											</td>
-											<td>
-												95%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Geography
-											</th>
-											<td>
-												75%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Science
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Gaeilge
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">Your Attendance</h5>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Pie Chart -->
-							<div class="chart">
-								<canvas id="pie-chart" class="chart-canvas"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Scripts -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="./assets/js/argon-design-system-extras.min.js"></script>
-	<script src="./assets/js/main.js"></script>
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+		<script src="../../assets/js/argon-design-system-extras.min.js"></script>
+		<script src="../../assets/js/main.js"></script>
 </body>
 
 </html>
