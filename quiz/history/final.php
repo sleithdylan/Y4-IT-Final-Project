@@ -1,11 +1,9 @@
  <?php include "database.php"; ?>
-
+ <?php session_start(); ?>
  <?php
-	//Get the total questions
-	$query = "select * from mathsquestions";
-	//Get Results
-	$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
-	$total = $results->num_rows;
+	//Create Select Query
+	$query = "select * from shouts order by time desc limit 100";
+	$shouts = mysqli_query($con, $query);
 
 	?>
 
@@ -62,9 +60,9 @@
  								<span class="nav-link-text">Quizzes</span>
  							</a>
  							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
- 								<a class="dropdown-item" href="./maths.php">Maths</a>
+								<a class="dropdown-item" href="../maths/maths.php">Maths</a>
 								<a class="dropdown-item" href="../english/english.php">English</a>
-								<a class="dropdown-item" href="../history/history.php">History</a>
+								<a class="dropdown-item" href="./history.php">History</a>	
  							</div>
  						</li>
  					</ul>
@@ -156,21 +154,11 @@
  		<div class="container mt-5 pt-5">
  			<div class="row text-center mt-5 pt-5">
  				<div class="col-xl-12">
- 					<h1 class="display-2">Maths Quiz</h1>
- 					<h2>Test your Maths Knowledge</h2>
- 					<p>This is a multiple choice quiz to test your knowledge about maths</p>
- 					<ul class="list-group list-group-flush">
- 						<li class="list-group-item">
- 							<strong>Number of Questions: </strong> <?php echo $total; ?>
- 						</li>
- 						<li class="list-group-item">
- 							<strong>Type: </strong>Multiple Choice
- 						</li>
- 						<li class="list-group-item">
- 							<strong>Estimatd Time: </strong> <?php echo $total * 0.5; ?> minutes
- 						</li>
- 					</ul>
- 					<a href="question.php?n=1" class="btn btn-primary mt-3">Start Quiz</a>
+ 					<h2 class="display-2">You are Done!</h2>
+ 					<p>Congrats! You have completed the quiz</p>
+ 					<p>Final score: <?php echo $_SESSION['score']; ?></p>
+ 					<a href="question.php?n=1" class="start btn btn-primary mt-2">Take Quiz Again</a>
+ 					<?php session_destroy(); ?>
  				</div>
  			</div>
  		</div>
