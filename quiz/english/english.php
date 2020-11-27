@@ -2,7 +2,7 @@
 
  <?php
 	//Get the total questions
-	$query = "select * from mathsquestions";
+	$query = "select * from englishquestions";
 	//Get Results
 	$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
 	$total = $results->num_rows;
@@ -62,8 +62,8 @@
  								<span class="nav-link-text">Quizzes</span>
  							</a>
  							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
- 								<a class="dropdown-item" href="./maths.php">Maths</a>
-								<a class="dropdown-item" href="../english/english.php">English</a>
+								<a class="dropdown-item" href="../maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="./english.php">English</a>
 								<a class="dropdown-item" href="../history/history.php">History</a>
  							</div>
  						</li>
@@ -156,9 +156,9 @@
  		<div class="container mt-5 pt-5">
  			<div class="row text-center mt-5 pt-5">
  				<div class="col-xl-12">
- 					<h1 class="display-2">Maths Quiz</h1>
- 					<h2>Test your Maths Knowledge</h2>
- 					<p>This is a multiple choice quiz to test your knowledge about maths</p>
+ 					<h1 class="display-2">English Quiz</h1>
+ 					<h2>Test your English Knowledge</h2>
+ 					<p>This is a multiple choice quiz to test your knowledge about english</p>
  					<ul class="list-group list-group-flush">
  						<li class="list-group-item">
  							<strong>Number of Questions: </strong> <?php echo $total; ?>

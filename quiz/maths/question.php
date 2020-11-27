@@ -78,7 +78,9 @@ $choices = $mysqli->query($query) or die($mysqli->error . __LINE__);
 								<span class="nav-link-text">Quizzes</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./maths.php">Maths</a>
+								<a class="dropdown-item" href="./quiz/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../english/english.php">English</a>
+								<a class="dropdown-item" href="../history/history.php">History</a>
 							</div>
 						</li>
 					</ul>
