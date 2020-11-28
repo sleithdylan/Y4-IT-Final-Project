@@ -51,7 +51,7 @@ $total = $results->num_rows;
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="../../dashboard.php">
+							<a class="nav-link" href="../../dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
