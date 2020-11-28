@@ -17,7 +17,6 @@ $db_user = 'bc7f23b22e8a0d';
 $db_pass = '84e516aa';
 $db_name = 'heroku_c9a46f0e84714fc';
 
-
 //Create mysqli object
 $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
