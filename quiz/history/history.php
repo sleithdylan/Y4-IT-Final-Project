@@ -24,8 +24,8 @@ $total = $results->num_rows;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
