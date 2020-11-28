@@ -1,6 +1,9 @@
-<?php include "database.php"; ?>
-
 <?php
+// Requires Config
+require('../config/config.php');
+// Creates and Checks Connection
+require('../config/db.php');
+
 if (isset($_POST['submit'])) {
 	//Get Post variables
 	$question_number = $_POST['question_number'];

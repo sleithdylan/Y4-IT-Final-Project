@@ -1,6 +1,11 @@
-<?php include "database.php"; ?>
-<?php session_start(); ?>
 <?php
+// Requires Config
+require('../config/config.php');
+// Creates and Checks Connection
+require('../config/db.php');
+
+session_start();
+
 //Set question number
 $number = (int) $_GET['n'];
 

@@ -1,6 +1,10 @@
-<?php include 'database.php'; ?>
-<?php session_start(); ?>
 <?php
+// Requires Config
+require('../config/config.php');
+// Creates and Checks Connection
+require('../config/db.php');
+
+session_start();
 
 //Check to see if score is set_error_handler
 if (!isset($_SESSION['score'])) {
@@ -39,4 +43,3 @@ if ($_POST) {
 		header("Location: question.php?n=" . $next . "&score=" . $_SESSION['score']);
 	}
 }
-?>
