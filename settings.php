@@ -52,6 +52,8 @@
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="./quiz/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="./quiz/english/english.php">English</a>
+								<a class="dropdown-item" href="./quiz/history/history.php">History</a>
 							</div>
 						</li>
 					</ul>

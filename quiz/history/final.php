@@ -60,9 +60,9 @@
  								<span class="nav-link-text">Quizzes</span>
  							</a>
  							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="../english/english.php">English</a>
-								<a class="dropdown-item" href="./history.php">History</a>	
+ 								<a class="dropdown-item" href="../maths/maths.php">Maths</a>
+ 								<a class="dropdown-item" href="../english/english.php">English</a>
+ 								<a class="dropdown-item" href="./history.php">History</a>
  							</div>
  						</li>
  					</ul>
