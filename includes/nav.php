@@ -25,10 +25,10 @@
 			</div>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php#features">Features</a>
+					<a class="nav-link" href="#features">Features</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php#testimonials">Testimonials</a>
+					<a class="nav-link" href="#testimonials">Testimonials</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">
