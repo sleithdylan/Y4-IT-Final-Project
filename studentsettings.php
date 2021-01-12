@@ -1,3 +1,35 @@
+<?php
+// Starts session
+session_start();
+
+// Requires Config
+require('config/config.php');
+// Creates and Checks Connection
+require('config/db.php');
+
+// Puts session variable into $email
+$email = $_SESSION['student_email'];
+
+// Gets ID
+$id = mysqli_real_escape_string($conn, $_GET['id']);
+
+// SELECT Query
+$query = "SELECT * FROM students";
+
+// Gets Result
+$result = mysqli_query($conn, $query);
+
+// Fetch Data
+$lists = mysqli_fetch_assoc($result);
+
+// Free's result from memory
+mysqli_free_result($result);
+
+// Closes Connection
+mysqli_close($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +38,8 @@
 	<title>CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
+	<meta name="description"
+		content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -30,14 +63,15 @@
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="./index.php">
 					<img src="assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
-					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
+					<span class="font-weight-bold text-primary">Close</span><span
+						class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
 			<div class="navbar-inner">
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="./dashboard.php">
+							<a class="nav-link" href="./studentdashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -46,7 +80,8 @@
 					<hr class="my-3">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes</span>
 							</a>
@@ -70,7 +105,8 @@
 					<ul class="navbar-nav align-items-center ml-auto">
 						<li class="nav-item d-xl-none">
 							<!-- Hamburger Menu -->
-							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+								data-target="#sidenav-main">
 								<div class="sidenav-toggler-inner">
 									<i class="sidenav-toggler-line"></i>
 									<i class="sidenav-toggler-line"></i>
@@ -79,7 +115,8 @@
 							</div>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<i class='bx bxs-bell'></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right  py-0 overflow-hidden">
@@ -112,27 +149,29 @@
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
-							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=White&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale' />
+										<img
+											src='./assets/images/faces/<?php echo $lists['student_avatar'] ?>' />
 									</span>
-									<div class="media-body  ml-2  d-none d-lg-block">
+									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold">David</span>
 									</div>
 								</div>
 							</a>
-							<div class="dropdown-menu  dropdown-menu-right ">
-								<a href="./dashboard.php" class="dropdown-item">
+							<div class="dropdown-menu dropdown-menu-right ">
+								<a href="./studentdashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php" class="dropdown-item">
+								<a href="./studentsettings.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="./login.php" class="dropdown-item">
+								<a href="./studentlogin.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -157,26 +196,31 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<form>
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentprofile"
+                enctype="multipart/form-data" class="needs-validation" novalidate>
 								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label class="form-control-label" for="input-username">Profile Picture</label>
-												<input type="file" id="input-picture" class="form-control" name="student-picture" placeholder="Insert Image">
+												<label class="form-control-label" for="student-avatar">Avatar</label>
+												<input type="file" id="input-picture" class="form-control" name="student-avatar"
+													placeholder="Insert Image">
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="input-first-name">Full Name</label>
-												<input type="text" id="input-first-name" class="form-control" placeholder="First Name, e.g. John Doe" value="David Ryan">
+												<label class="form-control-label" for="student-fullname">Full Name</label>
+												<input type="text" id="student-fullname" class="form-control"
+													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>">
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="input-email">Email Address</label>
-												<input type="email" id="input-email" class="form-control" placeholder="Email Address e.g. jdoe@gmail.com" value="david.ryan@gmail.com" disabled>
+												<label class="form-control-label" for="student-email">Email Address</label>
+												<input type="email" id="student-email" class="form-control"
+													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>" disabled>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="input-email">Phone Number</label>
-												<input type="text" class="form-control" id="student-phone" name="student-phone" placeholder="Phone Number, e.g. 0891234567" value="0892861635">
+												<label class="form-control-label" for="student-phone">Phone Number</label>
+												<input type="text" class="form-control" id="student-phone" name="student-phone"
+													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>">
 											</div>
 										</div>
 									</div>
@@ -188,28 +232,31 @@
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="form-control-label" for="input-address">Address</label>
-												<input id="input-address" class="form-control" placeholder="Home Address" value="93 Park Street, Dundalk, County Louth, A91 P868" type="text">
+												<label class="form-control-label" for="student-address">Address</label>
+												<input id="student-address" name="student-address" class="form-control" placeholder="Home Address"
+													value="<?php echo $lists['student_address']; ?>" type="text">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="input-city">City</label>
-												<input type="text" id="input-city" class="form-control" placeholder="City" value="Dundalk">
+												<label class="form-control-label" for="student-city">City</label>
+												<input type="text" id="student-city" class="form-control" placeholder="City" value="<?php echo $lists['student_city']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="input-country">Country</label>
-												<input type="text" id="input-country" class="form-control" placeholder="Country" value="Ireland">
+												<label class="form-control-label" for="student-country">Country</label>
+												<input type="text" id="student-country" class="form-control" placeholder="Country"
+													value="<?php echo $lists['student_country']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="input-country">Eircode</label>
-												<input type="text" id="input-postal-code" class="form-control" placeholder="Eircode" value="A91 P868">
+												<label class="form-control-label" for="student-eircode">Eircode</label>
+												<input type="text" id="student-eircode" class="form-control" placeholder="Eircode"
+													value="<?php echo $lists['student_eircode']; ?>">
 											</div>
 										</div>
 									</div>
@@ -220,9 +267,13 @@
 								<div class="pl-lg-4">
 									<div class="form-group">
 										<label class="form-control-label">About Me</label>
-										<textarea rows="4" class="form-control" placeholder="Tell us about youself..."></textarea>
+										<textarea rows="4" class="form-control" placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
+								<hr class="my-4" />
+								<div class="d-flex">
+                  <button type="submit" name="profile" class="btn btn-primary flex-grow-1">Edit Profile</button>
+                </div>
 							</form>
 						</div>
 					</div>

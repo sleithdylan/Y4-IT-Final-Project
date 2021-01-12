@@ -83,7 +83,7 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<a href="./login.php" class="btn btn-primary mt-4">Create account</a>
+									<a href="./studentlogin.php" class="btn btn-primary mt-4">Create account</a>
 								</div>
 							</form>
 						</div>
