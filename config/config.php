@@ -2,7 +2,7 @@
 // Localhost's DB
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
-$DB_PASS = '';
+$DB_PASS = 'root';
 $DB_NAME = 'closeapart';
 
 // Heroku's DB

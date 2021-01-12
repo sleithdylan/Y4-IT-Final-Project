@@ -250,16 +250,17 @@ CREATE TABLE IF NOT EXISTS Students (
 student_id SMALLINT(3) NOT NULL AUTO_INCREMENT,
 student_fullname VARCHAR(255) NULL DEFAULT NULL,
 student_email VARCHAR(255) NULL DEFAULT NULL,
+student_password VARCHAR(255) NULL DEFAULT NULL,
 student_phone INT(10) ZEROFILL NULL,
 student_address VARCHAR(255) NULL,
 student_city VARCHAR(255) NULL,
 student_country VARCHAR(255) NULL,
 student_eircode VARCHAR(255) NULL,
 student_bio TEXT NULL,
-student_avatar VARCHAR(255) DEFAULT 'blank-profile-picture.png',
+student_avatar VARCHAR(255) DEFAULT 'david.jpg',
 PRIMARY KEY (student_id));
 
 -- Data for Students
 
-INSERT INTO Students (student_id, student_fullname, student_email, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar) VALUES
-(1, 'David Ryan', 'david.ryan@gmail.com', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'blank-profile-picture.png');
+INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar) VALUES
+(1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'david.jpg');
