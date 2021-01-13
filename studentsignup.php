@@ -1,3 +1,61 @@
+<?php
+// Requires Config
+require('config/config.php');
+// Creates and Checks Connection
+require('config/db.php');
+
+// Alert/Message Variables
+$msg = '';
+$msgClass = '';
+
+// Checks for posted data
+if (isset($_POST['register'])) {
+	// Starts session
+	session_start();
+
+	// Gets form data
+	$studentFullName = mysqli_real_escape_string($conn, $_POST['student-fullname']);
+	$studentEmail = mysqli_real_escape_string($conn, $_POST['student-email']);
+	$studentEmail = strtolower($studentEmail); // Returns email in lowercase
+	$studentEmail = filter_var($studentEmail, FILTER_SANITIZE_EMAIL); // Removes illegal characters
+	$studentEmail = trim($studentEmail); // Removes whitespace
+	$studentPassword = mysqli_real_escape_string($conn, $_POST['student-password']);
+
+	// Hashed password
+	$passwordHashed = password_hash($studentPassword, PASSWORD_DEFAULT);
+
+	// SELECT Query
+	$query = "SELECT * FROM students WHERE student_email = '$studentEmail'";
+
+	// Gets Result
+	$result = mysqli_query($conn, $query);
+
+	// Gets number of rows
+	$numOfRows = mysqli_num_rows($result);
+
+	if (mysqli_query($conn, $query) && isset($studentFullName) && isset($studentEmail) && isset($studentPassword) && $numOfRows != 1) {
+		// Passed
+		// INSERT Query
+		$regQuery = "INSERT INTO students(student_fullname, student_email, student_password) 
+                  VALUES('$studentFullName', '$studentEmail', '$passwordHashed')";
+		// Gets Result
+		$result = mysqli_query($conn, $regQuery);
+		$msg = '<strong>Success!</strong> You are now registered';
+		$msgClass = 'alert-success alert-dismissible fade show';
+		// Redirects to studentlogin.php after 1 second
+		header('refresh:1; url=studentlogin.php');
+	}
+	else {
+		// Failed
+		// Returns error
+		$msg = '<strong>Error!</strong> Email taken...';
+		$msgClass = 'alert-danger alert-dismissible fade show my-4';
+	}
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +92,13 @@
 		<div class="container pt-2 pt-lg-6">
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
+					<?php if($msg != ""): ?>
+          <div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
 						<div class="card-header bg-white pb-4">
 							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
@@ -48,13 +113,14 @@
 							<div class="text-center text-muted mb-4">
 								<small>Or sign up with credentials</small>
 							</div>
-							<form role="form">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
 								<div class="form-group">
 									<div class="input-group input-group-alternative mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-user'></i></span>
 										</div>
-										<input class="form-control" placeholder="Name" type="text">
+										<input type="text" class="form-control" id="student-fullname" name="student-fullname"
+                      placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -62,7 +128,8 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input class="form-control" placeholder="Email" type="email">
+										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
+                      required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -70,10 +137,10 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input class="form-control" placeholder="Password" type="password">
+										<input type="password" class="form-control" id="student-password" name="student-password"
+                    placeholder="Password" required>
 									</div>
 								</div>
-								<!-- <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div> -->
 								<div class="row my-4">
 									<div class="col-12">
 										<div class="custom-control custom-control-alternative custom-checkbox">
@@ -83,9 +150,14 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<a href="./studentlogin.php" class="btn btn-primary mt-4">Create account</a>
+									<button type="submit" name="register" class="btn btn-primary my-4">Create account</button>
 								</div>
 							</form>
+						</div>
+					</div>
+					<div class="row mt-3">
+						<div class="col-12 text-center">
+							<a href="./studentlogin.php" class="text-white"><small>Login to account</small></a>
 						</div>
 					</div>
 				</div>

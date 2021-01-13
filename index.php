@@ -36,7 +36,7 @@
 				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
 					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</p>
-					<a href="./signup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
+					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
@@ -202,7 +202,7 @@
 			<div class="row">
 				<h4 class="col-md text-left">Get in touch with us or create an account</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<a href="./signup.php" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</a>
+					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</a>
 					<button type="button" class="btn btn-secondary text-capitalize px-4">Contact Us</button>
 				</div>
 			</div>

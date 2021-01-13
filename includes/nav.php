@@ -46,8 +46,8 @@
 						Sign up
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./signup.php">As Student</a>
-						<a class="dropdown-item" href="./signup.php">As Staff</a>
+						<a class="dropdown-item" href="./studentsignup.php">As Student</a>
+						<a class="dropdown-item" href="./studentsignup.php">As Staff</a>
 					</div>
 				</li>
 			</ul>
