@@ -1,3 +1,56 @@
+<?php
+// Starts session
+session_start();
+
+// Puts session variable into $email
+$email = $_SESSION['student_email'];
+
+// Get students data
+function getStudentsData($studentId) {
+	// Requires Config
+	require('config/config.php');
+	// Creates and Checks Connection
+	require('config/db.php');
+	$array = array();
+	$query = mysqli_query($conn, "SELECT * FROM students WHERE student_id=" . $studentId);
+	while ($row = mysqli_fetch_assoc($query)) {
+		$array['student_id'] = $row['student_id'];
+		$array['student_fullname'] = $row['student_fullname'];
+		$array['student_email'] = $row['student_email'];
+		$array['student_password'] = $row['student_password'];
+		$array['student_avatar'] = $row['student_avatar'];
+	}
+	return $array;
+}
+
+// Get student ID
+function getId($email) {
+	// Requires Config
+	require('config/config.php');
+	// Creates and Checks Connection
+	require('config/db.php');
+	$query = mysqli_query($conn, "SELECT student_id FROM students WHERE student_email='" . $email . "'");
+	while ($row = mysqli_fetch_assoc($query)) {
+		return $row['student_id'];
+	}
+}
+
+?>
+
+<?php if (!isset($_SESSION['student_email'])) {
+	// Redirects to studentlogin.php
+	header('Location: studentlogin.php');
+	exit();
+}
+?>
+
+<?php 
+// Gets user data from id
+if (isset($_SESSION['student_email'])) {
+	$studentData = getStudentsData(getId($_SESSION['student_email']));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,10 +168,10 @@
 							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=White&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale' />
+										<img src='./assets/images/faces/<?php echo $studentData['student_avatar'] ?>' />
 									</span>
 									<div class="media-body  ml-2  d-none d-lg-block">
-										<span class="mb-0 text-sm  font-weight-bold">David</span>
+										<span class="mb-0 text-sm  font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
 									</div>
 								</div>
 							</a>
