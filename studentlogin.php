@@ -112,7 +112,7 @@ if (isset($_POST['login'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Or log in with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation" novalidate>
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
 								<div class="form-group mb-3">
 									<div class="input-group input-group-alternative">
 										<div class="input-group-prepend">
@@ -143,10 +143,10 @@ if (isset($_POST['login'])) {
 					</div>
 					<div class="row mt-3">
 						<div class="col-6">
-							<a href="#" class="text-light"><small>Forgot password?</small></a>
+							<a href="#" class="text-white"><small>Forgot password?</small></a>
 						</div>
 						<div class="col-6 text-right">
-							<a href="./signup.php" class="text-light"><small>Create new account</small></a>
+							<a href="./studentsignup.php" class="text-white"><small>Create new account</small></a>
 						</div>
 					</div>
 				</div>
