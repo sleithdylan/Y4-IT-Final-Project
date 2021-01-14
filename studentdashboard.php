@@ -91,9 +91,6 @@ $gpaResult = mysqli_query($conn, $gpaQuery);
 $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
 
-// var_dump($subjects);
-// var_dump($subjectsGPA);
-
 // Free's result from memory
 mysqli_free_result($result);
 
@@ -237,7 +234,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./studentsettings.php" class="dropdown-item">
+								<a href="./studentsettings.php?id=<?php echo $studentData['student_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -294,7 +291,7 @@ mysqli_close($conn);
 									<thead class="thead-light">
 										<tr>
 											<th scope="col">Subject</th>
-											<th scope="col">Average Grade</th>
+											<th scope="col">Grade</th>
 											<th scope="col">Attendance</th>
 										</tr>
 									</thead>

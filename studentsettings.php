@@ -7,14 +7,64 @@ require('config/config.php');
 // Creates and Checks Connection
 require('config/db.php');
 
+// Alert/Message Variables
+$msg = '';
+$msgClass = '';
+
 // Puts session variable into $email
 $email = $_SESSION['student_email'];
+
+// Checks for posted data
+if (isset($_POST['profile'])) {
+	// Gets form data
+	$studentAvatar = time() . '_' . $_FILES['student-avatar']['name'];
+	$studentFullName = mysqli_real_escape_string($conn, $_POST['student-fullname']);
+	$studentPhone = mysqli_real_escape_string($conn, $_POST['student-phone']);
+	$studentAddress = mysqli_real_escape_string($conn, $_POST['student-address']);
+	$studentCity = mysqli_real_escape_string($conn, $_POST['student-city']);
+	$studentCountry = mysqli_real_escape_string($conn, $_POST['student-country']);
+	$studentEircode = mysqli_real_escape_string($conn, $_POST['student-eircode']);
+	$studentBio = mysqli_real_escape_string($conn, $_POST['student-about']);
+
+	$target = 'assets/images/faces/' . $studentAvatar;
+
+	// Gets ID
+	$id = mysqli_real_escape_string($conn, $_GET['id']);
+
+	// SELECT Query
+	$query = "SELECT * FROM students ORDER BY student_id WHERE student_id = {$id}";
+
+	$query = "UPDATE students SET 
+      student_fullname = '$studentFullName',
+      student_phone = '$studentPhone', 
+      student_address = '$studentAddress', 
+      student_city = '$studentCity',
+      student_country = '$studentCountry',
+      student_eircode = '$studentEircode',
+      student_bio = '$studentBio',
+      student_avatar = '$studentAvatar'
+  WHERE student_id = {$id}";
+
+	// Checks Required Fields
+	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['student-avatar']['tmp_name'], $target)) {
+		// Passed
+		$msg = '<strong>Success!</strong> Profile has been edited!';
+		$msgClass = 'alert-success alert-dismissible fade show';
+	}
+	else {
+		// Failed
+		// Returns error
+		$msg = '<strong>Error!</strong> Please fill in all fields correctly';
+		$msgClass = 'alert-danger alert-dismissible fade show';
+	}
+
+}
 
 // Gets ID
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 
 // SELECT Query
-$query = "SELECT * FROM students";
+$query = "SELECT * FROM students WHERE student_id = {$id}";
 
 // Gets Result
 $result = mysqli_query($conn, $query);
@@ -157,7 +207,7 @@ mysqli_close($conn);
 											src='./assets/images/faces/<?php echo $lists['student_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold">David</span>
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $lists['student_fullname'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -166,7 +216,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./studentsettings.php" class="dropdown-item">
+								<a href="./studentsettings.php?id=<?php echo $lists['student_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -184,6 +234,13 @@ mysqli_close($conn);
 		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-xl-12">
+					<?php if($msg != ""): ?>
+          <div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <?php endif; ?>
 					<div class="card">
 						<div class="card-header">
 							<div class="row align-items-center">
@@ -196,7 +253,7 @@ mysqli_close($conn);
 							</div>
 						</div>
 						<div class="card-body">
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentprofile"
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentsettings"
                 enctype="multipart/form-data" class="needs-validation" novalidate>
 								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
@@ -209,12 +266,12 @@ mysqli_close($conn);
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="student-fullname">Full Name</label>
-												<input type="text" id="student-fullname" class="form-control"
+												<input type="text" id="student-fullname" name="student-fullname" class="form-control"
 													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>">
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="student-email">Email Address</label>
-												<input type="email" id="student-email" class="form-control"
+												<input type="email" id="student-email" name="student-email" class="form-control"
 													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>" disabled>
 											</div>
 											<div class="form-group">
@@ -242,20 +299,20 @@ mysqli_close($conn);
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-city">City</label>
-												<input type="text" id="student-city" class="form-control" placeholder="City" value="<?php echo $lists['student_city']; ?>">
+												<input type="text" id="student-city" name="student-city" class="form-control" placeholder="City" value="<?php echo $lists['student_city']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-country">Country</label>
-												<input type="text" id="student-country" class="form-control" placeholder="Country"
+												<input type="text" id="student-country" name="student-country" class="form-control" placeholder="Country"
 													value="<?php echo $lists['student_country']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-eircode">Eircode</label>
-												<input type="text" id="student-eircode" class="form-control" placeholder="Eircode"
+												<input type="text" id="student-eircode" name="student-eircode" class="form-control" placeholder="Eircode"
 													value="<?php echo $lists['student_eircode']; ?>">
 											</div>
 										</div>
@@ -266,8 +323,8 @@ mysqli_close($conn);
 								<h6 class="heading-small text-muted mb-4">About me</h6>
 								<div class="pl-lg-4">
 									<div class="form-group">
-										<label class="form-control-label">About Me</label>
-										<textarea rows="4" class="form-control" placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
+										<label class="form-control-label" for="student-about">About Me</label>
+										<textarea rows="4" class="form-control" id="student-about" name="student-about" placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
