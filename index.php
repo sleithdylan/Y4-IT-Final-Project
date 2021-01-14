@@ -39,7 +39,7 @@
 					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
-					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/boy-on-computer.png" alt="boy on computer">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/illustrations/boy-on-computer.png" alt="boy on computer">
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 		<div class="container">
 			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md col-lg-5">
-					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/text-img.png" alt="CA-galway">
+					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/ca-who-we-are.png" alt="CA-galway">
 				</div>
 				<div class="col-md col-lg">
 					<h6 class="text-left text-primary mt-3">Who we are</h6>
@@ -130,7 +130,7 @@
 							</div>
 							<p class="card-text">My students absolutely love it here! It is so easy for me to communicate with them on a daily basis</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/sarah.jpg" alt="picture of sarah">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/sarah.jpg" alt="picture of sarah">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>Sarah</h6>
 									<p>Teacher</p>
@@ -147,7 +147,7 @@
 							</div>
 							<p class="card-text">My son enjoys his new way of working. This whole online thing was a step in the right direction!</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/david.jpg" alt="picture of david">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/david.jpg" alt="picture of david">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>David</h6>
 									<p>Father</p>
@@ -164,7 +164,7 @@
 							</div>
 							<p class="card-text">CloseApart comes in clutch. It solved so many problems due to the global pandemic. My class and I love it!</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/john.jpg" alt="picture of john">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/john.jpg" alt="picture of john">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>John</h6>
 									<p>Teacher</p>
@@ -181,7 +181,7 @@
 							</div>
 							<p class="card-text">This is the best idea ever! It takes so much pressure off my shoulders and ensures my kids are still being educated</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/faces/rebecca.jpg" alt="picture of rebecca">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/rebecca.jpg" alt="picture of rebecca">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>Rebecca</h6>
 									<p>Mother</p>

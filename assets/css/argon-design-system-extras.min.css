@@ -12,7 +12,7 @@ body {
 
 .section-shaped {
   position: relative;
-  background: url(../images/hinterrhein.png) no-repeat center left fixed;
+  background: url(../images/patterns/hinterrhein.png) no-repeat center left fixed;
   background-size: cover;
 }
 
