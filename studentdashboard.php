@@ -2,23 +2,51 @@
 // Starts session
 session_start();
 
+// Requires config
+require('config/config.php');
+// Creates and checks connection
+require('config/db.php');
+
 // Puts session variable into $email
 $email = $_SESSION['student_email'];
 
 // Get students data
 function getStudentsData($studentId) {
-	// Requires Config
+	// Requires config
 	require('config/config.php');
-	// Creates and Checks Connection
+	// Creates and checks connection
 	require('config/db.php');
+	// Creates array
 	$array = array();
+	// SELECT query
 	$query = mysqli_query($conn, "SELECT * FROM students WHERE student_id=" . $studentId);
+	// Loop through array
 	while ($row = mysqli_fetch_assoc($query)) {
 		$array['student_id'] = $row['student_id'];
 		$array['student_fullname'] = $row['student_fullname'];
 		$array['student_email'] = $row['student_email'];
 		$array['student_password'] = $row['student_password'];
 		$array['student_avatar'] = $row['student_avatar'];
+	}
+	return $array;
+}
+
+// Get subjects data
+function getSubjectsData($studentId) {
+	// Requires Config
+	require('config/config.php');
+	// Creates and Checks Connection
+	require('config/db.php');
+	$array = array();
+	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentId . " ORDER BY subject_id DESC");
+	while ($row = mysqli_fetch_assoc($query)) {
+		$array['subject_id'] = $row['subject_id'];
+		$array['subject_name'] = $row['subject_name'];
+		$array['subject_grade'] = $row['subject_grade'];
+		$array['subject_gpa'] = $row['subject_gpa'];
+		$array['subject_attendance'] = $row['subject_attendance'];
+		$array['student_id'] = $row['student_id'];
+		$array['student_email'] = $row['student_email'];
 	}
 	return $array;
 }
@@ -35,20 +63,43 @@ function getId($email) {
 	}
 }
 
-?>
-
-<?php if (!isset($_SESSION['student_email'])) {
+ if (!isset($_SESSION['student_email'])) {
 	// Redirects to studentlogin.php
 	header('Location: studentlogin.php');
 	exit();
 }
-?>
 
-<?php 
 // Gets user data from id
 if (isset($_SESSION['student_email'])) {
 	$studentData = getStudentsData(getId($_SESSION['student_email']));
+	$subjectData = getSubjectsData(getId($_SESSION['student_email']));
 }
+
+// SELECT all subjects
+$query = "SELECT * FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
+
+// SELECT subject gpa
+$gpaQuery = "SELECT subject_gpa FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
+
+//TODO SELECT the average attendance of a student across all subjects and display it in a Pie Chart form
+
+// Gets result
+$result = mysqli_query($conn, $query);
+$gpaResult = mysqli_query($conn, $gpaQuery);
+
+// Fetch data
+$subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
+
+// var_dump($subjects);
+// var_dump($subjectsGPA);
+
+// Free's result from memory
+mysqli_free_result($result);
+
+// Closes connection
+mysqli_close($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +110,8 @@ if (isset($_SESSION['student_email'])) {
 	<title>CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
+	<meta name="description"
+		content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -83,7 +135,8 @@ if (isset($_SESSION['student_email'])) {
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="./index.php">
 					<img src="assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
-					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
+					<span class="font-weight-bold text-primary">Close</span><span
+						class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
 			<div class="navbar-inner">
@@ -99,7 +152,8 @@ if (isset($_SESSION['student_email'])) {
 					<hr class="my-3">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes</span>
 							</a>
@@ -123,7 +177,8 @@ if (isset($_SESSION['student_email'])) {
 					<ul class="navbar-nav align-items-center ml-auto">
 						<li class="nav-item d-xl-none">
 							<!-- Hamburger Menu -->
-							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+								data-target="#sidenav-main">
 								<div class="sidenav-toggler-inner">
 									<i class="sidenav-toggler-line"></i>
 									<i class="sidenav-toggler-line"></i>
@@ -132,7 +187,8 @@ if (isset($_SESSION['student_email'])) {
 							</div>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<i class='bx bxs-bell'></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right  py-0 overflow-hidden">
@@ -165,7 +221,8 @@ if (isset($_SESSION['student_email'])) {
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
-							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
 										<img src='./assets/images/faces/<?php echo $studentData['student_avatar'] ?>' />
@@ -242,72 +299,19 @@ if (isset($_SESSION['student_email'])) {
 										</tr>
 									</thead>
 									<tbody>
+										<?php foreach($subjects as $subject) : ?>
 										<tr>
 											<th scope="row">
-												English
+												<?php echo $subject['subject_name'] ?>
 											</th>
 											<td>
-												70%
+												<?php echo $subject['subject_grade'] . '%' ?>
 											</td>
 											<td>
-												95%
+												<?php echo $subject['subject_attendance'] . '%' ?>
 											</td>
 										</tr>
-										<tr>
-											<th scope="row">
-												Maths
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												History
-											</th>
-											<td>
-												80%
-											</td>
-											<td>
-												95%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Geography
-											</th>
-											<td>
-												75%
-											</td>
-											<td>
-												90%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Science
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">
-												Gaeilge
-											</th>
-											<td>
-												65%
-											</td>
-											<td>
-												85%
-											</td>
-										</tr>
+										<?php endforeach; ?>
 									</tbody>
 								</table>
 							</div>
@@ -342,6 +346,67 @@ if (isset($_SESSION['student_email'])) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="./assets/js/argon-design-system-extras.min.js"></script>
 	<script src="./assets/js/main.js"></script>
+	<script>
+		var PieChart = (function () {
+				var a = $('#pie-chart');
+				a.length &&
+					(function (a) {
+						var e = new Chart(a, {
+							type: 'pie',
+							data: {
+								labels: ['Attendance', 'Absence (Explained)', 'Absence (Unexplained)'],
+								datasets: [{
+									label: 'Population (millions)',
+									backgroundColor: ['#2dce89', '#ffda09', '#f5365c'],
+									data: [70, 20, 10]
+								}]
+							}
+						});
+						a.data('chart', e);
+					})(a);
+			})(),
+			BarChart = (function () {
+				var a = $('#bar-chart');
+				a.length &&
+					(function (a) {
+						var e = new Chart(a, {
+							type: 'bar',
+							data: {
+								labels: ['English', 'Maths', 'History', 'Geography', 'Science', 'Gaeilge'],
+								datasets: [{
+									backgroundColor: ['#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4'],
+									data: [
+										<?php
+											foreach($subjectsGPA as $subjectGPA) {
+												echo $subjectGPA['subject_gpa'] . ",";
+											} 
+										?>
+									]
+								}]
+							},
+							options: {
+								legend: {
+									display: false
+								},
+								title: {
+									display: true,
+									text: 'Total GPA of ' + new Date().getFullYear()
+								},
+								scales: {
+									yAxes: [{
+										ticks: {
+											callback: function (value, index, values) {
+												return value;
+											}
+										}
+									}]
+								}
+							}
+						});
+						a.data('chart', e);
+					})(a);
+			})();
+	</script>
 </body>
 
 </html>
