@@ -264,3 +264,26 @@ PRIMARY KEY (student_id));
 
 INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar) VALUES
 (1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'david.jpg');
+
+-- Table Subjects
+
+DROP TABLE IF EXISTS Subjects;
+CREATE TABLE IF NOT EXISTS Subjects (
+subject_id INT(11) NOT NULL AUTO_INCREMENT,
+subject_name VARCHAR(255) NULL DEFAULT NULL,
+subject_grade SMALLINT(3) NULL DEFAULT NULL,
+subject_gpa VARCHAR(255) NULL DEFAULT NULL,
+subject_attendance SMALLINT(3) NULL DEFAULT NULL,
+student_id SMALLINT(3) NOT NULL,
+student_email VARCHAR(255) NOT NULL,
+PRIMARY KEY (subject_id));
+
+-- Data for Students
+
+INSERT INTO Subjects (subject_id, subject_name, subject_grade, subject_gpa, subject_attendance, student_id, student_email) VALUES
+(1, 'English', 70, '3', 95, 1, 'david.ryan@gmail.com'),
+(2, 'Maths', 65, '2.5', 90, 1, 'david.ryan@gmail.com'),
+(3, 'History', 80, '1.5', 95, 1, 'david.ryan@gmail.com'),
+(4, 'Geography', 75, '2', 90, 1, 'david.ryan@gmail.com'),
+(5, 'Science', 65, '4', 85, 1, 'david.ryan@gmail.com'),
+(6, 'Gaeilge', 65, '2', 85, 1, 'david.ryan@gmail.com');
