@@ -45,11 +45,11 @@
 		</div>
 	</div>
 	<!-- Who we are -->
-	<div id="home" class="py-5">
+	<div id="who-we-are" class="py-5">
 		<div class="container">
 			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md col-lg-5">
-					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/ca-who-we-are.png" alt="CA-galway">
+					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/ca-who-we-are.png" alt="who we are">
 				</div>
 				<div class="col-md col-lg">
 					<h6 class="text-left text-primary mt-3">Who we are</h6>
