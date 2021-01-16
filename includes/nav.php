@@ -1,7 +1,7 @@
 <nav id="navbar-main" class="navbar navbar-expand-lg bg-white navbar-light sticky-top">
 	<div class="container">
 		<a class="navbar-brand" href="./index.php">
-			<img src="assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+			<img src="./assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo">
 			<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +37,8 @@
 						Log in
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./studentlogin.php">As Student</a>
-						<a class="dropdown-item" href="./login.php">As Staff</a>
+						<a class="dropdown-item" href="./student/login.php">As Student</a>
+						<a class="dropdown-item" href="#stafflogin">As Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -46,8 +46,8 @@
 						Sign up
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./studentsignup.php">As Student</a>
-						<a class="dropdown-item" href="./studentsignup.php">As Staff</a>
+						<a class="dropdown-item" href="./student/signup.php">As Student</a>
+						<a class="dropdown-item" href="#staffsignup">As Staff</a>
 					</div>
 				</li>
 			</ul>

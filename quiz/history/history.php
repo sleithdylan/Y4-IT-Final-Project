@@ -51,7 +51,7 @@ $total = $results->num_rows;
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="../../studentdashboard.php">
+							<a class="nav-link" href="../../student/dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -137,16 +137,16 @@ $total = $results->num_rows;
 								</div>
 							</a>
 							<div class="dropdown-menu  dropdown-menu-right ">
-								<a href="../../studentdashboard.php" class="dropdown-item">
+								<a href="../../student/dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="../../studentsettings.php" class="dropdown-item">
+								<a href="../../student/settings.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../../studentlogin.php" class="dropdown-item">
+								<a href="../../student/login.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>

@@ -38,7 +38,7 @@
 					<h1 class="display-1 text-left">CloseApart</h1>
 					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers,
 						complete your work online! Get comfortable with us</p>
-					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
+					<a href="./student/signup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
@@ -218,14 +218,14 @@
 			<div class="row">
 				<h4 class="col-md text-left">Get in touch with us or create an account</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</a>
+					<a href="./student/signup.php" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</a>
 					<button type="button" class="btn btn-secondary text-capitalize px-4">Contact Us</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Footer -->
-	<?php include('includes/footer.php'); ?>
+	<?php include('includes/footer_main.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>

@@ -3,9 +3,9 @@
 session_start();
 
 // Requires Config
-require('config/config.php');
+require('../config/config.php');
 // Creates and Checks Connection
-require('config/db.php');
+require('../config/db.php');
 
 // Alert/Message Variables
 $msg = '';
@@ -26,7 +26,7 @@ if (isset($_POST['profile'])) {
 	$studentEircode = mysqli_real_escape_string($conn, $_POST['student-eircode']);
 	$studentBio = mysqli_real_escape_string($conn, $_POST['student-about']);
 
-	$target = 'assets/images/avatars/' . $studentAvatar;
+	$target = '../assets/images/avatars/' . $studentAvatar;
 
 	// Gets ID
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -93,8 +93,8 @@ mysqli_close($conn);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
@@ -103,7 +103,7 @@ mysqli_close($conn);
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="assets/css/argon.min.css">
+	<link rel="stylesheet" href="../assets/css/argon.min.css">
 </head>
 
 <body>
@@ -111,8 +111,8 @@ mysqli_close($conn);
 	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
-				<a class="navbar-brand d-flex justify-content-center" href="./index.php">
-					<img src="assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
+					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -121,7 +121,7 @@ mysqli_close($conn);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="./studentdashboard.php">
+							<a class="nav-link" href="./dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -136,9 +136,9 @@ mysqli_close($conn);
 								<span class="nav-link-text">Quizzes</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./quiz/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="./quiz/english/english.php">English</a>
-								<a class="dropdown-item" href="./quiz/history/history.php">History</a>
+								<a class="dropdown-item" href="../quiz/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../quiz/english/english.php">English</a>
+								<a class="dropdown-item" href="../quiz/history/history.php">History</a>
 							</div>
 						</li>
 					</ul>
@@ -177,7 +177,7 @@ mysqli_close($conn);
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="./assets/images/testimonials/john.jpg"
+												<img alt="Image placeholder" src="../assets/images/testimonials/john.jpg"
 													class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
@@ -204,7 +204,7 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='./assets/images/avatars/<?php echo $lists['student_avatar'] ?>' />
+										<img src='../assets/images/avatars/<?php echo $lists['student_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold"><?php echo $lists['student_fullname'] ?></span>
@@ -212,16 +212,16 @@ mysqli_close($conn);
 								</div>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right ">
-								<a href="./studentdashboard.php" class="dropdown-item">
+								<a href="./dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./studentsettings.php?id=<?php echo $lists['student_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $lists['student_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="./studentlogin.php" class="dropdown-item">
+								<a href="./login.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -347,8 +347,8 @@ mysqli_close($conn);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="./assets/js/argon-design-system-extras.min.js"></script>
-	<script src="./assets/js/main.js"></script>
+	<script src="../assets/js/argon-design-system-extras.min.js"></script>
+	<script src="../assets/js/main.js"></script>
 </body>
 
 </html>

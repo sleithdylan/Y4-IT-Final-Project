@@ -1,7 +1,7 @@
 <nav id="navbar-main" class="navbar navbar-expand-lg navbar-transparent navbar-light">
 	<div class="container">
-		<a class="navbar-brand" href="./index.php">
-			<img src="assets/images/brand/closeapart-logo-white.svg" class="mr-2 brand-logo">
+		<a class="navbar-brand" href="../index.php">
+			<img src="../assets/images/brand/closeapart-logo-white.svg" class="mr-2 brand-logo">
 			<span class="font-weight-bold text-white">Close</span><span class="font-weight-light text-white">Apart</span>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
 			<div class="navbar-collapse-header">
 				<div class="row">
 					<div class="col-6 collapse-brand">
-						<a class="navbar-brand" href="./index.php">
+						<a class="navbar-brand" href="../index.php">
 							<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
 						</a>
 					</div>
@@ -25,13 +25,13 @@
 			</div>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php">Home</a>
+					<a class="nav-link" href="../index.php">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php#features">Features</a>
+					<a class="nav-link" href="../index.php#features">Features</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php#testimonials">Testimonials</a>
+					<a class="nav-link" href="../index.php#testimonials">Testimonials</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">
@@ -40,8 +40,8 @@
 						Log in
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./studentlogin.php">As Student</a>
-						<a class="dropdown-item" href="./login.php">As Staff</a>
+						<a class="dropdown-item" href="../student/login.php">As Student</a>
+						<a class="dropdown-item" href="#stafflogin">As Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -49,8 +49,8 @@
 						Sign up
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./studentsignup.php">As Student</a>
-						<a class="dropdown-item" href="./studentsignup.php">As Staff</a>
+						<a class="dropdown-item" href="../student/signup.php">As Student</a>
+						<a class="dropdown-item" href="#staffsignup">As Staff</a>
 					</div>
 				</li>
 			</ul>

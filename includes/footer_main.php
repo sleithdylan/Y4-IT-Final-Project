@@ -44,7 +44,7 @@
 				<div class="col-md col-sm-6">
 					<ul class="navbar-nav mb-5">
 						<li class="nav-item">
-							<a class="nav-link active disabled pt-0" href="#">Legal</a>
+							<a class="nav-link active disabled pt-0" href="#legal">Legal</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link py-2" href="#terms">Terms & Conditions</a>
