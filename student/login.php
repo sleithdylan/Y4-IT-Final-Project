@@ -1,8 +1,8 @@
 <?php
 // Requires Config
-require('config/config.php');
+require('../config/config.php');
 // Creates and Checks Connection
-require('config/db.php');
+require('../config/db.php');
 
 // Alert/Message Variables
 $msg = '';
@@ -40,8 +40,8 @@ if (isset($_POST['login'])) {
 		// Passed
 		$msg = '<strong>Success!</strong> You have logged in';
 		$msgClass = 'alert-success alert-dismissible fade show';
-		// Redirects to studentdashboard.php after 1 second
-		header('refresh:1;url=studentdashboard.php');
+		// Redirects to the student dashboard.php after 1 second
+		header('refresh:1;url=./dashboard.php');
 	}
 	else {
 		// Failed
@@ -67,8 +67,8 @@ if (isset($_POST['login'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
@@ -77,15 +77,15 @@ if (isset($_POST['login'])) {
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="assets/css/argon-design-system.min.css">
-	<link rel="stylesheet" href="assets/css/argon-design-system-extras.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../assets/css/argon-design-system.min.css">
+	<link rel="stylesheet" href="../assets/css/argon-design-system-extras.min.css">
+	<link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
 </head>
 
 <body>
 	<!-- Navigation -->
-	<?php include('includes/nav_transparent.php'); ?>
+	<?php include('../includes/nav_transparent.php'); ?>
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
 		<div class="container pt-2 pt-lg-6">
@@ -146,7 +146,7 @@ if (isset($_POST['login'])) {
 							<a href="#" class="text-white"><small>Forgot password?</small></a>
 						</div>
 						<div class="col-6 text-right">
-							<a href="./studentsignup.php" class="text-white"><small>Create new account</small></a>
+							<a href="./signup.php" class="text-white"><small>Create new account</small></a>
 						</div>
 					</div>
 				</div>
@@ -154,14 +154,14 @@ if (isset($_POST['login'])) {
 		</div>
 	</section>
 	<!-- Footer -->
-	<?php include('includes/footer.php'); ?>
+	<?php include('../includes/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="./assets/js/argon-design-system.min.js"></script>
+	<script src="../assets/js/argon-design-system.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	<script src="./assets/js/main.js"></script>
+	<script src="../assets/js/main.js"></script>
 </body>
 
 </html>
