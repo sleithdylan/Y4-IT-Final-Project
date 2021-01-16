@@ -1,10 +1,10 @@
 <?php
-// Requires Config
+// Requires config
 require('../config/config.php');
-// Creates and Checks Connection
+// Creates and checks connection
 require('../config/db.php');
 
-// Alert/Message Variables
+// Message variables
 $msg = '';
 $msgClass = '';
 
@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
 	$query = "SELECT * FROM students WHERE student_email = '$studentEmail' && BINARY student_password = '$studentPassword'";
 	$hash = "SELECT student_password FROM students WHERE student_email = '$studentEmail'";
 
-	// Gets Result
+	// Gets result
 	$result = mysqli_query($conn, $query);
 	$passwordHashed = mysqli_query($conn, $hash);
 
@@ -37,14 +37,14 @@ if (isset($_POST['login'])) {
 	if (mysqli_query($conn, $query) && isset($studentEmail) && isset($studentPassword) && $numOfRows == 1 || password_verify($studentPassword, $lists[0])) {
 		// Sets Cookie for 30 Days and then it will expire
 		setcookie('student_email', $studentEmail, time() + 2592000);
-		// Passed
+		//* Passed
 		$msg = '<strong>Success!</strong> You have logged in';
 		$msgClass = 'alert-success alert-dismissible fade show';
-		// Redirects to the student dashboard.php after 1 second
+		// Redirects to the student dashboard after 1 second
 		header('refresh:1;url=./dashboard.php');
 	}
 	else {
-		// Failed
+		//! Failed
 		// Returns error
 		$msg = '<strong>Error!</strong> Something went wrong..';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';

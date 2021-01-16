@@ -2,12 +2,12 @@
 // Starts session
 session_start();
 
-// Requires Config
+// Requires config
 require('../config/config.php');
-// Creates and Checks Connection
+// Creates and checks connection
 require('../config/db.php');
 
-// Alert/Message Variables
+// Message variables
 $msg = '';
 $msgClass = '';
 
@@ -26,6 +26,7 @@ if (isset($_POST['profile'])) {
 	$studentEircode = mysqli_real_escape_string($conn, $_POST['student-eircode']);
 	$studentBio = mysqli_real_escape_string($conn, $_POST['student-about']);
 
+	// Where uploaded images will be stored
 	$target = '../assets/images/avatars/' . $studentAvatar;
 
 	// Gets ID
@@ -34,6 +35,7 @@ if (isset($_POST['profile'])) {
 	// SELECT Query
 	$query = "SELECT * FROM students ORDER BY student_id WHERE student_id = {$id}";
 
+	// UPDATE Query
 	$query = "UPDATE students SET 
       student_fullname = '$studentFullName',
       student_phone = '$studentPhone', 
@@ -45,14 +47,14 @@ if (isset($_POST['profile'])) {
       student_avatar = '$studentAvatar'
   WHERE student_id = {$id}";
 
-	// Checks Required Fields
+	// Checks required fields
 	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['student-avatar']['tmp_name'], $target)) {
-		// Passed
+		//* Passed
 		$msg = '<strong>Success!</strong> Profile has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
 	}
 	else {
-		// Failed
+		//! Failed
 		// Returns error
 		$msg = '<strong>Error!</strong> Please fill in all fields correctly';
 		$msgClass = 'alert-danger alert-dismissible fade show';
@@ -66,16 +68,16 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
 // SELECT Query
 $query = "SELECT * FROM students WHERE student_id = {$id}";
 
-// Gets Result
+// Gets result
 $result = mysqli_query($conn, $query);
 
-// Fetch Data
+// Fetches data
 $lists = mysqli_fetch_assoc($result);
 
 // Free's result from memory
 mysqli_free_result($result);
 
-// Closes Connection
+// Closes connection
 mysqli_close($conn);
 
 ?>

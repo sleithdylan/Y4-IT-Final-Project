@@ -10,7 +10,7 @@ require('../config/db.php');
 // Puts session variable into $email
 $email = $_SESSION['student_email'];
 
-// Get students data
+// Gets students data
 function getStudentsData($studentId) {
 	// Requires config
 	require('../config/config.php');
@@ -20,7 +20,7 @@ function getStudentsData($studentId) {
 	$array = array();
 	// SELECT query
 	$query = mysqli_query($conn, "SELECT * FROM students WHERE student_id=" . $studentId);
-	// Loop through array
+	// Loops through array
 	while ($row = mysqli_fetch_assoc($query)) {
 		$array['student_id'] = $row['student_id'];
 		$array['student_fullname'] = $row['student_fullname'];
@@ -31,14 +31,17 @@ function getStudentsData($studentId) {
 	return $array;
 }
 
-// Get subjects data
+// Gets subjects data
 function getSubjectsData($studentId) {
-	// Requires Config
+	// Requires config
 	require('../config/config.php');
-	// Creates and Checks Connection
+	// Creates and checks connection
 	require('../config/db.php');
+	// Creates array
 	$array = array();
+	// SELECT query
 	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentId . " ORDER BY subject_id DESC");
+	// Loops through array
 	while ($row = mysqli_fetch_assoc($query)) {
 		$array['subject_id'] = $row['subject_id'];
 		$array['subject_name'] = $row['subject_name'];
@@ -53,10 +56,11 @@ function getSubjectsData($studentId) {
 
 // Get student ID
 function getId($email) {
-	// Requires Config
+	// Requires config
 	require('../config/config.php');
-	// Creates and Checks Connection
+	// Creates and checks connection
 	require('../config/db.php');
+	// SELECT query
 	$query = mysqli_query($conn, "SELECT student_id FROM students WHERE student_email='" . $email . "'");
 	while ($row = mysqli_fetch_assoc($query)) {
 		return $row['student_id'];
@@ -64,7 +68,7 @@ function getId($email) {
 }
 
 if (!isset($_SESSION['student_email'])) {
-	// Redirects to the student login.php
+	// Redirects to the student login
 	header('Location: ./login.php');
 	exit();
 }
@@ -78,7 +82,7 @@ if (isset($_SESSION['student_email'])) {
 // SELECT all subjects
 $query = "SELECT * FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
 
-// SELECT subject gpa
+// SELECT subject GPA
 $gpaQuery = "SELECT subject_name, subject_gpa FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
 
 //TODO SELECT the average attendance of a student across all subjects and display it in a Pie Chart form
@@ -87,7 +91,7 @@ $gpaQuery = "SELECT subject_name, subject_gpa FROM subjects WHERE student_id=" .
 $result = mysqli_query($conn, $query);
 $gpaResult = mysqli_query($conn, $gpaQuery);
 
-// Fetch data
+// Fetches data
 $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
 
