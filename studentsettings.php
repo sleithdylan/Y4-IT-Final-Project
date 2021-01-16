@@ -85,7 +85,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart</title>
+	<title>Edit Profile | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -177,7 +177,8 @@ mysqli_close($conn);
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="./assets/images/testimonials/john.jpg" class="avatar rounded-circle">
+												<img alt="Image placeholder" src="./assets/images/testimonials/john.jpg"
+													class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
 												<div class="d-flex justify-content-between align-items-center">
@@ -203,8 +204,7 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img
-											src='./assets/images/avatars/<?php echo $lists['student_avatar'] ?>' />
+										<img src='./assets/images/avatars/<?php echo $lists['student_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold"><?php echo $lists['student_fullname'] ?></span>
@@ -235,12 +235,12 @@ mysqli_close($conn);
 			<div class="row">
 				<div class="col-xl-12">
 					<?php if($msg != ""): ?>
-          <div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <?php endif; ?>
+					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
 					<div class="card">
 						<div class="card-header">
 							<div class="row align-items-center">
@@ -254,7 +254,7 @@ mysqli_close($conn);
 						</div>
 						<div class="card-body">
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentsettings"
-                enctype="multipart/form-data" class="needs-validation" novalidate>
+								enctype="multipart/form-data" class="needs-validation" novalidate>
 								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
 									<div class="row">
@@ -272,7 +272,8 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="student-email">Email Address</label>
 												<input type="email" id="student-email" name="student-email" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>" disabled>
+													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>"
+													disabled>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="student-phone">Phone Number</label>
@@ -290,8 +291,8 @@ mysqli_close($conn);
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="form-control-label" for="student-address">Address</label>
-												<input id="student-address" name="student-address" class="form-control" placeholder="Home Address"
-													value="<?php echo $lists['student_address']; ?>" type="text">
+												<input id="student-address" name="student-address" class="form-control"
+													placeholder="Home Address" value="<?php echo $lists['student_address']; ?>" type="text">
 											</div>
 										</div>
 									</div>
@@ -299,21 +300,22 @@ mysqli_close($conn);
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-city">City</label>
-												<input type="text" id="student-city" name="student-city" class="form-control" placeholder="City" value="<?php echo $lists['student_city']; ?>">
+												<input type="text" id="student-city" name="student-city" class="form-control" placeholder="City"
+													value="<?php echo $lists['student_city']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-country">Country</label>
-												<input type="text" id="student-country" name="student-country" class="form-control" placeholder="Country"
-													value="<?php echo $lists['student_country']; ?>">
+												<input type="text" id="student-country" name="student-country" class="form-control"
+													placeholder="Country" value="<?php echo $lists['student_country']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="student-eircode">Eircode</label>
-												<input type="text" id="student-eircode" name="student-eircode" class="form-control" placeholder="Eircode"
-													value="<?php echo $lists['student_eircode']; ?>">
+												<input type="text" id="student-eircode" name="student-eircode" class="form-control"
+													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>">
 											</div>
 										</div>
 									</div>
@@ -324,13 +326,14 @@ mysqli_close($conn);
 								<div class="pl-lg-4">
 									<div class="form-group">
 										<label class="form-control-label" for="student-about">About Me</label>
-										<textarea rows="4" class="form-control" id="student-about" name="student-about" placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
+										<textarea rows="4" class="form-control" id="student-about" name="student-about"
+											placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
 								<div class="d-flex">
-                  <button type="submit" name="profile" class="btn btn-primary flex-grow-1">Edit Profile</button>
-                </div>
+									<button type="submit" name="profile" class="btn btn-primary flex-grow-1">Edit Profile</button>
+								</div>
 							</form>
 						</div>
 					</div>

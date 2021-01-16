@@ -63,7 +63,7 @@ function getId($email) {
 	}
 }
 
- if (!isset($_SESSION['student_email'])) {
+if (!isset($_SESSION['student_email'])) {
 	// Redirects to studentlogin.php
 	header('Location: studentlogin.php');
 	exit();
@@ -104,7 +104,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart</title>
+	<title>Student Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -196,7 +196,8 @@ mysqli_close($conn);
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="./assets/images/testimonials/john.jpg" class="avatar rounded-circle">
+												<img alt="Image placeholder" src="./assets/images/testimonials/john.jpg"
+													class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
 												<div class="d-flex justify-content-between align-items-center">
@@ -224,12 +225,12 @@ mysqli_close($conn);
 									<span class="avatar avatar-sm rounded-circle">
 										<img src='./assets/images/avatars/<?php echo $studentData['student_avatar'] ?>' />
 									</span>
-									<div class="media-body  ml-2  d-none d-lg-block">
-										<span class="mb-0 text-sm  font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
+									<div class="media-body ml-2 d-none d-lg-block">
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
 									</div>
 								</div>
 							</a>
-							<div class="dropdown-menu  dropdown-menu-right ">
+							<div class="dropdown-menu dropdown-menu-right ">
 								<a href="./studentdashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>

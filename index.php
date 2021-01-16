@@ -3,10 +3,11 @@
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart</title>
+	<title>CloseApart | Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
+	<meta name="description"
+		content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -35,11 +36,13 @@
 			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
-					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</p>
+					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers,
+						complete your work online! Get comfortable with us</p>
 					<a href="./studentsignup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
-					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px" src="./assets/images/illustrations/boy-on-computer.png" alt="boy on computer">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
+						src="./assets/images/illustrations/boy-on-computer.png" alt="boy on computer">
 				</div>
 			</div>
 		</div>
@@ -49,12 +52,17 @@
 		<div class="container">
 			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md col-lg-5">
-					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px" src="./assets/images/ca-who-we-are.png" alt="who we are">
+					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px"
+						src="./assets/images/ca-who-we-are.png" alt="who we are">
 				</div>
 				<div class="col-md col-lg">
 					<h6 class="text-left text-primary mt-3">Who we are</h6>
-					<p class="text-left"><strong>CloseApart</strong> is a student portal driven by students. Our team’s goal is to help out students complete their work online when coming into school is simply not possible. With the difficult times of Covid-19 pandemic, we understand how important it is for the students not to miss out on any school work.</p>
-					<p>As a team, we offer a space for the students to have a chance to communicate with their teachers by uploading their work online and vice versa. With CloseApart it has never been easier.</p>
+					<p class="text-left"><strong>CloseApart</strong> is a student portal driven by students. Our team’s goal is to
+						help out students complete their work online when coming into school is simply not possible. With the
+						difficult times of Covid-19 pandemic, we understand how important it is for the students not to miss out on
+						any school work.</p>
+					<p>As a team, we offer a space for the students to have a chance to communicate with their teachers by
+						uploading their work online and vice versa. With CloseApart it has never been easier.</p>
 				</div>
 			</div>
 		</div>
@@ -128,9 +136,11 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">My students absolutely love it here! It is so easy for me to communicate with them on a daily basis</p>
+							<p class="card-text">My students absolutely love it here! It is so easy for me to communicate with them on
+								a daily basis</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/sarah.jpg" alt="picture of sarah">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/sarah.jpg"
+									alt="picture of sarah">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>Sarah</h6>
 									<p>Teacher</p>
@@ -145,9 +155,11 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">My son enjoys his new way of working. This whole online thing was a step in the right direction!</p>
+							<p class="card-text">My son enjoys his new way of working. This whole online thing was a step in the right
+								direction!</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/david.jpg" alt="picture of david">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/david.jpg"
+									alt="picture of david">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>David</h6>
 									<p>Father</p>
@@ -162,9 +174,11 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">CloseApart comes in clutch. It solved so many problems due to the global pandemic. My class and I love it!</p>
+							<p class="card-text">CloseApart comes in clutch. It solved so many problems due to the global pandemic. My
+								class and I love it!</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/john.jpg" alt="picture of john">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/john.jpg"
+									alt="picture of john">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>John</h6>
 									<p>Teacher</p>
@@ -179,9 +193,11 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">This is the best idea ever! It takes so much pressure off my shoulders and ensures my kids are still being educated</p>
+							<p class="card-text">This is the best idea ever! It takes so much pressure off my shoulders and ensures my
+								kids are still being educated</p>
 							<div class="d-flex align-items-center">
-								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/rebecca.jpg" alt="picture of rebecca">
+								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/rebecca.jpg"
+									alt="picture of rebecca">
 								<div class="d-flex flex-column ml-3 mt-3">
 									<h6>Rebecca</h6>
 									<p>Mother</p>
@@ -219,7 +235,7 @@
 	<script src="./assets/js/main.js"></script>
 	<script>
 		// Carousel
-		$(document).ready(function() {
+		$(document).ready(function () {
 			$('.owl-carousel').owlCarousel({
 				loop: true,
 				responsiveClass: true,

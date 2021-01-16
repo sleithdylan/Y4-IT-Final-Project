@@ -61,10 +61,11 @@ if (isset($_POST['register'])) {
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart</title>
+	<title>Sign up | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
+	<meta name="description"
+		content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -93,12 +94,12 @@ if (isset($_POST['register'])) {
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<?php if($msg != ""): ?>
-          <div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <?php endif; ?>
+					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
 						<div class="card-header bg-white pb-4">
 							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
@@ -120,7 +121,7 @@ if (isset($_POST['register'])) {
 											<span class="input-group-text"><i class='bx bxs-user'></i></span>
 										</div>
 										<input type="text" class="form-control" id="student-fullname" name="student-fullname"
-                      placeholder="Full Name" required>
+											placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -129,7 +130,7 @@ if (isset($_POST['register'])) {
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
 										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
-                      required>
+											required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -138,14 +139,15 @@ if (isset($_POST['register'])) {
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
 										<input type="password" class="form-control" id="student-password" name="student-password"
-                    placeholder="Password" required>
+											placeholder="Password" required>
 									</div>
 								</div>
 								<div class="row my-4">
 									<div class="col-12">
 										<div class="custom-control custom-control-alternative custom-checkbox">
 											<input class="custom-control-input" id="customCheckRegister" type="checkbox">
-											<label class="custom-control-label" for="customCheckRegister"><span>I agree with the <a href="#">Privacy Policy</a></span></label>
+											<label class="custom-control-label" for="customCheckRegister"><span>I agree with the <a
+														href="#">Privacy Policy</a></span></label>
 										</div>
 									</div>
 								</div>
