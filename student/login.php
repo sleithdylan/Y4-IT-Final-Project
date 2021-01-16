@@ -79,13 +79,11 @@ if (isset($_POST['login'])) {
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="../assets/css/argon-design-system.min.css">
 	<link rel="stylesheet" href="../assets/css/argon-design-system-extras.min.css">
-	<link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
 </head>
 
 <body>
 	<!-- Navigation -->
-	<?php include('../includes/nav_transparent.php'); ?>
+	<?php include('../includes/navs/nav_transparent.php'); ?>
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
 		<div class="container pt-2 pt-lg-6">
@@ -154,13 +152,12 @@ if (isset($_POST['login'])) {
 		</div>
 	</section>
 	<!-- Footer -->
-	<?php include('../includes/footer_user.php'); ?>
+	<?php include('../includes/footers/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="../assets/js/argon-design-system.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	<script src="../assets/js/main.js"></script>
 </body>
 
