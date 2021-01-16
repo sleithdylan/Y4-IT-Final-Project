@@ -29,7 +29,7 @@
 
 <body>
 	<!-- Navigation -->
-	<?php include('includes/nav.php'); ?>
+	<?php include('includes/navs/nav.php'); ?>
 	<!-- Hero -->
 	<div id="home" class="py-5">
 		<div class="container">
@@ -225,7 +225,7 @@
 		</div>
 	</div>
 	<!-- Footer -->
-	<?php include('includes/footer_main.php'); ?>
+	<?php include('includes/footers/footer_main.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
