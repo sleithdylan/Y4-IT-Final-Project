@@ -59,7 +59,7 @@ if (isset($_POST['login'])) {
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart</title>
+	<title>Log in | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"

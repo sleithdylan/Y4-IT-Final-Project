@@ -257,7 +257,7 @@ student_city VARCHAR(255) NULL,
 student_country VARCHAR(255) NULL,
 student_eircode VARCHAR(255) NULL,
 student_bio TEXT NULL,
-student_avatar VARCHAR(255) DEFAULT 'david.jpg',
+student_avatar VARCHAR(255) DEFAULT 'avataaars.png',
 PRIMARY KEY (student_id));
 
 -- Data for Students
