@@ -1,10 +1,10 @@
 <?php
-// Requires Config
+// Requires config
 require('../config/config.php');
-// Creates and Checks Connection
+// Creates and checks connection
 require('../config/db.php');
 
-// Alert/Message Variables
+// Message variables
 $msg = '';
 $msgClass = '';
 
@@ -27,26 +27,26 @@ if (isset($_POST['register'])) {
 	// SELECT Query
 	$query = "SELECT * FROM students WHERE student_email = '$studentEmail'";
 
-	// Gets Result
+	// Gets result
 	$result = mysqli_query($conn, $query);
 
 	// Gets number of rows
 	$numOfRows = mysqli_num_rows($result);
 
 	if (mysqli_query($conn, $query) && isset($studentFullName) && isset($studentEmail) && isset($studentPassword) && $numOfRows != 1) {
-		// Passed
+		//* Passed
 		// INSERT Query
 		$regQuery = "INSERT INTO students(student_fullname, student_email, student_password) 
                   VALUES('$studentFullName', '$studentEmail', '$passwordHashed')";
-		// Gets Result
+		// Gets result
 		$result = mysqli_query($conn, $regQuery);
 		$msg = '<strong>Success!</strong> You are now registered';
 		$msgClass = 'alert-success alert-dismissible fade show';
-		// Redirects to the student login.php after 1 second
+		// Redirects to the student login after 1 second
 		header('refresh:1; url=./login.php');
 	}
 	else {
-		// Failed
+		//! Failed
 		// Returns error
 		$msg = '<strong>Error!</strong> Email taken...';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';
