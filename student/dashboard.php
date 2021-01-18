@@ -95,7 +95,7 @@ $gpaResult = mysqli_query($conn, $gpaQuery);
 $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
 
-// Free's result from memory
+// Frees result from memory
 mysqli_free_result($result);
 
 // Closes connection
