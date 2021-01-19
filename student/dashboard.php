@@ -27,6 +27,9 @@ function getStudentsData($studentId) {
 		$array['student_email'] = $row['student_email'];
 		$array['student_password'] = $row['student_password'];
 		$array['student_avatar'] = $row['student_avatar'];
+		$array['attendance'] = $row['attendance'];
+		$array['attendance_explained'] = $row['attendance_explained'];
+		$array['attendance_unexplained'] = $row['attendance_unexplained'];
 	}
 	return $array;
 }
@@ -360,7 +363,7 @@ mysqli_close($conn);
 								datasets: [{
 									label: 'Population (millions)',
 									backgroundColor: ['#2dce89', '#ffda09', '#f5365c'],
-									data: [70, 20, 10]
+									data: [<?php echo $studentData['attendance'] ?>, <?php echo $studentData['attendance_explained'] ?>, <?php echo $studentData['attendance_unexplained'] ?>]
 								}]
 							}
 						});

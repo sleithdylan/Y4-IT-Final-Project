@@ -258,12 +258,15 @@ student_country VARCHAR(255) NULL,
 student_eircode VARCHAR(255) NULL,
 student_bio TEXT NULL,
 student_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+attendance SMALLINT(3) NULL,
+attendance_explained SMALLINT(3) NULL,
+attendance_unexplained SMALLINT(3) NULL,
 PRIMARY KEY (student_id));
 
 -- Data for Students
 
-INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar) VALUES
-(1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png');
+INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar, attendance, attendance_explained, attendance_unexplained) VALUES
+(1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png', 70, 20, 10);
 
 -- Table Subjects
 
