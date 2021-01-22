@@ -17,14 +17,14 @@ $email = $_SESSION['student_email'];
 // Checks for posted data
 if (isset($_POST['profile'])) {
 	// Gets form data
-	$studentAvatar = time() . '_' . $_FILES['student-avatar']['name'];
-	$studentFullName = mysqli_real_escape_string($conn, $_POST['student-fullname']);
-	$studentPhone = mysqli_real_escape_string($conn, $_POST['student-phone']);
-	$studentAddress = mysqli_real_escape_string($conn, $_POST['student-address']);
-	$studentCity = mysqli_real_escape_string($conn, $_POST['student-city']);
-	$studentCountry = mysqli_real_escape_string($conn, $_POST['student-country']);
-	$studentEircode = mysqli_real_escape_string($conn, $_POST['student-eircode']);
-	$studentBio = mysqli_real_escape_string($conn, $_POST['student-about']);
+	$studentAvatar = time() . '_' . $_FILES['studentavatar']['name'];
+	$studentFullName = mysqli_real_escape_string($conn, $_POST['studentfullname']);
+	$studentPhone = mysqli_real_escape_string($conn, $_POST['studentphone']);
+	$studentAddress = mysqli_real_escape_string($conn, $_POST['studentaddress']);
+	$studentCity = mysqli_real_escape_string($conn, $_POST['studentcity']);
+	$studentCountry = mysqli_real_escape_string($conn, $_POST['studentcountry']);
+	$studentEircode = mysqli_real_escape_string($conn, $_POST['studenteircode']);
+	$studentBio = mysqli_real_escape_string($conn, $_POST['studentabout']);
 
 	// Where uploaded images will be stored
 	$target = '../assets/images/avatars/' . $studentAvatar;
@@ -48,7 +48,7 @@ if (isset($_POST['profile'])) {
   WHERE student_id = {$id}";
 
 	// Checks required fields
-	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['student-avatar']['tmp_name'], $target)) {
+	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['studentavatar']['tmp_name'], $target)) {
 		//* Passed
 		$msg = '<strong>Success!</strong> Profile has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
@@ -256,20 +256,21 @@ mysqli_close($conn);
 						</div>
 						<div class="card-body">
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentsettings"
-								enctype="multipart/form-data" class="needs-validation" novalidate>
+								enctype="multipart/form-data" class="needs-validation">
 								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label class="form-control-label" for="student-avatar">Avatar</label>
-												<input type="file" id="input-picture" class="form-control" name="student-avatar"
-													placeholder="Insert Image">
+												<label class="form-control-label" for="studentavatar">Avatar</label>
+												<input type="file" id="input-picture" class="form-control" name="studentavatar"
+													placeholder="Insert Image" required>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="student-fullname">Full Name</label>
-												<input type="text" id="student-fullname" name="student-fullname" class="form-control"
-													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>">
+												<label class="form-control-label" for="studentfullname">Full Name</label>
+												<input type="text" id="studentfullname" name="studentfullname" class="form-control"
+													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>"
+													required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="student-email">Email Address</label>
@@ -278,9 +279,10 @@ mysqli_close($conn);
 													disabled>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="student-phone">Phone Number</label>
-												<input type="text" class="form-control" id="student-phone" name="student-phone"
-													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>">
+												<label class="form-control-label" for="studentphone">Phone Number</label>
+												<input type="text" class="form-control" id="studentphone" name="studentphone"
+													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>"
+													required>
 											</div>
 										</div>
 									</div>
@@ -292,32 +294,32 @@ mysqli_close($conn);
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="form-control-label" for="student-address">Address</label>
-												<input id="student-address" name="student-address" class="form-control"
-													placeholder="Home Address" value="<?php echo $lists['student_address']; ?>" type="text">
+												<label class="form-control-label" for="studentaddress">Address</label>
+												<input id="studentaddress" name="studentaddress" class="form-control" placeholder="Home Address"
+													value="<?php echo $lists['student_address']; ?>" type="text" required>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="student-city">City</label>
-												<input type="text" id="student-city" name="student-city" class="form-control" placeholder="City"
-													value="<?php echo $lists['student_city']; ?>">
+												<label class="form-control-label" for="studentcity">City</label>
+												<input type="text" id="studentcity" name="studentcity" class="form-control" placeholder="City"
+													value="<?php echo $lists['student_city']; ?>" required>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="student-country">Country</label>
-												<input type="text" id="student-country" name="student-country" class="form-control"
-													placeholder="Country" value="<?php echo $lists['student_country']; ?>">
+												<label class="form-control-label" for="studentcountry">Country</label>
+												<input type="text" id="studentcountry" name="studentcountry" class="form-control"
+													placeholder="Country" value="<?php echo $lists['student_country']; ?>" required>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="student-eircode">Eircode</label>
-												<input type="text" id="student-eircode" name="student-eircode" class="form-control"
-													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>">
+												<label class="form-control-label" for="studenteircode">Eircode</label>
+												<input type="text" id="studenteircode" name="studenteircode" class="form-control"
+													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>" required>
 											</div>
 										</div>
 									</div>
@@ -327,9 +329,9 @@ mysqli_close($conn);
 								<h6 class="heading-small text-muted mb-4">About me</h6>
 								<div class="pl-lg-4">
 									<div class="form-group">
-										<label class="form-control-label" for="student-about">About Me</label>
-										<textarea rows="4" class="form-control" id="student-about" name="student-about"
-											placeholder="Tell us about youself..."><?php echo $lists['student_bio']; ?></textarea>
+										<label class="form-control-label" for="studentabout">About Me</label>
+										<textarea rows="4" class="form-control" id="studentabout" name="studentabout"
+											placeholder="Tell us about youself..." required><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
@@ -345,12 +347,69 @@ mysqli_close($conn);
 	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="../assets/js/argon-design-system-extras.min.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script>
+		$.validator.setDefaults({
+			errorElement: 'span',
+			errorPlacement: function (error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function (element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+
+		$("#studentsettings").validate({
+			rules: {
+				studentavatar: "required",
+				studentfullname: "required",
+				studentphone: {
+					required: true,
+					digits: "true",
+					maxlength: 10
+				},
+				studentaddress: "required",
+				studentcity: "required",
+				studentcountry: "required",
+				studenteircode: "required",
+				studentabout: "required"
+			},
+			messages: {
+				studentavatar: "Please choose a avatar",
+				studentfullname: "Please enter your full name",
+				studentphone: {
+					required: "Please enter your phone number",
+					digits: "Please enter digits only",
+					maxlength: "You phone number can only be 10 digits long"
+				},
+				studentaddress: {
+					required: "Please enter your address"
+				},
+				studentcity: {
+					required: "Please enter your city"
+				},
+				studentcountry: {
+					required: "Please enter your country"
+				},
+				studenteircode: {
+					required: "Please enter your eircode"
+				},
+				studentabout: {
+					required: "Please enter something about yourself"
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
