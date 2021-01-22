@@ -14,8 +14,8 @@ if (isset($_POST['login'])) {
 	session_start();
 
 	// Gets form data
-	$studentEmail = mysqli_real_escape_string($conn, $_POST['student-email']);
-	$studentPassword = mysqli_real_escape_string($conn, $_POST['student-password']);
+	$studentEmail = mysqli_real_escape_string($conn, $_POST['studentemail']);
+	$studentPassword = mysqli_real_escape_string($conn, $_POST['studentpassword']);
 
 	// Puts variable into session variable
 	$_SESSION['student_email'] = $studentEmail;
@@ -110,22 +110,23 @@ if (isset($_POST['login'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Or log in with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentLoginForm"
+								class="needs-validation">
 								<div class="form-group mb-3">
-									<div class="input-group input-group-alternative">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
+										<input type="email" class="form-control" id="studentemail" name="studentemail" placeholder="Email"
 											required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="student-password" name="student-password"
+										<input type="password" class="form-control" id="studentpassword" name="studentpassword"
 											placeholder="Password" required>
 									</div>
 								</div>
@@ -155,10 +156,47 @@ if (isset($_POST['login'])) {
 	<?php include('../includes/footers/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="../assets/js/argon-design-system.min.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script>
+		$.validator.setDefaults({
+			errorElement: 'span',
+			errorPlacement: function (error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function (element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+
+		$("#studentLoginForm").validate({
+			rules: {
+				studentemail: {
+					required: true,
+					email: true
+				},
+				studentpassword: {
+					required: true
+				}
+			},
+			messages: {
+				studentemail: {
+					required: "Please enter your email",
+					email: "Your email must be in the format of name@domain.com"
+				},
+				studentpassword: {
+					required: "Please enter your password",
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
