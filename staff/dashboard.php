@@ -8,7 +8,28 @@ require('../config/config.php');
 require('../config/db.php');
 
 // Puts session variable into $email
-$email = $_SESSION['student_email'];
+$email = $_SESSION['staff_email'];
+
+// Gets staff data
+function getStaffData($staffId) {
+	// Requires config
+	require('../config/config.php');
+	// Creates and checks connection
+	require('../config/db.php');
+	// Creates array
+	$array = array();
+	// SELECT query
+	$query = mysqli_query($conn, "SELECT * FROM staff WHERE staff_id=" . $staffId);
+	// Loops through array
+	while ($row = mysqli_fetch_assoc($query)) {
+		$array['staff_id'] = $row['staff_id'];
+		$array['staff_fullname'] = $row['staff_fullname'];
+		$array['staff_email'] = $row['staff_email'];
+		$array['staff_password'] = $row['staff_password'];
+		$array['staff_avatar'] = $row['staff_avatar'];
+	}
+	return $array;
+}
 
 // Gets students data
 function getStudentsData($studentId) {
@@ -57,49 +78,31 @@ function getSubjectsData($studentId) {
 	return $array;
 }
 
-// Get student ID
+// Get staff ID
 function getId($email) {
 	// Requires config
 	require('../config/config.php');
 	// Creates and checks connection
 	require('../config/db.php');
 	// SELECT query
-	$query = mysqli_query($conn, "SELECT student_id FROM students WHERE student_email='" . $email . "'");
+	$query = mysqli_query($conn, "SELECT staff_id FROM staff WHERE staff_email='" . $email . "'");
 	while ($row = mysqli_fetch_assoc($query)) {
-		return $row['student_id'];
+		return $row['staff_id'];
 	}
 }
 
-if (!isset($_SESSION['student_email'])) {
-	// Redirects to the student login
+if (!isset($_SESSION['staff_email'])) {
+	// Redirects to the staff login
 	header('Location: ./login.php');
 	exit();
 }
 
+
+
 // Gets user data from id
-if (isset($_SESSION['student_email'])) {
-	$studentData = getStudentsData(getId($_SESSION['student_email']));
-	$subjectData = getSubjectsData(getId($_SESSION['student_email']));
+if (isset($_SESSION['staff_email'])) {
+	$staffData = getStaffData(getId($_SESSION['staff_email']));
 }
-
-// SELECT all subjects
-$query = "SELECT * FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
-
-// SELECT subject GPA
-$gpaQuery = "SELECT subject_name, subject_gpa FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
-
-//TODO SELECT the average attendance of a student across all subjects and display it in a Pie Chart form
-
-// Gets result
-$result = mysqli_query($conn, $query);
-$gpaResult = mysqli_query($conn, $gpaQuery);
-
-// Fetches data
-$subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
-
-// Frees result from memory
-mysqli_free_result($result);
 
 // Closes connection
 mysqli_close($conn);
@@ -111,7 +114,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Student Overview | CloseApart</title>
+	<title>staff Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -230,10 +233,10 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>' />
+										<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -242,12 +245,12 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $studentData['student_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $staffData['staff_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../student/login.php" class="dropdown-item">
+								<a href="../staff/login.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -257,43 +260,18 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</nav>
-		<div class="container-fluid mt-4">
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">
-										Your Grade Point Average
-									</h5>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Bar Chart -->
-							<div class="chart">
-								<canvas id="bar-chart" width="800" height="450"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Data -->
-		<div class="container-fluid">
-			<div class="row">
+			<div class="container-fluid mt-4">
 				<div class="col-xl-8">
 					<div class="card">
 						<div class="card-header bg-transparent">
 							<div class="row align-items-center">
 								<div class="col">
-									<h3 class="mb-0">Your Subjects</h3>
+									<h3 class="mb-0">Students Info</h3>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Table of Subjects -->
+							<!-- Table of Students -->
 							<div class="table-responsive">
 								<table class="table align-items-center table-flush">
 									<thead class="thead-light">
@@ -304,10 +282,10 @@ mysqli_close($conn);
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach($subjects as $subject) : ?>
+										<?php foreach($Students as $student) : ?>
 										<tr>
 											<th scope="row">
-												<?php echo $subject['subject_name'] ?>
+												<?php echo $student['subject_name'] ?>
 											</th>
 											<td>
 												<?php echo $subject['subject_grade'] . '%' ?>
@@ -323,26 +301,8 @@ mysqli_close($conn);
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-4">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">Your Attendance</h5>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Pie Chart -->
-							<div class="chart">
-								<canvas id="pie-chart" class="chart-canvas"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			</div>		
 		</div>
-	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -363,7 +323,7 @@ mysqli_close($conn);
 								datasets: [{
 									label: 'Population (millions)',
 									backgroundColor: ['#2dce89', '#ffda09', '#f5365c'],
-									data: [<?php echo $studentData['attendance'] ?>, <?php echo $studentData['attendance_explained'] ?>, <?php echo $studentData['attendance_unexplained'] ?>]
+									data: [<?php echo $staffData['attendance'] ?>, <?php echo $staffData['attendance_explained'] ?>, <?php echo $staffData['attendance_unexplained'] ?>]
 								}]
 							}
 						});

@@ -243,6 +243,28 @@ INSERT INTO HistoryChoices (id, question_number, is_correct, choice) VALUES
 (51, 10, 0, 'Donald Trump');
 
 
+-- Table Staff
+
+DROP TABLE IF EXISTS Staff;
+CREATE TABLE IF NOT EXISTS Staff (
+staff_id SMALLINT(3) NOT NULL AUTO_INCREMENT,
+staff_fullname VARCHAR(255) NULL DEFAULT NULL,
+staff_email VARCHAR(255) NULL DEFAULT NULL,
+staff_password VARCHAR(255) NULL DEFAULT NULL,
+staff_phone INT(10) ZEROFILL NULL,
+staff_address VARCHAR(255) NULL,
+staff_city VARCHAR(255) NULL,
+staff_country VARCHAR(255) NULL,
+staff_eircode VARCHAR(255) NULL,
+staff_bio TEXT NULL,
+staff_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+PRIMARY KEY (staff_id));
+
+-- Data for Staff
+
+INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar) VALUES
+(1, 'Daniel Obrien', 'daniel.obrien@gmail.com', 'Demo', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png');
+
 -- Table Students
 
 DROP TABLE IF EXISTS Students;

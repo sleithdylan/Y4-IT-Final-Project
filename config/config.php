@@ -2,6 +2,7 @@
 // Localhost's DB
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
+// password default='root', if null change back to default value
 $DB_PASS = 'root';
 $DB_NAME = 'closeapart';
 

@@ -41,7 +41,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="../student/login.php">As Student</a>
-						<a class="dropdown-item" href="#stafflogin">As Staff</a>
+						<a class="dropdown-item" href="../staff/login.php">As Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -50,7 +50,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="../student/signup.php">As Student</a>
-						<a class="dropdown-item" href="#staffsignup">As Staff</a>
+						<a class="dropdown-item" href="../staff/signup.php">As Staff</a>
 					</div>
 				</li>
 			</ul>

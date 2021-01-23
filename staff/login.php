@@ -14,15 +14,15 @@ if (isset($_POST['login'])) {
 	session_start();
 
 	// Gets form data
-	$studentEmail = mysqli_real_escape_string($conn, $_POST['student-email']);
-	$studentPassword = mysqli_real_escape_string($conn, $_POST['student-password']);
+	$staffEmail = mysqli_real_escape_string($conn, $_POST['staff-email']);
+	$staffPassword = mysqli_real_escape_string($conn, $_POST['staff-password']);
 
 	// Puts variable into session variable
-	$_SESSION['student_email'] = $studentEmail;
+	$_SESSION['staff_email'] = $staffEmail;
 
 	// SELECT Query
-	$query = "SELECT * FROM students WHERE student_email = '$studentEmail' && BINARY student_password = '$studentPassword'";
-	$hash = "SELECT student_password FROM students WHERE student_email = '$studentEmail'";
+	$query = "SELECT * FROM staff WHERE staff_email = '$staffEmail' && BINARY staff_password = '$staffPassword'";
+	$hash = "SELECT staff_password FROM staff WHERE staff_email = '$staffEmail'";
 
 	// Gets result
 	$result = mysqli_query($conn, $query);
@@ -34,13 +34,13 @@ if (isset($_POST['login'])) {
 	// Gets number of rows
 	$numOfRows = mysqli_num_rows($result);
 
-	if (mysqli_query($conn, $query) && isset($studentEmail) && isset($studentPassword) && $numOfRows == 1 || password_verify($studentPassword, $lists[0])) {
+	if (mysqli_query($conn, $query) && isset($staffEmail) && isset($staffPassword) && $numOfRows == 1 || password_verify($staffPassword, $lists[0])) {
 		// Sets Cookie for 30 Days and then it will expire
-		setcookie('student_email', $studentEmail, time() + 2592000);
+		setcookie('staff_email', $staffEmail, time() + 2592000);
 		//* Passed
 		$msg = '<strong>Success!</strong> You have logged in';
 		$msgClass = 'alert-success alert-dismissible fade show';
-		// Redirects to the student dashboard after 1 second
+		// Redirects to the staff dashboard after 1 second
 		header('refresh:1;url=./dashboard.php');
 	}
 	else {
@@ -116,7 +116,7 @@ if (isset($_POST['login'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
+										<input type="email" class="form-control" id="staff-email" name="staff-email" placeholder="Email"
 											required>
 									</div>
 								</div>
@@ -125,7 +125,7 @@ if (isset($_POST['login'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="student-password" name="student-password"
+										<input type="password" class="form-control" id="staff-password" name="staff-password"
 											placeholder="Password" required>
 									</div>
 								</div>

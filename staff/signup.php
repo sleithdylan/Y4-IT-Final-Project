@@ -9,44 +9,46 @@ $msg = '';
 $msgClass = '';
 
 // Checks for posted data
-if (isset($_POST['login'])) {
+if (isset($_POST['register'])) {
 	// Starts session
 	session_start();
 
 	// Gets form data
-	$studentEmail = mysqli_real_escape_string($conn, $_POST['student-email']);
-	$studentPassword = mysqli_real_escape_string($conn, $_POST['student-password']);
+	$staffFullName = mysqli_real_escape_string($conn, $_POST['staff-fullname']);
+	$staffEmail = mysqli_real_escape_string($conn, $_POST['staff-email']);
+	$staffEmail = strtolower($staffEmail); // Returns email in lowercase
+	$staffEmail = filter_var($staffEmail, FILTER_SANITIZE_EMAIL); // Removes illegal characters
+	$staffEmail = trim($staffEmail); // Removes whitespace
+	$staffPassword = mysqli_real_escape_string($conn, $_POST['staff-password']);
 
-	// Puts variable into session variable
-	$_SESSION['student_email'] = $studentEmail;
+	// Hashed password
+	$passwordHashed = password_hash($staffPassword, PASSWORD_DEFAULT);
 
 	// SELECT Query
-	$query = "SELECT * FROM students WHERE student_email = '$studentEmail' && BINARY student_password = '$studentPassword'";
-	$hash = "SELECT student_password FROM students WHERE student_email = '$studentEmail'";
+	$query = "SELECT * FROM staff WHERE staff_email = '$staffEmail'";
 
 	// Gets result
 	$result = mysqli_query($conn, $query);
-	$passwordHashed = mysqli_query($conn, $hash);
-
-	// Returns all hashed passwords in an array
-	$lists = mysqli_fetch_array($passwordHashed, MYSQLI_NUM);
 
 	// Gets number of rows
 	$numOfRows = mysqli_num_rows($result);
 
-	if (mysqli_query($conn, $query) && isset($studentEmail) && isset($studentPassword) && $numOfRows == 1 || password_verify($studentPassword, $lists[0])) {
-		// Sets Cookie for 30 Days and then it will expire
-		setcookie('student_email', $studentEmail, time() + 2592000);
+	if (mysqli_query($conn, $query) && isset($staffFullName) && isset($staffEmail) && isset($staffPassword) && $numOfRows != 1) {
 		//* Passed
-		$msg = '<strong>Success!</strong> You have logged in';
+		// INSERT Query
+		$regQuery = "INSERT INTO staff(staff_fullname, staff_email, staff_password) 
+                  VALUES('$staffFullName', '$staffEmail', '$passwordHashed')";
+		// Gets result
+		$result = mysqli_query($conn, $regQuery);
+		$msg = '<strong>Success!</strong> You are now registered';
 		$msgClass = 'alert-success alert-dismissible fade show';
-		// Redirects to the student dashboard after 1 second
-		header('refresh:1;url=./dashboard.php');
+		// Redirects to the staff login after 1 second
+		header('refresh:1; url=./login.php');
 	}
 	else {
 		//! Failed
 		// Returns error
-		$msg = '<strong>Error!</strong> Something went wrong..';
+		$msg = '<strong>Error!</strong> Email taken...';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';
 	}
 
@@ -59,7 +61,7 @@ if (isset($_POST['login'])) {
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Log in | CloseApart</title>
+	<title>Sign up | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -98,7 +100,7 @@ if (isset($_POST['login'])) {
 					<?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
 						<div class="card-header bg-white pb-4">
-							<div class="text-muted text-center mb-3"><small>Log in with</small></div>
+							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
 							<div class="btn-wrapper text-center">
 								<a href="#" class="btn btn-neutral btn-icon">
 									<i class='bx bxl-google align-middle'></i>
@@ -108,15 +110,24 @@ if (isset($_POST['login'])) {
 						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
-								<small>Or log in with credentials</small>
+								<small>Or sign up with credentials</small>
 							</div>
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
-								<div class="form-group mb-3">
-									<div class="input-group input-group-alternative">
+								<div class="form-group">
+									<div class="input-group input-group-alternative mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class='bx bxs-user'></i></span>
+										</div>
+										<input type="text" class="form-control" id="staff-fullname" name="staff-fullname"
+											placeholder="Full Name" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group input-group-alternative mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
+										<input type="email" class="form-control" id="staff-email" name="staff-email" placeholder="Email"
 											required>
 									</div>
 								</div>
@@ -125,26 +136,28 @@ if (isset($_POST['login'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="student-password" name="student-password"
+										<input type="password" class="form-control" id="staff-password" name="staff-password"
 											placeholder="Password" required>
 									</div>
 								</div>
-								<!-- <div class="custom-control custom-control-alternative custom-checkbox">
-									<input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-									<label class="custom-control-label" for=" customCheckLogin"><span>Remember me</span></label>
-								</div> -->
+								<div class="row my-4">
+									<div class="col-12">
+										<div class="custom-control custom-control-alternative custom-checkbox">
+											<input class="custom-control-input" id="customCheckRegister" type="checkbox">
+											<label class="custom-control-label" for="customCheckRegister"><span>I agree with the <a
+														href="#">Privacy Policy</a></span></label>
+										</div>
+									</div>
+								</div>
 								<div class="text-center">
-									<button type="submit" name="login" class="btn btn-primary my-4 text-capitalize">Log in</button>
+									<button type="submit" name="register" class="btn btn-primary my-4">Create account</button>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="row mt-3">
-						<div class="col-6">
-							<a href="#" class="text-white"><small>Forgot password?</small></a>
-						</div>
-						<div class="col-6 text-right">
-							<a href="./signup.php" class="text-white"><small>Create new account</small></a>
+						<div class="col-12 text-center">
+							<a href="./login.php" class="text-white"><small>Login to account</small></a>
 						</div>
 					</div>
 				</div>

@@ -14,12 +14,12 @@ if (isset($_POST['register'])) {
 	session_start();
 
 	// Gets form data
-	$studentFullName = mysqli_real_escape_string($conn, $_POST['studentfullname']);
-	$studentEmail = mysqli_real_escape_string($conn, $_POST['studentemail']);
+	$studentFullName = mysqli_real_escape_string($conn, $_POST['student-fullname']);
+	$studentEmail = mysqli_real_escape_string($conn, $_POST['student-email']);
 	$studentEmail = strtolower($studentEmail); // Returns email in lowercase
 	$studentEmail = filter_var($studentEmail, FILTER_SANITIZE_EMAIL); // Removes illegal characters
 	$studentEmail = trim($studentEmail); // Removes whitespace
-	$studentPassword = mysqli_real_escape_string($conn, $_POST['studentpassword']);
+	$studentPassword = mysqli_real_escape_string($conn, $_POST['student-password']);
 
 	// Hashed password
 	$passwordHashed = password_hash($studentPassword, PASSWORD_DEFAULT);
@@ -112,36 +112,35 @@ if (isset($_POST['register'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Or sign up with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentSignupForm"
-								class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
 								<div class="form-group">
-									<div class="input-group input-group-alternative mb-2">
+									<div class="input-group input-group-alternative mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-user'></i></span>
 										</div>
-										<input type="text" class="form-control" id="studentfullname" name="studentfullname"
+										<input type="text" class="form-control" id="student-fullname" name="student-fullname"
 											placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative mb-2">
+									<div class="input-group input-group-alternative mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="studentemail" name="studentemail" placeholder="Email"
+										<input type="email" class="form-control" id="student-email" name="student-email" placeholder="Email"
 											required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative mb-2">
+									<div class="input-group input-group-alternative">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="studentpassword" name="studentpassword"
+										<input type="password" class="form-control" id="student-password" name="student-password"
 											placeholder="Password" required>
 									</div>
 								</div>
-								<!-- <div class="row my-4">
+								<div class="row my-4">
 									<div class="col-12">
 										<div class="custom-control custom-control-alternative custom-checkbox">
 											<input class="custom-control-input" id="customCheckRegister" type="checkbox">
@@ -149,7 +148,7 @@ if (isset($_POST['register'])) {
 														href="#">Privacy Policy</a></span></label>
 										</div>
 									</div>
-								</div> -->
+								</div>
 								<div class="text-center">
 									<button type="submit" name="register" class="btn btn-primary my-4">Create account</button>
 								</div>
@@ -169,50 +168,10 @@ if (isset($_POST['register'])) {
 	<?php include('../includes/footers/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="../assets/js/argon-design-system.min.js"></script>
 	<script src="../assets/js/main.js"></script>
-	<script>
-		$.validator.setDefaults({
-			errorElement: 'span',
-			errorPlacement: function (error, element) {
-				error.addClass('invalid-feedback');
-				element.closest('.form-group').append(error);
-			},
-			highlight: function (element, errorClass, validClass) {
-				$(element).addClass('is-invalid');
-			},
-			unhighlight: function (element, errorClass, validClass) {
-				$(element).removeClass('is-invalid');
-			}
-		});
-
-		$("#studentSignupForm").validate({
-			rules: {
-				studentfullname: "required",
-				studentemail: {
-					required: true,
-					email: true
-				},
-				studentpassword: {
-					required: true,
-					minlength: 6
-				}
-			},
-			messages: {
-				studentfullname: "Please enter your full name",
-				studentemail: {
-					required: "Please enter your email",
-					email: "Your email must be in the format of name@domain.com"
-				},
-				studentpassword: {
-					required: "Please enter your password"
-				}
-			}
-		});
-	</script>
 </body>
 
 </html>
