@@ -10,7 +10,7 @@ require('../config/db.php');
 // Puts session variable into $email
 $email = $_SESSION['staff_email'];
 
-// Gets staff data
+// Gets staff data 
 function getStaffData($staffId) {
 	// Requires config
 	require('../config/config.php');
