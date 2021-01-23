@@ -46,7 +46,7 @@ if (isset($_POST['login'])) {
 	else {
 		//! Failed
 		// Returns error
-		$msg = '<strong>Error!</strong> Something went wrong..';
+		$msg = '<strong>Error!</strong> You entered the wrong email or password';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';
 	}
 
@@ -91,6 +91,20 @@ if (isset($_POST['login'])) {
 				<div class="col-md-7 col-lg-5">
 					<?php if($msg != ""): ?>
 					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
+					<?php if(isset($_GET['success'])): ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert"><?php echo $_GET['success']; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
+					<?php if(isset($_GET['err'])): ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert"><?php echo $_GET['err']; ?>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
