@@ -37,8 +37,10 @@
 				<div class="col-md-8 col-lg-5">
 					<h1 class="display-1 text-left">CloseApart</h1>
 					<p class="text-left">Student’s online second home – participate in quizzes, communicate with teachers,
-						complete your work online! Get comfortable with us</p>
-					<a href="./student/signup.php" class="btn btn-primary text-capitalize px-5">Sign Up</a>
+						complete your work online!</p>
+					<p>Sign up as a:</p>
+					<a href="./student/signup.php" class="btn btn-primary text-capitalize px-5">Student</a>
+					<a href="./staff/signup.php" class="btn btn-outline-primary text-capitalize px-5">Staff</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
@@ -213,13 +215,13 @@
 	<div id="cta" class="pb-5 mb-5">
 		<div class="container">
 			<div class="row">
-				<h4 class="col-md text-left text-primary mt-5">Ready to get started?</h4>
+				<h4 class="col-md text-left text-primary mt-5">Got any questions?</h4>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-left">Get in touch with us or create an account</h4>
+				<h4 class="col-md text-left">Contact us directly or visit the help centre</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<a href="./student/signup.php" class="btn btn-primary text-capitalize px-4 mr-4">Sign Up</a>
-					<button type="button" class="btn btn-secondary text-capitalize px-4">Contact Us</button>
+					<button type="button" class="btn btn-outline-primary text-capitalize px-4">Contact Us</button>
+					<a href="#help-centre" class="btn btn-outline-primary text-capitalize px-4 mr-4">Help Centre</a>
 				</div>
 			</div>
 		</div>
