@@ -62,8 +62,9 @@ if (isset($_POST['profile'])) {
 
 }
 
+// If user is not logged in
 if (!isset($_SESSION['student_email'])) {
-	// Redirects to the student login
+	// Redirect to the student login with error message
 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
 	exit();
 }
