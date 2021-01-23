@@ -72,7 +72,7 @@ function getId($email) {
 
 if (!isset($_SESSION['student_email'])) {
 	// Redirects to the student login
-	header('Location: ./login.php');
+	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
 	exit();
 }
 
@@ -247,7 +247,7 @@ mysqli_close($conn);
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../student/login.php" class="dropdown-item">
+								<a href="../student/logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
