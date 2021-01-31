@@ -4,6 +4,16 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+// Starts session
+session_start();
+
+// If user is logged in
+if (isset($_SESSION['student_email']) && isset($_COOKIE['student_email'])) {
+	// Redirect to the student dashboard
+	header('Location: ./dashboard.php');
+	exit();
+}
+
 // Message variables
 $msg = '';
 $msgClass = '';
@@ -144,12 +154,8 @@ if (isset($_POST['login'])) {
 											placeholder="Password" required>
 									</div>
 								</div>
-								<!-- <div class="custom-control custom-control-alternative custom-checkbox">
-									<input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-									<label class="custom-control-label" for=" customCheckLogin"><span>Remember me</span></label>
-								</div> -->
 								<div class="text-center">
-									<button type="submit" name="login" class="btn btn-primary my-4 text-capitalize">Log in</button>
+									<button type="submit" name="login" class="btn btn-primary my-4 btn-block text-capitalize">Log in</button>
 								</div>
 							</form>
 						</div>
