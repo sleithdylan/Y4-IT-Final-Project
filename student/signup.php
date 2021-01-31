@@ -4,6 +4,16 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+// Starts session
+session_start();
+
+// If user is logged in
+if (isset($_SESSION['student_email']) && isset($_COOKIE['student_email'])) {
+	// Redirect to the student dashboard
+	header('Location: ./dashboard.php');
+	exit();
+}
+
 // Message variables
 $msg = '';
 $msgClass = '';
@@ -151,7 +161,7 @@ if (isset($_POST['register'])) {
 									</div>
 								</div> -->
 								<div class="text-center">
-									<button type="submit" name="register" class="btn btn-primary my-4">Create account</button>
+									<button type="submit" name="register" class="btn btn-primary my-4 btn-block text-capitalize">Create account</button>
 								</div>
 							</form>
 						</div>
