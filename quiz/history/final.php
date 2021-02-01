@@ -161,7 +161,7 @@ $shouts = mysqli_query($con, $query);
 				<div class="col-xl-12">
 					<h2 class="display-2">You are Done!</h2>
 					<p>Congrats! You have completed the quiz</p>
-					<p>Final score: <?php echo $_SESSION['score']; ?></p>
+					<p>Final score: <?php echo 100 / 10 * $_SESSION['score'];?>&#37;</p>
 					<a href="question.php?n=1" class="start btn btn-primary mt-2">Take Quiz Again</a>
 					<?php session_destroy(); ?>
 				</div>

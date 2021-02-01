@@ -24,16 +24,16 @@ INSERT INTO MathsQuestions (question_number, question) VALUES
 (1, 'What is four-fifths as a decimal?'),
 (2, 'What is the volume of a cube which has edges measuring 5cm?'),
 (3, 'How many months are there in twelve years?'),
-(4, 'What is the next number in the series: 2, 9, 30, 93, …?'),
-(5, 'If y=10x − 1 and the value of x is 10, what is the value of y?'),
+(4, 'What is the next number in the series: 2, 9, 30, 93, ?'),
+(5, 'What is the cube root of 512?'),
 (6, 'If a recipe requires 400 grams of potatoes for four people, how many kilograms would be required for twelve
 people?'),
-(7, 'A dress has a thirty percent discount applied and is on sale for €63. What was the original price of the dress
+(7, 'A dress has a thirty percent discount applied and is on sale for 63 euro. What was the original price of the dress
 before the reduction?'),
 (8, 'Geoff thinks of a number. He deducts five from it and then divides the result by three. His answer is 25. What
 number did he start with?'),
 (9, 'What is nine-tenths of 2000?'),
-(10, '3 − 7 × 4 = ?');
+(10, 'How many months of the year have only 30 days?');
 
 -- Table MathsChoices
 
@@ -52,10 +52,10 @@ INSERT INTO MathsChoices (id, question_number, is_correct, choice) VALUES
 (13, 1, 1, '0.8'),
 (14, 1, 0, '0.1'),
 (15, 1, 0, '0.6'),
-(16, 2, 0, '111cm³ (centimetres cubed)'),
-(17, 2, 0, '200cm³ (centimetres cubed)'),
-(18, 2, 1, '125cm³ (centimetres cubed)'),
-(19, 2, 0, '150cm³ (centimetres cubed)'),
+(16, 2, 0, '111 centimetres cubed'),
+(17, 2, 0, '200 centimetres cubed'),
+(18, 2, 1, '125 centimetres cubed'),
+(19, 2, 0, '150 centimetres cubed'),
 (20, 3, 1, '144'),
 (21, 3, 0, '120'),
 (22, 3, 0, '168'),
@@ -64,18 +64,18 @@ INSERT INTO MathsChoices (id, question_number, is_correct, choice) VALUES
 (25, 4, 0, '141'),
 (26, 4, 0, '321'),
 (27, 4, 1, '282'),
-(28, 5, 0, '1009'),
-(29, 5, 0, '10'),
-(30, 5, 1, '99'),
-(31, 5, 0, '199'),
+(28, 5, 0, '10'),
+(29, 5, 0, '6'),
+(30, 5, 1, '8'),
+(31, 5, 0, '4'),
 (32, 6, 0, '1200kg'),
 (33, 6, 1, '1.2kg'),
 (34, 6, 0, '12kg'),
 (35, 6, 0, '0.12kg'),
-(36, 7, 1, '€90'),
-(37, 7, 0, '€100'),
-(38, 7, 0, '€93'),
-(39, 7, 0, '€110'),
+(36, 7, 1, '90 euro'),
+(37, 7, 0, '100 euro'),
+(38, 7, 0, '93 euro'),
+(39, 7, 0, '110 euro'),
 (40, 8, 0, '60'),
 (41, 8, 0, '40'),
 (42, 8, 0, '20'),
@@ -84,10 +84,10 @@ INSERT INTO MathsChoices (id, question_number, is_correct, choice) VALUES
 (45, 9, 1, '1800'),
 (46, 9, 0, '1750'),
 (47, 9, 0, '1850'),
-(48, 10, 0, '31'),
-(49, 10, 0, '-31'),
-(50, 10, 1, '-25'),
-(51, 10, 0, '-16');
+(48, 10, 0, '3'),
+(49, 10, 0, '2'),
+(50, 10, 1, '4'),
+(51, 10, 0, '1');
 
 -- Table EnglishQuestions
 
@@ -226,7 +226,7 @@ INSERT INTO HistoryChoices (id, question_number, is_correct, choice) VALUES
 (34, 6, 0, 'Estonia, Denmark, Norway'),
 (35, 6, 0, 'Finland, Netherlands, Belgium'),
 (36, 7, 0, 'Marco Polo'),
-(37, 7, 0, 'Pedro Álvares Cabral'),
+(37, 7, 0, 'Pedro Alvares Cabral'),
 (38, 7, 0, 'John Cabot'),
 (39, 7, 1, 'Christopher Columbus'),
 (40, 8, 0, '4'),
