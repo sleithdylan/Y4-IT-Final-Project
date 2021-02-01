@@ -43,7 +43,7 @@ $shouts = mysqli_query($con, $query);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../index.php">
-					<img src="../../assets/images/closeapart-logo-primary.svg" class="mr-2 brand-logo">
+					<img src="../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo">
 					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
@@ -51,7 +51,7 @@ $shouts = mysqli_query($con, $query);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="../../dashboard.php">
+							<a class="nav-link" href="../../student/dashboard.php>
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -104,7 +104,7 @@ $shouts = mysqli_query($con, $query);
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="../../assets/images/faces/john.jpg" class="avatar rounded-circle">
+												<img alt="Image placeholder" src="../../assets/images/testimonials/john.jpg" class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
 												<div class="d-flex justify-content-between align-items-center">
@@ -129,7 +129,7 @@ $shouts = mysqli_query($con, $query);
 							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=White&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale' />
+									 <img src='../../assets/images/avatars/avataaars.png' />
 									</span>
 									<div class="media-body  ml-2  d-none d-lg-block">
 										<span class="mb-0 text-sm  font-weight-bold">David</span>
@@ -137,16 +137,16 @@ $shouts = mysqli_query($con, $query);
 								</div>
 							</a>
 							<div class="dropdown-menu  dropdown-menu-right ">
-								<a href="../../dashboard.php" class="dropdown-item">
+								<a href="../../student/dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="../../settings.php" class="dropdown-item">
+								<a href="../../student/settings.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../../login.php" class="dropdown-item">
+								<a href="../../student/login.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>

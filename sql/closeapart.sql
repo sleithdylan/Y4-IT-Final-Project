@@ -243,6 +243,28 @@ INSERT INTO HistoryChoices (id, question_number, is_correct, choice) VALUES
 (51, 10, 0, 'Donald Trump');
 
 
+-- Table Staff
+
+DROP TABLE IF EXISTS Staff;
+CREATE TABLE IF NOT EXISTS Staff (
+staff_id SMALLINT(3) NOT NULL AUTO_INCREMENT,
+staff_fullname VARCHAR(255) NULL DEFAULT NULL,
+staff_email VARCHAR(255) NULL DEFAULT NULL,
+staff_password VARCHAR(255) NULL DEFAULT NULL,
+staff_phone INT(10) ZEROFILL NULL,
+staff_address VARCHAR(255) NULL,
+staff_city VARCHAR(255) NULL,
+staff_country VARCHAR(255) NULL,
+staff_eircode VARCHAR(255) NULL,
+staff_bio TEXT NULL,
+staff_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+PRIMARY KEY (staff_id));
+
+-- Data for Staff
+
+INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar) VALUES
+(1, 'Daniel Obrien', 'daniel.obrien@gmail.com', 'Demo', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png');
+
 -- Table Students
 
 DROP TABLE IF EXISTS Students;
@@ -250,16 +272,43 @@ CREATE TABLE IF NOT EXISTS Students (
 student_id SMALLINT(3) NOT NULL AUTO_INCREMENT,
 student_fullname VARCHAR(255) NULL DEFAULT NULL,
 student_email VARCHAR(255) NULL DEFAULT NULL,
+student_password VARCHAR(255) NULL DEFAULT NULL,
 student_phone INT(10) ZEROFILL NULL,
 student_address VARCHAR(255) NULL,
 student_city VARCHAR(255) NULL,
 student_country VARCHAR(255) NULL,
 student_eircode VARCHAR(255) NULL,
 student_bio TEXT NULL,
-student_avatar VARCHAR(255) DEFAULT 'blank-profile-picture.png',
+student_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+attendance SMALLINT(3) NULL,
+attendance_explained SMALLINT(3) NULL,
+attendance_unexplained SMALLINT(3) NULL,
 PRIMARY KEY (student_id));
 
 -- Data for Students
 
-INSERT INTO Students (student_id, student_fullname, student_email, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar) VALUES
-(1, 'David Ryan', 'david.ryan@gmail.com', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'blank-profile-picture.png');
+INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar, attendance, attendance_explained, attendance_unexplained) VALUES
+(1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png', 70, 20, 10);
+
+-- Table Subjects
+
+DROP TABLE IF EXISTS Subjects;
+CREATE TABLE IF NOT EXISTS Subjects (
+subject_id INT(11) NOT NULL AUTO_INCREMENT,
+subject_name VARCHAR(255) NULL DEFAULT NULL,
+subject_grade SMALLINT(3) NULL DEFAULT NULL,
+subject_gpa VARCHAR(255) NULL DEFAULT NULL,
+subject_attendance SMALLINT(3) NULL DEFAULT NULL,
+student_id SMALLINT(3) NOT NULL,
+student_email VARCHAR(255) NOT NULL,
+PRIMARY KEY (subject_id));
+
+-- Data for Students
+
+INSERT INTO Subjects (subject_id, subject_name, subject_grade, subject_gpa, subject_attendance, student_id, student_email) VALUES
+(1, 'English', 70, '3', 95, 1, 'david.ryan@gmail.com'),
+(2, 'Maths', 65, '2.5', 90, 1, 'david.ryan@gmail.com'),
+(3, 'History', 80, '1.5', 95, 1, 'david.ryan@gmail.com'),
+(4, 'Geography', 75, '2', 90, 1, 'david.ryan@gmail.com'),
+(5, 'Science', 65, '4', 85, 1, 'david.ryan@gmail.com'),
+(6, 'Gaeilge', 65, '2', 85, 1, 'david.ryan@gmail.com');
