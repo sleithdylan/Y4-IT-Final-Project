@@ -35,6 +35,7 @@ $shouts = mysqli_query($con, $query);
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="../../assets/css/argon.min.css">
+	<link rel="stylesheet" href="../../assets/css/argon-design-system-extras.min.css">
 </head>
 
 <body>
@@ -159,9 +160,27 @@ $shouts = mysqli_query($con, $query);
 		<div class="container mt-5 pt-5">
 			<div class="row text-center mt-5 pt-5">
 				<div class="col-xl-12">
+				<div class="flex-wrapper">
+						<div class="single-chart">
+    						<svg viewBox="0 0 36 36" class="circular-chart blue">
+								<path class="circle-bg"
+									d="M18 2.0845
+									a 15.9155 15.9155 0 0 1 0 31.831
+									a 15.9155 15.9155 0 0 1 0 -31.831"
+								/>
+								<path class="circle"
+									stroke-dasharray="<?php echo  100 / 10 * $_SESSION['score']; ?>, 100"
+									d="M18 2.0845
+									a 15.9155 15.9155 0 0 1 0 31.831
+									a 15.9155 15.9155 0 0 1 0 -31.831"
+								/>
+							<text x="18" y="20.35" class="percentage"><?php echo  100 / 10 * $_SESSION['score']; ?>%</text>
+							</svg>
+						</div>
+					</div>
 					<h2 class="display-2">You are Done!</h2>
 					<p>Congrats! You have completed the quiz</p>
-					<p>Final score: <?php echo  $_SESSION['score']; ?>&#37;</p>
+					<p>Your final score is <?php echo  $_SESSION['score']; ?>/10</p>
 					<a href="question.php?n=1" class="start btn btn-primary mt-2">Take Quiz Again</a>
 					<?php session_destroy(); ?>
 				</div>
