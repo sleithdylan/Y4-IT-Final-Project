@@ -19,7 +19,7 @@ if ($_POST) {
 	$total = 4;
 
 	//Get total number of questions
-	$query = "SELECT * FROM `mathsquestions`";
+	$query = "SELECT * FROM `mathsquestions` ";
 	$results = $mysqli->query($query) or die($mysqli->error . __LINE__);
 	$total = $results->num_rows;
 
