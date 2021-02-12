@@ -46,7 +46,7 @@ body {
 
 .single-chart {
   width: 33%;
-  justify-content: space-around ;
+  justify-content: space-around;
 }
 
 .circular-chart {
@@ -75,9 +75,8 @@ body {
   }
 }
 
-
 .circular-chart.blue .circle {
-  stroke: #5E72E4;
+  stroke: #5e72e4;
 }
 
 .percentage {

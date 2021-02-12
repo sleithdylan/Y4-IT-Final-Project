@@ -97,7 +97,11 @@ if (isset($_POST['login'])) {
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
 		<div class="container pt-2 pt-lg-6">
-			<div class="row justify-content-center">
+			<div class="row">
+				<div class="col">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
+							src="../assets/images/illustrations/closeapart-room.png" alt="student bedroom">
+				</div>
 				<div class="col-md-7 col-lg-5">
 					<?php if($msg != ""): ?>
 					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
@@ -161,10 +165,7 @@ if (isset($_POST['login'])) {
 						</div>
 					</div>
 					<div class="row mt-3">
-						<div class="col-6">
-							<a href="#" class="text-white"><small>Forgot password?</small></a>
-						</div>
-						<div class="col-6 text-right">
+						<div class="col text-center">
 							<a href="./signup.php" class="text-white"><small>Create new account</small></a>
 						</div>
 					</div>

@@ -109,18 +109,9 @@ if (isset($_POST['register'])) {
 					</div>
 					<?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
-						<div class="card-header bg-white pb-4">
-							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
-							<div class="btn-wrapper text-center">
-								<a href="#" class="btn btn-neutral btn-icon">
-									<i class='bx bxl-google align-middle'></i>
-									<span class="align-middle">Google</span>
-								</a>
-							</div>
-						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
-								<small>Or sign up with credentials</small>
+								<small>Sign up with credentials</small>
 							</div>
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentSignupForm"
 								class="needs-validation">
