@@ -44,7 +44,7 @@
 				</div>
 				<div class="col-md-8 col-lg-6">
 					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
-						src="./assets/images/illustrations/boy-on-computer.png" alt="boy on computer">
+						src="./assets/images/illustrations/closeapart-work.png" alt="closeapart work">
 				</div>
 			</div>
 		</div>
