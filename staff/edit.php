@@ -14,41 +14,75 @@ $msgClass = '';
 // Puts session variable into $email
 $email = $_SESSION['staff_email'];
 
+// Gets staff data
+function getStaffData($staffId) {
+	// Requires config
+	require('../config/config.php');
+	// Creates and checks connection
+	require('../config/db.php');
+	// Creates array
+	$array = array();
+	// SELECT query
+	$query = mysqli_query($conn, "SELECT * FROM staff WHERE staff_id=" . $staffId);
+	// Loops through array
+	while ($row = mysqli_fetch_assoc($query)) {
+		$array['staff_id'] = $row['staff_id'];
+		$array['staff_fullname'] = $row['staff_fullname'];
+		$array['staff_email'] = $row['staff_email'];
+		$array['staff_password'] = $row['staff_password'];
+		$array['staff_avatar'] = $row['staff_avatar'];
+	}
+	return $array;
+}
+
+// Get staff ID
+function getId($email) {
+	// Requires config
+	require('../config/config.php');
+	// Creates and checks connection
+	require('../config/db.php');
+	// SELECT query
+	$query = mysqli_query($conn, "SELECT staff_id FROM staff WHERE staff_email='" . $email . "'");
+	while ($row = mysqli_fetch_assoc($query)) {
+		return $row['staff_id'];
+	}
+}
+
+// Gets user data from id
+if (isset($_SESSION['staff_email'])) {
+	$staffData = getStaffData(getId($_SESSION['staff_email']));
+}
+
 // Checks for posted data
 if (isset($_POST['profile'])) {
 	// Gets form data
-	$staffAvatar = time() . '_' . $_FILES['staffavatar']['name'];
-	$staffFullName = mysqli_real_escape_string($conn, $_POST['stafffullname']);
-	$staffPhone = mysqli_real_escape_string($conn, $_POST['staffphone']);
-	$staffAddress = mysqli_real_escape_string($conn, $_POST['staffaddress']);
-	$staffCity = mysqli_real_escape_string($conn, $_POST['staffcity']);
-	$staffCountry = mysqli_real_escape_string($conn, $_POST['staffcountry']);
-	$staffEircode = mysqli_real_escape_string($conn, $_POST['staffeircode']);
-	$staffBio = mysqli_real_escape_string($conn, $_POST['staffabout']);
-
-	// Where uploaded images will be stored
-	$target = '../assets/images/avatars/' . $staffAvatar;
+	$studentFullName = mysqli_real_escape_string($conn, $_POST['studentfullname']);
+	$studentPhone = mysqli_real_escape_string($conn, $_POST['studentphone']);
+	$studentAddress = mysqli_real_escape_string($conn, $_POST['studentaddress']);
+	$studentCity = mysqli_real_escape_string($conn, $_POST['studentcity']);
+	$studentCountry = mysqli_real_escape_string($conn, $_POST['studentcountry']);
+	$studentEircode = mysqli_real_escape_string($conn, $_POST['studenteircode']);
+	$studentBio = mysqli_real_escape_string($conn, $_POST['studentabout']);
 
 	// Gets ID
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// SELECT Query
-	$query = "SELECT * FROM staff ORDER BY staff_id WHERE staff_id = {$id}";
+	$query = "SELECT * FROM students ORDER BY student_id WHERE student_id = {$id}";
 
 	// UPDATE Query
-	$query = "UPDATE staff SET 
-      staff_fullname = '$staffFullName',
-      staff_phone = '$staffPhone', 
-      staff_address = '$staffAddress', 
-      staff_city = '$staffCity',
-      staff_country = '$staffCountry',
-      staff_eircode = '$staffEircode',
-      staff_bio = '$staffBio',
-      staff_avatar = '$staffAvatar'
-  WHERE staff_id = {$id}";
+	$query = "UPDATE students SET 
+      student_fullname = '$studentFullName',
+      student_phone = '$studentPhone', 
+      student_address = '$studentAddress', 
+      student_city = '$studentCity',
+      student_country = '$studentCountry',
+      student_eircode = '$studentEircode',
+      student_bio = '$studentBio'
+  WHERE student_id = {$id}";
 
 	// Checks required fields
-	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['staffavatar']['tmp_name'], $target)) {
+	if (mysqli_query($conn, $query)) {
 		//* Passed
 		$msg = '<strong>Success!</strong> Profile has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
@@ -64,7 +98,7 @@ if (isset($_POST['profile'])) {
 
 // If user is not logged in
 if (!isset($_SESSION['staff_email'])) {
-	// Redirect to the staff login with error message
+	// Redirect to the student login with error message
 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
 	exit();
 }
@@ -73,7 +107,7 @@ if (!isset($_SESSION['staff_email'])) {
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 
 // SELECT Query
-$query = "SELECT * FROM staff WHERE staff_id = {$id}";
+$query = "SELECT * FROM students WHERE student_id = {$id}";
 
 // Gets result
 $result = mysqli_query($conn, $query);
@@ -213,10 +247,10 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../assets/images/avatars/<?php echo $lists['staff_avatar'] ?>' />
+										<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $lists['staff_fullname'] ?></span>
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -225,7 +259,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $lists['staff_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $lists['student_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -256,39 +290,31 @@ mysqli_close($conn);
 								<div class="col-8">
 									<h3 class="mb-0">Edit profile </h3>
 								</div>
-								<div class="col-4 text-right">
-									<a href="#" class="badge badge-pill badge-lg badge-primary">Settings</a>
-								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="staffsettings"
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentsettings"
 								enctype="multipart/form-data" class="needs-validation">
 								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label class="form-control-label" for="staffavatar">Avatar</label>
-												<input type="file" id="input-picture" class="form-control" name="staffavatar"
-													placeholder="Insert Image" required>
-											</div>
-											<div class="form-group">
-												<label class="form-control-label" for="stafffullname">Full Name</label>
-												<input type="text" id="stafffullname" name="stafffullname" class="form-control"
-													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['staff_fullname']; ?>"
+												<label class="form-control-label" for="studentfullname">Full Name</label>
+												<input type="text" id="studentfullname" name="studentfullname" class="form-control"
+													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>"
 													required>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="studentemail">Email Address</label>
-												<input type="email" id="studentemail" name="studentemail" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['staff_email']; ?>"
+												<label class="form-control-label" for="student-email">Email Address</label>
+												<input type="email" id="student-email" name="student-email" class="form-control"
+													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>"
 													disabled>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="staffphone">Phone Number</label>
-												<input type="text" class="form-control" id="staffphone" name="staffphone"
-													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['staff_phone']; ?>"
+												<label class="form-control-label" for="studentphone">Phone Number</label>
+												<input type="text" class="form-control" id="studentphone" name="studentphone"
+													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>"
 													required>
 											</div>
 										</div>
@@ -301,32 +327,32 @@ mysqli_close($conn);
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="form-control-label" for="staffaddress">Address</label>
-												<input id="staffaddress" name="staffaddress" class="form-control" placeholder="Home Address"
-													value="<?php echo $lists['staff_address']; ?>" type="text" required>
+												<label class="form-control-label" for="studentaddress">Address</label>
+												<input id="studentaddress" name="studentaddress" class="form-control" placeholder="Home Address"
+													value="<?php echo $lists['student_address']; ?>" type="text" required>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="staffcity">City</label>
-												<input type="text" id="staffcity" name="staffcity" class="form-control" placeholder="City"
-													value="<?php echo $lists['staff_city']; ?>" required>
+												<label class="form-control-label" for="studentcity">City</label>
+												<input type="text" id="studentcity" name="studentcity" class="form-control" placeholder="City"
+													value="<?php echo $lists['student_city']; ?>" required>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="staffcountry">Country</label>
-												<input type="text" id="staffcountry" name="staffcountry" class="form-control"
-													placeholder="Country" value="<?php echo $lists['staff_country']; ?>" required>
+												<label class="form-control-label" for="studentcountry">Country</label>
+												<input type="text" id="studentcountry" name="studentcountry" class="form-control"
+													placeholder="Country" value="<?php echo $lists['student_country']; ?>" required>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
-												<label class="form-control-label" for="staffeircode">Eircode</label>
-												<input type="text" id="staffeircode" name="staffeircode" class="form-control"
-													placeholder="Eircode" value="<?php echo $lists['staff_eircode']; ?>" required>
+												<label class="form-control-label" for="studenteircode">Eircode</label>
+												<input type="text" id="studenteircode" name="studenteircode" class="form-control"
+													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>" required>
 											</div>
 										</div>
 									</div>
@@ -336,9 +362,9 @@ mysqli_close($conn);
 								<h6 class="heading-small text-muted mb-4">About me</h6>
 								<div class="pl-lg-4">
 									<div class="form-group">
-										<label class="form-control-label" for="staffabout">About Me</label>
-										<textarea rows="4" class="form-control" id="staffabout" name="staffabout"
-											placeholder="Tell us about youself..." required><?php echo $lists['staff_bio']; ?></textarea>
+										<label class="form-control-label" for="studentabout">About Me</label>
+										<textarea rows="4" class="form-control" id="studentabout" name="studentabout"
+											placeholder="Tell us about youself..." required><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
@@ -376,42 +402,40 @@ mysqli_close($conn);
 			}
 		});
 
-		$("#staffsettings").validate({
+		$("#studentsettings").validate({
 			rules: {
-				staffavatar: "required",
-				stafffullname: "required",
-				staffphone: {
+				studentfullname: "required",
+				studentphone: {
 					required: true,
 					digits: "true",
 					maxlength: 10
 				},
-				staffaddress: "required",
-				staffcity: "required",
-				staffcountry: "required",
-				staffeircode: "required",
-				staffabout: "required"
+				studentaddress: "required",
+				studentcity: "required",
+				studentcountry: "required",
+				studenteircode: "required",
+				studentabout: "required"
 			},
 			messages: {
-				staffavatar: "Please choose a avatar",
-				stafffullname: "Please enter your full name",
-				staffphone: {
+				studentfullname: "Please enter your full name",
+				studentphone: {
 					required: "Please enter your phone number",
 					digits: "Please enter digits only",
 					maxlength: "You phone number can only be 10 digits long"
 				},
-				staffaddress: {
+				studentaddress: {
 					required: "Please enter your address"
 				},
-				staffcity: {
+				studentcity: {
 					required: "Please enter your city"
 				},
-				staffcountry: {
+				studentcountry: {
 					required: "Please enter your country"
 				},
-				staffeircode: {
+				studenteircode: {
 					required: "Please enter your eircode"
 				},
-				staffabout: {
+				studentabout: {
 					required: "Please enter something about yourself"
 				}
 			}

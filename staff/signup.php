@@ -4,6 +4,16 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+// Starts session
+session_start();
+
+// If user is logged in
+if (isset($_SESSION['staff_email']) && isset($_COOKIE['staff_email'])) {
+	// Redirect to the staff dashboard
+	header('Location: ./dashboard.php');
+	exit();
+}
+
 // Message variables
 $msg = '';
 $msgClass = '';
@@ -14,12 +24,12 @@ if (isset($_POST['register'])) {
 	session_start();
 
 	// Gets form data
-	$staffFullName = mysqli_real_escape_string($conn, $_POST['staff-fullname']);
-	$staffEmail = mysqli_real_escape_string($conn, $_POST['staff-email']);
+	$staffFullName = mysqli_real_escape_string($conn, $_POST['stafffullname']);
+	$staffEmail = mysqli_real_escape_string($conn, $_POST['staffemail']);
 	$staffEmail = strtolower($staffEmail); // Returns email in lowercase
 	$staffEmail = filter_var($staffEmail, FILTER_SANITIZE_EMAIL); // Removes illegal characters
 	$staffEmail = trim($staffEmail); // Removes whitespace
-	$staffPassword = mysqli_real_escape_string($conn, $_POST['staff-password']);
+	$staffPassword = mysqli_real_escape_string($conn, $_POST['staffpassword']);
 
 	// Hashed password
 	$passwordHashed = password_hash($staffPassword, PASSWORD_DEFAULT);
@@ -99,48 +109,39 @@ if (isset($_POST['register'])) {
 					</div>
 					<?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
-						<div class="card-header bg-white pb-4">
-							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
-							<div class="btn-wrapper text-center">
-								<a href="#" class="btn btn-neutral btn-icon">
-									<i class='bx bxl-google align-middle'></i>
-									<span class="align-middle">Google</span>
-								</a>
-							</div>
-						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
-								<small>Or sign up with credentials</small>
+								<small>Sign up with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="staffSignupForm" class="needs-validation">
 								<div class="form-group">
-									<div class="input-group input-group-alternative mb-3">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-user'></i></span>
 										</div>
-										<input type="text" class="form-control" id="staff-fullname" name="staff-fullname"
+										<input type="text" class="form-control" id="stafffullname" name="stafffullname"
 											placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative mb-3">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="staff-email" name="staff-email" placeholder="Email"
+										<input type="email" class="form-control" id="staffemail" name="staffemail" placeholder="Email"
 											required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="staff-password" name="staff-password"
+										<input type="password" class="form-control" id="staffpassword" name="staffpassword"
 											placeholder="Password" required>
 									</div>
 								</div>
-								<div class="row my-4">
+								<!-- <div class="row my-4">
 									<div class="col-12">
 										<div class="custom-control custom-control-alternative custom-checkbox">
 											<input class="custom-control-input" id="customCheckRegister" type="checkbox">
@@ -148,9 +149,10 @@ if (isset($_POST['register'])) {
 														href="#">Privacy Policy</a></span></label>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<div class="text-center">
-									<button type="submit" name="register" class="btn btn-primary my-4">Create account</button>
+									<button type="submit" name="register" class="btn btn-primary my-4 btn-block text-capitalize">Create
+										account</button>
 								</div>
 							</form>
 						</div>
@@ -168,10 +170,50 @@ if (isset($_POST['register'])) {
 	<?php include('../includes/footers/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="../assets/js/argon-design-system.min.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script>
+		$.validator.setDefaults({
+			errorElement: 'span',
+			errorPlacement: function (error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function (element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+
+		$("#staffSignupForm").validate({
+			rules: {
+				stafffullname: "required",
+				staffemail: {
+					required: true,
+					email: true
+				},
+				staffpassword: {
+					required: true,
+					minlength: 6
+				}
+			},
+			messages: {
+				stafffullname: "Please enter your full name",
+				staffemail: {
+					required: "Please enter your email",
+					email: "Your email must be in the format of name@domain.com"
+				},
+				staffpassword: {
+					required: "Please enter your password"
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
