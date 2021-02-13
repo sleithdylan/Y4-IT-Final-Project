@@ -10,6 +10,30 @@ require('../config/db.php');
 // Puts session variable into $email
 $email = $_SESSION['staff_email'];
 
+// Checks for posted data
+if (isset($_POST['delete'])) {
+  // Gets form data
+  $delete_id = mysqli_real_escape_string($conn, $_POST['delete-id']);
+
+  // DELETE Query
+  $query = "DELETE FROM students WHERE student_id = {$delete_id}";
+
+  if (mysqli_query($conn, $query)) {
+    // Passed
+    $msg = '<strong>Success!</strong> Student has been removed';
+    $msgClass = 'alert-success alert-dismissible fade show mt-4';
+    // Redirects to index.php
+    header('refresh:1; url=dashboard.php');
+  }
+  else {
+    // Failed
+    // Returns error
+    $msg = '<strong>Error!</strong> Something went wrong.. (' . mysqli_error($conn) . ')';
+    $msgClass = 'alert-danger alert-dismissible fade show my-4';
+  }
+
+}
+
 // Gets staff data
 function getStaffData($staffId) {
 	// Requires config
@@ -31,52 +55,6 @@ function getStaffData($staffId) {
 	return $array;
 }
 
-// Gets students data
-function getStudentsData($studentId) {
-	// Requires config
-	require('../config/config.php');
-	// Creates and checks connection
-	require('../config/db.php');
-	// Creates array
-	$array = array();
-	// SELECT query
-	$query = mysqli_query($conn, "SELECT * FROM students WHERE student_id=" . $studentId);
-	// Loops through array
-	while ($row = mysqli_fetch_assoc($query)) {
-		$array['student_id'] = $row['student_id'];
-		$array['student_fullname'] = $row['student_fullname'];
-		$array['student_email'] = $row['student_email'];
-		$array['student_password'] = $row['student_password'];
-		$array['student_avatar'] = $row['student_avatar'];
-		$array['attendance'] = $row['attendance'];
-		$array['attendance_explained'] = $row['attendance_explained'];
-		$array['attendance_unexplained'] = $row['attendance_unexplained'];
-	}
-	return $array;
-}
-
-// Gets subjects data
-function getSubjectsData($studentId) {
-	// Requires config
-	require('../config/config.php');
-	// Creates and checks connection
-	require('../config/db.php');
-	// Creates array
-	$array = array();
-	// SELECT query
-	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentId . " ORDER BY subject_id DESC");
-	// Loops through array
-	while ($row = mysqli_fetch_assoc($query)) {
-		$array['subject_id'] = $row['subject_id'];
-		$array['subject_name'] = $row['subject_name'];
-		$array['subject_grade'] = $row['subject_grade'];
-		$array['subject_gpa'] = $row['subject_gpa'];
-		$array['subject_attendance'] = $row['subject_attendance'];
-		$array['student_id'] = $row['student_id'];
-		$array['student_email'] = $row['student_email'];
-	}
-	return $array;
-}
 
 // Get staff ID
 function getId($email) {
@@ -91,18 +69,29 @@ function getId($email) {
 	}
 }
 
+// If user is not logged in
 if (!isset($_SESSION['staff_email'])) {
-	// Redirects to the staff login
-	header('Location: ./login.php');
+	// Redirect to the staff login with error message
+	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
 	exit();
 }
-
-
 
 // Gets user data from id
 if (isset($_SESSION['staff_email'])) {
 	$staffData = getStaffData(getId($_SESSION['staff_email']));
 }
+
+// SELECT Query
+$query = "SELECT * FROM students ORDER BY student_id ASC";
+
+// Gets Result
+$result = mysqli_query($conn, $query);
+
+// Fetch Data
+$lists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Frees result from memory
+mysqli_free_result($result);
 
 // Closes connection
 mysqli_close($conn);
@@ -114,7 +103,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>staff Overview | CloseApart</title>
+	<title>Student Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -250,7 +239,7 @@ mysqli_close($conn);
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../staff/login.php" class="dropdown-item">
+								<a href="./logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -260,38 +249,65 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</nav>
-			<div class="container-fluid mt-4">
-				<div class="col-xl-8">
+		<!-- Data -->
+		<div class="container-fluid mt-4">
+			<div class="row">
+				<div class="col-xl-12">
+					<?php if($msg != ""): ?>
+					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
 					<div class="card">
 						<div class="card-header bg-transparent">
 							<div class="row align-items-center">
 								<div class="col">
-									<h3 class="mb-0">Students Info</h3>
+									<h3 class="mb-0">Your Students</h3>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Table of Students -->
+							<!-- Table of Subjects -->
 							<div class="table-responsive">
 								<table class="table align-items-center table-flush">
 									<thead class="thead-light">
 										<tr>
-											<th scope="col">Subject</th>
-											<th scope="col">Grade</th>
-											<th scope="col">Attendance</th>
+											<th scope="col">Full Name</th>
+											<th scope="col">Email</th>
+											<th scope="col">Phone #</th>
+											<th scope="col">Address</th>
+											<th scope="col">Actions</th>
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach($Students as $student) : ?>
+										<?php foreach($lists as $list) : ?>
 										<tr>
-											<th scope="row">
-												<?php echo $student['subject_name'] ?>
-											</th>
 											<td>
-												<?php echo $subject['subject_grade'] . '%' ?>
+												<?php echo $list['student_fullname'] ?>
 											</td>
 											<td>
-												<?php echo $subject['subject_attendance'] . '%' ?>
+												<?php echo $list['student_email'] ?>
+											</td>
+											<td>
+												<?php echo $list['student_phone'] ?>
+											</td>
+											<td>
+												<?php echo $list['student_address'] ?>
+											</td>
+											<td>
+												<div class="d-flex">
+													<a href="edit.php?id=<?php echo $list['student_id']?>"
+														class="px-4 py-2 mr-2 btn-primary border-0 bg-white text-primary"><i
+															class='bx bxs-edit'></i> Edit</a>
+													<form class="d-flex" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+														<input type="hidden" name="delete-id" value="<?php echo $list['student_id']; ?>">
+														<button type="submit" name="delete"
+															class="text-danger px-4 py-2 btn-primary border-0 bg-white"><i class='bx bxs-trash'></i>
+															Delete</button>
+													</form>
+													<div>
 											</td>
 										</tr>
 										<?php endforeach; ?>
@@ -301,8 +317,9 @@ mysqli_close($conn);
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
+	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -311,73 +328,6 @@ mysqli_close($conn);
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="../assets/js/argon-design-system-extras.min.js"></script>
 	<script src="../assets/js/main.js"></script>
-	<script>
-		var PieChart = (function () {
-				var a = $('#pie-chart');
-				a.length &&
-					(function (a) {
-						var e = new Chart(a, {
-							type: 'pie',
-							data: {
-								labels: ['Attendance', 'Absence (Explained)', 'Absence (Unexplained)'],
-								datasets: [{
-									label: 'Population (millions)',
-									backgroundColor: ['#2dce89', '#ffda09', '#f5365c'],
-									data: [<?php echo $staffData['attendance'] ?>, <?php echo $staffData['attendance_explained'] ?>, <?php echo $staffData['attendance_unexplained'] ?>]
-								}]
-							}
-						});
-						a.data('chart', e);
-					})(a);
-			})(),
-			BarChart = (function () {
-				var a = $('#bar-chart');
-				a.length &&
-					(function (a) {
-						var e = new Chart(a, {
-							type: 'bar',
-							data: {
-								labels: [
-									<?php
-										foreach($subjectsGPA as $subjectGPA) {
-											echo "'" . $subjectGPA['subject_name'] . "'" . ",";
-										} 
-									?>
-								],
-								datasets: [{
-									backgroundColor: ['#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4'],
-									data: [
-										<?php
-											foreach($subjectsGPA as $subjectGPA) {
-												echo $subjectGPA['subject_gpa'] . ",";
-											} 
-										?>
-									]
-								}]
-							},
-							options: {
-								legend: {
-									display: false
-								},
-								title: {
-									display: true,
-									text: 'Total GPA of ' + new Date().getFullYear()
-								},
-								scales: {
-									yAxes: [{
-										ticks: {
-											callback: function (value, index, values) {
-												return value;
-											}
-										}
-									}]
-								}
-							}
-						});
-						a.data('chart', e);
-					})(a);
-			})();
-	</script>
 </body>
 
 </html>

@@ -4,6 +4,16 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+// Starts session
+session_start();
+
+// If user is logged in
+if (isset($_SESSION['staff_email']) && isset($_COOKIE['staff_email'])) {
+	// Redirect to the staff dashboard
+	header('Location: ./dashboard.php');
+	exit();
+}
+
 // Message variables
 $msg = '';
 $msgClass = '';
@@ -14,8 +24,8 @@ if (isset($_POST['login'])) {
 	session_start();
 
 	// Gets form data
-	$staffEmail = mysqli_real_escape_string($conn, $_POST['staff-email']);
-	$staffPassword = mysqli_real_escape_string($conn, $_POST['staff-password']);
+	$staffEmail = mysqli_real_escape_string($conn, $_POST['staffemail']);
+	$staffPassword = mysqli_real_escape_string($conn, $_POST['staffpassword']);
 
 	// Puts variable into session variable
 	$_SESSION['staff_email'] = $staffEmail;
@@ -46,7 +56,7 @@ if (isset($_POST['login'])) {
 	else {
 		//! Failed
 		// Returns error
-		$msg = '<strong>Error!</strong> Something went wrong..';
+		$msg = '<strong>Error!</strong> You entered the wrong email or password';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';
 	}
 
@@ -87,10 +97,28 @@ if (isset($_POST['login'])) {
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
 		<div class="container pt-2 pt-lg-6">
-			<div class="row justify-content-center">
+			<div class="row">
+				<div class="col">
+					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
+						src="../assets/images/illustrations/closeapart-books.png" alt="student books">
+				</div>
 				<div class="col-md-7 col-lg-5">
 					<?php if($msg != ""): ?>
 					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
+					<?php if(isset($_GET['success'])): ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert"><?php echo $_GET['success']; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
+					<?php if(isset($_GET['err'])): ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert"><?php echo $_GET['err']; ?>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -110,40 +138,34 @@ if (isset($_POST['login'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Or log in with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="staffLoginForm" class="needs-validation">
 								<div class="form-group mb-3">
-									<div class="input-group input-group-alternative">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="staff-email" name="staff-email" placeholder="Email"
+										<input type="email" class="form-control" id="staffemail" name="staffemail" placeholder="Email"
 											required>
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="input-group input-group-alternative">
+									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="staff-password" name="staff-password"
+										<input type="password" class="form-control" id="staffpassword" name="staffpassword"
 											placeholder="Password" required>
 									</div>
 								</div>
-								<!-- <div class="custom-control custom-control-alternative custom-checkbox">
-									<input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-									<label class="custom-control-label" for=" customCheckLogin"><span>Remember me</span></label>
-								</div> -->
 								<div class="text-center">
-									<button type="submit" name="login" class="btn btn-primary my-4 text-capitalize">Log in</button>
+									<button type="submit" name="login" class="btn btn-primary my-4 btn-block text-capitalize">Log
+										in</button>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="row mt-3">
-						<div class="col-6">
-							<a href="#" class="text-white"><small>Forgot password?</small></a>
-						</div>
-						<div class="col-6 text-right">
+						<div class="col text-center">
 							<a href="./signup.php" class="text-white"><small>Create new account</small></a>
 						</div>
 					</div>
@@ -155,10 +177,47 @@ if (isset($_POST['login'])) {
 	<?php include('../includes/footers/footer_user.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="../assets/js/argon-design-system.min.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script>
+		$.validator.setDefaults({
+			errorElement: 'span',
+			errorPlacement: function (error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function (element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+
+		$("#staffLoginForm").validate({
+			rules: {
+				staffemail: {
+					required: true,
+					email: true
+				},
+				staffpassword: {
+					required: true
+				}
+			},
+			messages: {
+				staffemail: {
+					required: "Please enter your email",
+					email: "Your email must be in the format of name@domain.com"
+				},
+				staffpassword: {
+					required: "Please enter your password",
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
