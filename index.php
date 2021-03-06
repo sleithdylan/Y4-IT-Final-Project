@@ -220,7 +220,7 @@
 			<div class="row">
 				<h4 class="col-md text-left">Contact us directly or visit the help centre</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
-					<button type="button" class="btn btn-outline-primary text-capitalize px-4">Contact Us</button>
+					<a href="./contact.php" class="btn btn-outline-primary text-capitalize px-4">Contact Us</a>
 					<a href="#help-centre" class="btn btn-outline-primary text-capitalize px-4 mr-4">Help Centre</a>
 				</div>
 			</div>
