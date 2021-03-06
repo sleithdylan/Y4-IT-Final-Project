@@ -12,16 +12,13 @@
 				<div class="col-md col-sm-6">
 					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
 						<li class="nav-item">
-							<a class="nav-link active disabled pt-0" href="#">Product</a>
+							<a class="nav-link active disabled pt-0" href="#">Support</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="#use-cases">Use Cases</a>
+							<a class="nav-link py-2" href="./contact.php">Contact Us</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link py-2" href="#help-centre">Help Centre</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link py-2" href="#status">Status</a>
 						</li>
 					</ul>
 				</div>
