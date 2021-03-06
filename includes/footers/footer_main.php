@@ -10,7 +10,7 @@
 					</div>
 				</div>
 				<div class="col-md col-sm-6">
-					<ul class="navbar-nav mb-5">
+					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
 						<li class="nav-item">
 							<a class="nav-link active disabled pt-0" href="#">Product</a>
 						</li>
@@ -26,7 +26,7 @@
 					</ul>
 				</div>
 				<div class="col-md col-sm-6">
-					<ul class="navbar-nav mb-5">
+					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
 						<li class="nav-item">
 							<a class="nav-link active disabled pt-0" href="#">Company</a>
 						</li>
@@ -42,18 +42,18 @@
 					</ul>
 				</div>
 				<div class="col-md col-sm-6">
-					<ul class="navbar-nav mb-5">
+					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
 						<li class="nav-item">
 							<a class="nav-link active disabled pt-0" href="#legal">Legal</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="#terms">Terms & Conditions</a>
+							<a class="nav-link py-2" href="./terms.php">Terms & Conditions</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="#privacy">Privacy Policy</a>
+							<a class="nav-link py-2" href="./privacy.php">Privacy Policy</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="#disclaimer">Disclaimer</a>
+							<a class="nav-link py-2" href="./disclaimer.php">Disclaimer</a>
 						</li>
 					</ul>
 				</div>

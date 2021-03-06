@@ -124,10 +124,10 @@
 	<div id="testimonials" class="py-5">
 		<div class="container">
 			<div class="row">
-				<h6 class="col-md text-center text-primary mt-5">Testimonials</h6>
+				<h6 class="col-md text-left text-sm-center text-primary mt-5">Testimonials</h6>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-center">What do you think of us?<br />Let us know!</h4>
+				<h4 class="col-md text-left text-sm-center">What do you think of us?<br />Let us know!</h4>
 			</div>
 		</div>
 		<div class="container-fluid">
