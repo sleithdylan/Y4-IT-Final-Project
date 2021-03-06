@@ -48,8 +48,12 @@ if (isset($_POST['register'])) {
 		// INSERT Query
 		$regQuery = "INSERT INTO staff(staff_fullname, staff_email, staff_password) 
                   VALUES('$staffFullName', '$staffEmail', '$passwordHashed')";
+		$regQueryClass = "INSERT INTO classes(class_name, staff_email) 
+									VALUES('$staffFullName', '$staffEmail')";
+
 		// Gets result
 		$result = mysqli_query($conn, $regQuery);
+		$result += mysqli_query($conn, $regQueryClass);
 		$msg = '<strong>Success!</strong> You are now registered';
 		$msgClass = 'alert-success alert-dismissible fade show';
 		// Redirects to the staff login after 1 second

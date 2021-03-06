@@ -30,6 +30,7 @@ if (isset($_POST['register'])) {
 	$studentEmail = filter_var($studentEmail, FILTER_SANITIZE_EMAIL); // Removes illegal characters
 	$studentEmail = trim($studentEmail); // Removes whitespace
 	$studentPassword = mysqli_real_escape_string($conn, $_POST['studentpassword']);
+	$studentClass = mysqli_real_escape_string($conn, $_POST['studentclass']);
 
 	// Hashed password
 	$passwordHashed = password_hash($studentPassword, PASSWORD_DEFAULT);
@@ -43,11 +44,11 @@ if (isset($_POST['register'])) {
 	// Gets number of rows
 	$numOfRows = mysqli_num_rows($result);
 
-	if (mysqli_query($conn, $query) && isset($studentFullName) && isset($studentEmail) && isset($studentPassword) && $numOfRows != 1) {
+	if (mysqli_query($conn, $query) && isset($studentFullName) && isset($studentEmail) && isset($studentPassword) && isset($studentClass) && $numOfRows != 1) {
 		//* Passed
 		// INSERT Query
-		$regQuery = "INSERT INTO students(student_fullname, student_email, student_password) 
-                  VALUES('$studentFullName', '$studentEmail', '$passwordHashed')";
+		$regQuery = "INSERT INTO students(student_fullname, student_email, student_password, class_id) 
+                  VALUES('$studentFullName', '$studentEmail', '$passwordHashed', '$studentClass')";
 		// Gets result
 		$result = mysqli_query($conn, $regQuery);
 		$msg = '<strong>Success!</strong> You are now registered';
@@ -63,6 +64,21 @@ if (isset($_POST['register'])) {
 	}
 
 }
+
+// SELECT Query
+$query = "SELECT * FROM classes";
+
+// Gets Result
+$result = mysqli_query($conn, $query);
+
+// Fetch Data
+$lists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Frees result from memory
+mysqli_free_result($result);
+
+// Closes connection
+mysqli_close($conn);
 
 ?>
 
@@ -142,6 +158,19 @@ if (isset($_POST['register'])) {
 											placeholder="Password" required>
 									</div>
 								</div>
+								<div class="form-group">
+									<div class="input-group input-group-alternative mb-2">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class='bx bxs-chalkboard'></i></span>
+										</div>
+										<select class="form-control" id="studentclass" name="studentclass" required>
+			                <option value="">Choose Class</option>
+											<?php foreach($lists as $list) : ?>
+			                <option value="<?php echo $list['class_id']?>"><?php echo $list['class_name'] . "'s Class"?></option>
+											<?php endforeach; ?>
+			              </select>
+									</div>
+								</div>
 								<!-- <div class="row my-4">
 									<div class="col-12">
 										<div class="custom-control custom-control-alternative custom-checkbox">
@@ -200,6 +229,9 @@ if (isset($_POST['register'])) {
 				studentpassword: {
 					required: true,
 					minlength: 6
+				},
+				studentclass: {
+					required: true
 				}
 			},
 			messages: {
@@ -210,6 +242,9 @@ if (isset($_POST['register'])) {
 				},
 				studentpassword: {
 					required: "Please enter your password"
+				},
+				studentclass: {
+					required: "Please select your class"
 				}
 			}
 		});
