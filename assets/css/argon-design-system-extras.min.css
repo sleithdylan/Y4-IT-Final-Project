@@ -85,3 +85,11 @@ body {
   font-size: 0.5em;
   text-anchor: middle;
 }
+
+.field-icon {
+  float: right;
+  margin-right: 15px;
+  margin-top: -35px;
+  position: relative;
+  z-index: 2;
+}

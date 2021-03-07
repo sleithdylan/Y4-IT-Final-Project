@@ -55,3 +55,17 @@ $('a[href*="#"]')
     false
   );
 })();
+
+$('.toggle-password').click(function () {
+  $(this).toggleClass('bx bs-hide');
+  var input = $($(this).attr('toggle'));
+  if (input.attr('type') == 'password') {
+    input.attr('type', 'text');
+    $(this).removeClass('bx bs-hide');
+    $(this).addClass('bx bxs-hide');
+  } else {
+    input.attr('type', 'password');
+    $(this).removeClass('bx bxs-hide');
+    $(this).addClass('bx bx-hide');
+  }
+});
