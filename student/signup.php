@@ -154,9 +154,10 @@ mysqli_close($conn);
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="studentpassword" name="studentpassword"
+										<input id="password-field" type="password" class="form-control" id="studentpassword" name="studentpassword"
 											placeholder="Password" required>
 									</div>
+									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>
 								<div class="form-group">
 									<div class="input-group input-group-alternative mb-2">

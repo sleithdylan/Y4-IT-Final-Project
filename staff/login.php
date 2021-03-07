@@ -153,9 +153,10 @@ if (isset($_POST['login'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input type="password" class="form-control" id="staffpassword" name="staffpassword"
+										<input id="password-field" type="password" class="form-control" id="staffpassword" name="staffpassword"
 											placeholder="Password" required>
 									</div>
+									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>
 								<div class="text-center">
 									<button type="submit" name="login" class="btn btn-primary my-4 btn-block text-capitalize">Log
