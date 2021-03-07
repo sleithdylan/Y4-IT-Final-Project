@@ -35,7 +35,7 @@ function getStudentsData($studentId) {
 }
 
 // Gets subjects data
-function getSubjectsData($studentId) {
+function getSubjectsData($studentEmail) {
 	// Requires config
 	require('../config/config.php');
 	// Creates and checks connection
@@ -43,7 +43,7 @@ function getSubjectsData($studentId) {
 	// Creates array
 	$array = array();
 	// SELECT query
-	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentId . " ORDER BY subject_id DESC");
+	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentEmail . " ORDER BY subject_id DESC");
 	// Loops through array
 	while ($row = mysqli_fetch_assoc($query)) {
 		$array['subject_id'] = $row['subject_id'];
@@ -51,7 +51,6 @@ function getSubjectsData($studentId) {
 		$array['subject_grade'] = $row['subject_grade'];
 		$array['subject_gpa'] = $row['subject_gpa'];
 		$array['subject_attendance'] = $row['subject_attendance'];
-		$array['student_id'] = $row['student_id'];
 		$array['student_email'] = $row['student_email'];
 	}
 	return $array;
@@ -84,10 +83,10 @@ if (isset($_SESSION['student_email'])) {
 }
 
 // SELECT all subjects
-$query = "SELECT * FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
+$query = "SELECT * FROM subjects JOIN students USING(student_email) WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
 
 // SELECT subject GPA
-$gpaQuery = "SELECT subject_name, subject_gpa FROM subjects WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
+$gpaQuery = "SELECT subject_name, subject_gpa FROM subjects JOIN students USING(student_email) WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
 
 //TODO SELECT the average attendance of a student across all subjects and display it in a Pie Chart form
 

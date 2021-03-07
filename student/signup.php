@@ -49,8 +49,17 @@ if (isset($_POST['register'])) {
 		// INSERT Query
 		$regQuery = "INSERT INTO students(student_fullname, student_email, student_password, class_id) 
                   VALUES('$studentFullName', '$studentEmail', '$passwordHashed', '$studentClass')";
+		$regQuerySubjects = "INSERT INTO subjects(subject_id, subject_name, subject_grade, subject_gpa, subject_attendance, student_email) VALUES
+													(1, 'English', 0, '0', 0, '$studentEmail'),
+													(2, 'Maths', 0, '0', 0, '$studentEmail'),
+													(3, 'History', 0, '0', 0, '$studentEmail'),
+													(4, 'Geography', 0, '0', 0, '$studentEmail'),
+													(5, 'Science', 0, '0', 0, '$studentEmail'),
+													(6, 'Gaeilge', 0, '0', 0, '$studentEmail')";
+													
 		// Gets result
 		$result = mysqli_query($conn, $regQuery);
+		$result += mysqli_query($conn, $regQuerySubjects);
 		$msg = '<strong>Success!</strong> You are now registered';
 		$msgClass = 'alert-success alert-dismissible fade show';
 		// Redirects to the student login after 1 second
