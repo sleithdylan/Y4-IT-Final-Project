@@ -146,7 +146,7 @@
 		</div>
 	</section>
 	<!-- Footer -->
-	<?php include('./includes/footers/footer_user.php'); ?>
+	<?php include('./includes/footers/footer_main.php'); ?>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
