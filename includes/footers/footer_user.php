@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-12">
 					<div class="d-flex flex-column">
-						<a class="navbar-brand mb-5" href="./index.php">
+						<a class="navbar-brand mb-5" href="../index.php">
 							<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
 						</a>
 					</div>
@@ -15,7 +15,7 @@
 							<a class="nav-link active disabled pt-0" href="#">Support</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./contact.php">Contact Us</a>
+							<a class="nav-link py-2" href="../contact.php">Contact Us</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link py-2" href="#help-centre">Help Centre</a>
@@ -28,10 +28,10 @@
 							<a class="nav-link active disabled pt-0" href="#">Company</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./index.php#features">Features</a>
+							<a class="nav-link py-2" href="../index.php#features">Features</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./index.php#testimonials">Testimonials</a>
+							<a class="nav-link py-2" href="../index.php#testimonials">Testimonials</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link py-2" href="#sitemap">Sitemap</a>
@@ -44,13 +44,13 @@
 							<a class="nav-link active disabled pt-0" href="#legal">Legal</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./terms.php">Terms & Conditions</a>
+							<a class="nav-link py-2" href="../terms.php">Terms & Conditions</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./privacy.php">Privacy Policy</a>
+							<a class="nav-link py-2" href="../privacy.php">Privacy Policy</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="./disclaimer.php">Disclaimer</a>
+							<a class="nav-link py-2" href="../disclaimer.php">Disclaimer</a>
 						</li>
 					</ul>
 				</div>
