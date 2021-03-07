@@ -122,6 +122,8 @@ mysqli_close($conn);
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="../assets/css/argon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"/>
+	
 </head>
 
 <body>
@@ -244,7 +246,7 @@ mysqli_close($conn);
 						<div class="card-body">
 							<!-- Table of Subjects -->
 							<div class="table-responsive">
-								<table class="table align-items-center table-flush">
+								<table id="sorttable" class="table align-items-center table-flush hover stripe" style="border: none;">
 									<thead class="thead-light">
 										<tr>
 											<th scope="col">Full Name</th>
@@ -280,12 +282,12 @@ mysqli_close($conn);
 											<td>
 												<div class="d-flex">
 													<a href="edit.php?id=<?php echo $list['student_id']?>"
-														class="px-4 py-2 mr-2 btn-primary border-0 bg-white text-primary"><i
+														class="px-4 py-2 mr-2 btn text-primary shadow-none"><i
 															class='bx bxs-edit'></i> Edit</a>
 													<form class="d-flex" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 														<input type="hidden" name="delete-id" value="<?php echo $list['student_id']; ?>">
 														<button type="submit" name="delete"
-															class="text-danger px-4 py-2 btn-primary border-0 bg-white"><i class='bx bxs-trash'></i>
+															class="text-danger px-4 py-2 btn text-primary shadow-none"><i class='bx bxs-trash'></i>
 															Delete</button>
 													</form>
 													<div>
@@ -309,6 +311,19 @@ mysqli_close($conn);
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="../assets/js/argon-design-system-extras.min.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$(document).ready(function () {
+		  $('#sorttable').DataTable({
+				"paging":   true,
+        "ordering": true,
+        "info":     true,
+				"pagingType": "numbers",
+				"lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]]
+			});
+		});
+	</script>
 </body>
 
 </html>
