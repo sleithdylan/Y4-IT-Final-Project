@@ -263,7 +263,7 @@ PRIMARY KEY (staff_id));
 -- Data for Staff
 
 INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar) VALUES
-(1, 'Daniel Obrien', 'daniel.obrien@gmail.com', 'Demo', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png');
+(1, 'Daniel Lawson', 'daniel.lawson@gmail.com', '$2y$10$6gP5WxdxC.r4PX5VCMlUreCRTFHk5me1KAeg1zzYV5pgYoNV.4pBi', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png');
 
 -- Table Students
 
@@ -289,7 +289,11 @@ PRIMARY KEY (student_id));
 -- Data for Students
 
 INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar, attendance, attendance_explained, attendance_unexplained, class_id) VALUES
-(1, 'David Ryan', 'david.ryan@gmail.com', 'Demo', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png', 70, 20, 10, 1);
+(1, 'David Moore', 'david.moore@gmail.com', '$2y$10$kmV5/cQZ3jkhsMmXdhEHHeZ22iFe6lQNax0NVatd7R1FVlBizGOH2', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png', 70, 20, 10, 1),
+(2, 'Harvey Lane', 'harvey.lane@gmail.com', '$2y$10$8gsngH.F4HVX9sUfTrIZ1..fFe7RybSvrSV2EC/atidwLJ2928Xsu', NULL, '41 Summercove, Lahinch, County Clare, V95 XE97', 'Lahinch', 'Ireland', 'V95 XE97', 'Hi, I am Harvey!', 'avataaars.png', 40, 35, 25, 1),
+(3, 'Lucy Stewart', 'lucy.stewart@gmail.com', '$2y$10$f6Ezo5BX8VwgHO2Ac4ApHeU0b1cxL9QFZopmi1nzkKHCybeL3bqBW', NULL, '40 Brookdale Road, Swords, County Dublin, K67 T9E2', 'Swords', 'Ireland', 'K67 T9E2', 'Hi, I am Lucy!', 'avataaars.png', 85, 10, 5, 1),
+(4, 'Adam Hill', 'adam.hill@gmail.com', '$2y$10$eCyqnt/D3DgbEOltd3B1a.Tojth6YkLvUE3u.08zSkcrap0nEOHha', 0863759952, '14 Woodville Heath, Athlone, County Westmeath, N37 TC95', 'Athlone', 'Ireland', 'N37 TC95', 'Hi, I am Adam!', 'avataaars.png', 50, 25, 25, 1),
+(5, 'Naomi Kerr', 'naomi.kerr@gmail.com', '$2y$10$FoYfC8NZg3v7mHYDHmQyWuwm/ori./ORJvYYPaQLf.nVhwt21nLLu', 0894538753, '22 Woodlands, Lackagh, County Galway, H65 W957', 'Lackagh', 'Ireland', 'H65 W957', 'Hi, I am Naomi!', 'avataaars.png', 75, 20, 5, 1);
 
 -- Table Subjects
 
@@ -305,12 +309,36 @@ student_email VARCHAR(255) NOT NULL);
 -- Data for Students
 
 INSERT INTO Subjects (subject_id, subject_name, subject_grade, subject_gpa, subject_attendance, student_email) VALUES
-(1, 'English', 70, '3', 95, 'david.ryan@gmail.com'),
-(2, 'Maths', 65, '2.5', 90, 'david.ryan@gmail.com'),
-(3, 'History', 80, '1.5', 95, 'david.ryan@gmail.com'),
-(4, 'Geography', 75, '2', 90, 'david.ryan@gmail.com'),
-(5, 'Science', 65, '4', 85, 'david.ryan@gmail.com'),
-(6, 'Gaeilge', 65, '2', 85, 'david.ryan@gmail.com');
+(1, 'English', 70, '3', 95, 'david.moore@gmail.com'),
+(2, 'Maths', 65, '2.5', 90, 'david.moore@gmail.com'),
+(3, 'History', 80, '1.5', 95, 'david.moore@gmail.com'),
+(4, 'Geography', 75, '2', 90, 'david.moore@gmail.com'),
+(5, 'Science', 65, '4', 85, 'david.moore@gmail.com'),
+(6, 'Gaeilge', 65, '2', 85, 'david.moore@gmail.com'),
+(1, 'English', 60, '2', 55, 'harvey.lane@gmail.com'),
+(2, 'Maths', 40, '1.5', 50, 'harvey.lane@gmail.com'),
+(3, 'History', 45, '1.5', 60, 'harvey.lane@gmail.com'),
+(4, 'Geography', 70, '4', 80, 'harvey.lane@gmail.com'),
+(5, 'Science', 50, '2.5', 65, 'harvey.lane@gmail.com'),
+(6, 'Gaeilge', 35, '1', 65, 'harvey.lane@gmail.com'),
+(1, 'English', 70, '3', 90, 'lucy.stewart@gmail.com'),
+(2, 'Maths', 80, '4', 85, 'lucy.stewart@gmail.com'),
+(3, 'History', 70, '3', 95, 'lucy.stewart@gmail.com'),
+(4, 'Geography', 75, '3', 90, 'lucy.stewart@gmail.com'),
+(5, 'Science', 70, '3', 85, 'lucy.stewart@gmail.com'),
+(6, 'Gaeilge', 60, '2.5', 75, 'lucy.stewart@gmail.com'),
+(1, 'English', 75, '4', 85, 'adam.hill@gmail.com'),
+(2, 'Maths', 70, '2.5', 80, 'adam.hill@gmail.com'),
+(3, 'History', 60, '2', 65, 'adam.hill@gmail.com'),
+(4, 'Geography', 65, '2', 70, 'adam.hill@gmail.com'),
+(5, 'Science', 45, '1.5', 50, 'adam.hill@gmail.com'),
+(6, 'Gaeilge', 55, '1.5', 55, 'adam.hill@gmail.com'),
+(1, 'English', 60, '2', 75, 'naomi.kerr@gmail.com'),
+(2, 'Maths', 65, '2.5', 80, 'naomi.kerr@gmail.com'),
+(3, 'History', 60, '2', 75, 'naomi.kerr@gmail.com'),
+(4, 'Geography', 55, '1.5', 60, 'naomi.kerr@gmail.com'),
+(5, 'Science', 75, '4', 85, 'naomi.kerr@gmail.com'),
+(6, 'Gaeilge', 60, '2', 85, 'naomi.kerr@gmail.com');
 
 -- Table Classes
 
@@ -324,4 +352,4 @@ PRIMARY KEY (class_id));
 -- Data for Classes
 
 INSERT INTO Classes (class_id, class_name, staff_email) VALUES
-(1, "Daniel Obrien", 'daniel.obrien@gmail.com');
+(1, "Daniel Lawson", 'daniel.lawson@gmail.com');
