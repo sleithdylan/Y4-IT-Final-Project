@@ -128,7 +128,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Edit Profile | CloseApart</title>
+	<title><?php echo $lists['student_fullname'] . "'s" ?> Profile | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -183,6 +183,12 @@ mysqli_close($conn);
 								<a class="dropdown-item" href="../quiz/english/english.php">English</a>
 								<a class="dropdown-item" href="../quiz/history/history.php">History</a>
 							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#announcements">
+							<i class='bx bxs-megaphone'></i>
+								<span class="nav-link-text">Announcements</span>
+							</a>
 						</li>
 					</ul>
 				</div>

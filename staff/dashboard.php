@@ -103,7 +103,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Student Overview | CloseApart</title>
+	<title>Staff Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -162,7 +162,7 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./announcements.php">
+							<a class="nav-link" href="#announcements">
 							<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>

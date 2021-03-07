@@ -3,7 +3,7 @@
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart | Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</title>
+	<title>Disclaimer | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
