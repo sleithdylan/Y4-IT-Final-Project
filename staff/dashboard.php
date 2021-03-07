@@ -264,10 +264,18 @@ mysqli_close($conn);
 												<?php echo $list['student_email'] ?>
 											</td>
 											<td>
+												<?php if($list['student_phone'] == ""): ?>
+												<?php echo 'No Phone # Provided' ?>
+												<?php else: ?>
 												<?php echo $list['student_phone'] ?>
+												<?php endif; ?>
 											</td>
 											<td>
+												<?php if($list['student_address'] == ""): ?>
+												<?php echo 'No Address Provided' ?>
+												<?php else: ?>
 												<?php echo $list['student_address'] ?>
+												<?php endif; ?>
 											</td>
 											<td>
 												<div class="d-flex">
