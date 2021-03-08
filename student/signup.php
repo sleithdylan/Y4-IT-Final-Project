@@ -138,8 +138,7 @@ mysqli_close($conn);
 							<div class="text-center text-muted mb-4">
 								<small>Sign up with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentSignupForm"
-								class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentSignupForm">
 								<div class="form-group">
 									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
