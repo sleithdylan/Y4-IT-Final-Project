@@ -117,7 +117,7 @@ if (isset($_POST['register'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Sign up with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="staffSignupForm" class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="staffSignupForm">
 								<div class="form-group">
 									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">

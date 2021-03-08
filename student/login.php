@@ -138,8 +138,7 @@ if (isset($_POST['login'])) {
 							<div class="text-center text-muted mb-4">
 								<small>Or log in with credentials</small>
 							</div>
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentLoginForm"
-								class="needs-validation">
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentLoginForm">
 								<div class="form-group mb-3">
 									<div class="input-group input-group-alternative mb-2">
 										<div class="input-group-prepend">
