@@ -19,7 +19,7 @@ $google_client->setClientId('694540862174-d8h21eutj9g6plcisqequrid268fq52a.apps.
 $google_client->setClientSecret('12j0bQvV5MDSblwiHcLbXLLY');
 
 // Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/Fork/Y4-IT-Final-Project/staff/dashboard.php'); //? Use for development
+$google_client->setRedirectUri('http://localhost/College/Y4-IT-Final-Project/staff/dashboard.php'); //? Use for development
 // $google_client->setRedirectUri('https://closeapart.co/staff/dashboard.php'); //? Use for production
 
 // View their email address

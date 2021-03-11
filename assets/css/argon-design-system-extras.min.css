@@ -93,3 +93,30 @@ body {
   position: relative;
   z-index: 10;
 }
+
+/*- Tablet-landscape (and larger) */
+/*- ----------------------------------------------*/
+@media (min-width: 992px) {
+  .drone-image {
+    position: relative;
+    margin-left: 15px;
+    z-index: 99;
+  }
+
+  .drone-text {
+    z-index: 100;
+    margin-left: 350px;
+    margin-top: -510px;
+  }
+  .login-image {
+    height: 400px;
+  }
+}
+
+/*- Tablet-landscape (and smaller) */
+/*- ----------------------------------------------*/
+@media (max-width: 992px) {
+  .login-image {
+    height: 300px;
+  }
+}
