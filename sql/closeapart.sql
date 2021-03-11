@@ -258,12 +258,13 @@ staff_country VARCHAR(255) NULL,
 staff_eircode VARCHAR(255) NULL,
 staff_bio TEXT NULL,
 staff_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+google_id VARCHAR(255) NULL,
 PRIMARY KEY (staff_id));
 
 -- Data for Staff
 
-INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar) VALUES
-(1, 'Daniel Lawson', 'daniel.lawson@gmail.com', '$2y$10$6gP5WxdxC.r4PX5VCMlUreCRTFHk5me1KAeg1zzYV5pgYoNV.4pBi', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png');
+INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar, google_id) VALUES
+(1, 'Daniel Lawson', 'daniel.lawson@gmail.com', '$2y$10$6gP5WxdxC.r4PX5VCMlUreCRTFHk5me1KAeg1zzYV5pgYoNV.4pBi', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png', NULL);
 
 -- Table Students
 

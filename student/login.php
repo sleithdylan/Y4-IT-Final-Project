@@ -125,18 +125,9 @@ if (isset($_POST['login'])) {
 					</div>
 					<?php endif; ?>
 					<div class="card bg-secondary shadow border-0">
-						<div class="card-header bg-white pb-4">
-							<div class="text-muted text-center mb-3"><small>Log in with</small></div>
-							<div class="btn-wrapper text-center">
-								<a href="#" class="btn btn-neutral btn-icon">
-									<i class='bx bxl-google align-middle'></i>
-									<span class="align-middle">Google</span>
-								</a>
-							</div>
-						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
-								<small>Or log in with credentials</small>
+								<small>Log in with credentials</small>
 							</div>
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentLoginForm">
 								<div class="form-group mb-3">

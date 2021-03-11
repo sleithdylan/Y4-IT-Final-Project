@@ -7,6 +7,83 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+//* GOOGLE DATA 
+if(isset($_GET["code"])) {
+
+	$token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+	if(!isset($token['error'])) {
+		$google_client->setAccessToken($token['access_token']);
+
+		//Store "access_token" value in $_SESSION variable for future use.
+		$_SESSION['access_token'] = $token['access_token'];
+	
+		//Create Object of Google Service OAuth 2 class
+		$google_service = new Google_Service_Oauth2($google_client);
+	
+		//Get user profile data from google
+		$data = $google_service->userinfo->get();
+
+		if(!empty($data['id']))
+	  {
+			$_SESSION['id'] = $data['id'];
+			$googleId = $_SESSION['id'];
+	  }
+
+	  if(!empty($data['email']))
+	  {
+			$_SESSION['email'] = $data['email'];
+			$googleEmail = $_SESSION['email'];
+	  }
+
+	  if(!empty($data['gender']))
+	  {
+			$_SESSION['gender'] = $data['gender'];
+			$googleGender = $_SESSION['gender'];
+	  }
+
+	  if(!empty($data['picture']))
+	  {
+			$_SESSION['picture'] = $data['picture'];
+			$googlePicture = $_SESSION['picture'];
+	  }
+
+	  if(!empty($data['family_name']))
+	  {
+			$_SESSION['familyName'] = $data['family_name'];
+			$googleFamilyName = $_SESSION['familyName'];
+		}
+		
+	  if(!empty($data['given_name']))
+	  {
+			$_SESSION['givenName'] = $data['given_name'];
+			$googleGivenName = $_SESSION['givenName'];
+		}
+
+		//Check if user exists
+		$checkIfExists = "SELECT * FROM staff WHERE staff_email='" . $googleEmail . "'";
+    $result = mysqli_query($conn, $checkIfExists);
+    $rowcount=mysqli_num_rows($result);
+
+    if($rowcount > 0){
+				// Return
+        header('Location: ./dashboard.php');
+
+    } else {
+       // INSERT Query
+			$query = "INSERT INTO staff(staff_fullname, staff_email, staff_avatar, google_id) 
+			VALUES('$googleGivenName $googleFamilyName', '$googleEmail', '$googlePicture', '$googleId')";
+			$queryClass = "INSERT INTO classes(class_name, staff_email) 
+			VALUES('$googleGivenName $googleFamilyName', '$googleEmail')";
+
+			$result = mysqli_query($conn, $query);
+			$result += mysqli_query($conn, $queryClass);
+
+			header('Location: ./dashboard.php');
+    }
+	}
+}
+
 // Puts session variable into $email
 $email = $_SESSION['staff_email'];
 
@@ -70,11 +147,11 @@ function getId($email) {
 }
 
 // If user is not logged in
-if (!isset($_SESSION['staff_email'])) {
-	// Redirect to the staff login with error message
-	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
-	exit();
-}
+// if (!isset($_SESSION['staff_email'])) {
+// 	// Redirect to the staff login with error message
+// 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
+// 	exit();
+// }
 
 // Gets user data from id
 if (isset($_SESSION['staff_email'])) {
@@ -82,7 +159,7 @@ if (isset($_SESSION['staff_email'])) {
 }
 
 // SELECT Query
-$query = "SELECT * FROM students JOIN classes USING(class_id) WHERE class_id='" . $staffData['staff_id'] . "' ORDER BY student_id ASC";
+$query = "SELECT * FROM students JOIN classes USING(class_id) WHERE staff_email='" . $staffData['staff_email'] . "' OR staff_email='" . $_SESSION['email'] . "' ORDER BY student_id ASC";
 
 // Gets Result
 $result = mysqli_query($conn, $query);
@@ -197,10 +274,14 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+										<?php if($_SESSION['access_token'] == true): ?>
+											<img src='<?php echo $_SESSION['picture']; ?>' />
+										<?php else: ?>
+											<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] ?></span>
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] . $_SESSION['givenName'] . ' ' . $_SESSION['familyName'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -209,7 +290,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $staffData['staff_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>

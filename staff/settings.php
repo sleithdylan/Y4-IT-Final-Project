@@ -33,7 +33,7 @@ if (isset($_POST['profile'])) {
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// SELECT Query
-	$query = "SELECT * FROM staff ORDER BY staff_id WHERE staff_id = {$id}";
+	$query = "SELECT * FROM staff ORDER BY staff_id WHERE staff_id = {$id} OR google_id = {$id}";
 
 	// UPDATE Query
 	$query = "UPDATE staff SET 
@@ -45,7 +45,7 @@ if (isset($_POST['profile'])) {
       staff_eircode = '$staffEircode',
       staff_bio = '$staffBio',
       staff_avatar = '$staffAvatar'
-  WHERE staff_id = {$id}";
+  WHERE staff_id = {$id} OR google_id = {$id}";
 
 	// Checks required fields
 	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['staffavatar']['tmp_name'], $target)) {
@@ -63,17 +63,17 @@ if (isset($_POST['profile'])) {
 }
 
 // If user is not logged in
-if (!isset($_SESSION['staff_email'])) {
-	// Redirect to the staff login with error message
-	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
-	exit();
-}
+// if (!isset($_SESSION['staff_email'])) {
+// 	// Redirect to the staff login with error message
+// 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
+// 	exit();
+// }
 
 // Gets ID
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 
 // SELECT Query
-$query = "SELECT * FROM staff WHERE staff_id = {$id}";
+$query = "SELECT * FROM staff WHERE staff_id = {$id} OR google_id = {$id}";
 
 // Gets result
 $result = mysqli_query($conn, $query);
@@ -219,7 +219,11 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../assets/images/avatars/<?php echo $lists['staff_avatar'] ?>' />
+										<?php if($_SESSION['access_token'] == true): ?>
+											<img src='<?php echo $_SESSION['picture']; ?>' />
+										<?php else: ?>
+											<img src='../assets/images/avatars/<?php echo $lists['staff_avatar'] ?>' />
+										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold"><?php echo $lists['staff_fullname'] ?></span>
@@ -231,7 +235,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $lists['staff_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $lists['google_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -282,13 +286,13 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="stafffullname">Full Name</label>
 												<input type="text" id="stafffullname" name="stafffullname" class="form-control"
-													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['staff_fullname']; ?>"
+													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['staff_fullname'] ?>"
 													required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="studentemail">Email Address</label>
 												<input type="email" id="studentemail" name="studentemail" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['staff_email']; ?>"
+													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['staff_email'] ?>"
 													disabled>
 											</div>
 											<div class="form-group">

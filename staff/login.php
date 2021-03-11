@@ -4,6 +4,12 @@ require('../config/config.php');
 // Creates and checks connection
 require('../config/db.php');
 
+if(isset($_SESSION['access_token'])){
+	header('Location: ./dashboard.php');
+	exit();
+}
+$loginURL = $google_client->createAuthUrl();
+
 // Starts session
 session_start();
 
@@ -128,10 +134,7 @@ if (isset($_POST['login'])) {
 						<div class="card-header bg-white pb-4">
 							<div class="text-muted text-center mb-3"><small>Log in with</small></div>
 							<div class="btn-wrapper text-center">
-								<a href="#" class="btn btn-neutral btn-icon">
-									<i class='bx bxl-google align-middle'></i>
-									<span class="align-middle">Google</span>
-								</a>
+								<input type="button" class="btn btn-neutral btn-icon" onclick="window.location = '<?php echo $loginURL ?>';" name="google" value="Google">
 							</div>
 						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
