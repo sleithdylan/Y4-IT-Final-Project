@@ -52,8 +52,8 @@
 	<!-- Who we are -->
 	<div id="who-we-are" class="py-5">
 		<div class="container">
-			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
-			<img class="d-none d-sm-none d-md-none d-lg-block shadow drone-image" style="height: 500px; width: 425px"
+			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5 drone-image">
+				<img class="d-none d-sm-none d-md-none d-lg-block shadow" style="height: 500px; width: 425px"
 						src="./assets/images/drone-school.png" alt="drone image of a school">
 				<div class="col-md col-lg"></div>
 				<div class="col-md col-lg-8 bg-white p-4 drone-text">
@@ -156,7 +156,7 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">My son enjoys his new way of working. This whole online thing was a step in the right
+							<p class="card-text">My son enjoys his new way of working. <br> This whole online thing was a step in the right
 								direction!</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/david.jpg"
