@@ -102,13 +102,13 @@ if (isset($_POST['login'])) {
 	<?php include('../includes/navs/nav_transparent.php'); ?>
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
-		<div class="container pt-2 pt-lg-6">
+		<div class="container pt-6">
 			<div class="row">
 				<div class="col">
-					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
+					<img class="d-none d-sm-none d-md-block login-image mt-6"
 						src="../assets/images/illustrations/closeapart-books.png" alt="student books">
 				</div>
-				<div class="col-md-7 col-lg-5">
+				<div class="col-md-5 col-lg-5">
 					<?php if($msg != ""): ?>
 					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -53,11 +53,10 @@
 	<div id="who-we-are" class="py-5">
 		<div class="container">
 			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5">
-				<div class="col-md col-lg-5">
-					<img class="d-none d-sm-none d-md-none d-lg-block" style="height: 300px"
-						src="./assets/images/ca-who-we-are.png" alt="who we are">
-				</div>
-				<div class="col-md col-lg">
+			<img class="d-none d-sm-none d-md-none d-lg-block shadow drone-image" style="height: 500px; width: 425px"
+						src="./assets/images/drone-school.png" alt="drone image of a school">
+				<div class="col-md col-lg"></div>
+				<div class="col-md col-lg-8 bg-white p-4 drone-text">
 					<h6 class="text-left text-primary mt-3">Who we are</h6>
 					<p class="text-left"><strong>CloseApart</strong> is a student portal driven by students. Our team’s goal is to
 						help out students complete their work online when coming into school is simply not possible. With the
@@ -221,7 +220,7 @@
 				<h4 class="col-md text-left">Contact us directly or visit the help centre</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center">
 					<a href="./contact.php" class="btn btn-outline-primary text-capitalize px-4">Contact Us</a>
-					<a href="#help-centre" class="btn btn-outline-primary text-capitalize px-4 mr-4">Help Centre</a>
+					<a href="#help-centre" class="btn btn-outline-primary text-capitalize px-4">Help Centre</a>
 				</div>
 			</div>
 		</div>

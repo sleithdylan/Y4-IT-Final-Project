@@ -108,7 +108,7 @@ if (isset($_POST['register'])) {
 	<?php include('../includes/navs/nav_transparent.php'); ?>
 	<!-- Log in -->
 	<section class="section section-shaped bg-primary section-md">
-		<div class="container pt-2 pt-lg-6">
+		<div class="container pt-6">
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<?php if($msg != ""): ?>
