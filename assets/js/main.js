@@ -69,3 +69,13 @@ $('.toggle-password').click(function () {
     $(this).addClass('bx bx-hide');
   }
 });
+
+// Create GSAP Instance
+//- ----------------------------------------------
+var tl = gsap.timeline({ defaults: { duration: 1 } });
+
+tl.from('nav', { y: -50, opacity: 0 }, '-=.1') // Fade Down
+  .from('.stagger-brand', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+  .from('.stagger-sub', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+  .from('.stagger-cta', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+  .from('.stagger-image', { scaleX: 0.8, scaleY: 0.8, opacity: 0 }, '-=1'); // Zoom In with Delay

@@ -99,7 +99,7 @@ body {
 @media (min-width: 992px) {
   .drone-image {
     position: relative;
-    margin-left: 15px;
+    margin-left: 1px;
     z-index: 99;
   }
 
