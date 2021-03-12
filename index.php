@@ -43,7 +43,7 @@
 					<a href="./staff/signup.php" class="btn btn-outline-primary text-capitalize px-5">Staff</a>
 				</div>
 				<div class="col-md-8 col-lg-6">
-					<img class="d-none d-sm-none d-md-block mt-4" style="height: 425px"
+					<img class="d-none d-sm-none d-md-block mt-md-5 mt-lg-0" style="height: 425px"
 						src="./assets/images/illustrations/closeapart-work.png" alt="closeapart work">
 				</div>
 			</div>

@@ -88,8 +88,6 @@ $query = "SELECT * FROM subjects JOIN students USING(student_email) WHERE studen
 // SELECT subject GPA
 $gpaQuery = "SELECT subject_name, subject_gpa FROM subjects JOIN students USING(student_email) WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
 
-//TODO SELECT the average attendance of a student across all subjects and display it in a Pie Chart form
-
 // Gets result
 $result = mysqli_query($conn, $query);
 $gpaResult = mysqli_query($conn, $gpaQuery);
