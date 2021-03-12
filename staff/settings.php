@@ -63,11 +63,11 @@ if (isset($_POST['profile'])) {
 }
 
 // If user is not logged in
-// if (!isset($_SESSION['staff_email'])) {
-// 	// Redirect to the staff login with error message
-// 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
-// 	exit();
-// }
+if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
+	// Redirect to the staff login with error message
+	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
+	exit();
+}
 
 // Gets ID
 $id = mysqli_real_escape_string($conn, $_GET['id']);

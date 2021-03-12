@@ -68,7 +68,7 @@ if (isset($_POST['register'])) {
 	else {
 		//! Failed
 		// Returns error
-		$msg = '<strong>Error!</strong> Email taken...';
+		$msg = '<strong>Error!</strong> This email is already in use';
 		$msgClass = 'alert-danger alert-dismissible fade show my-4';
 	}
 

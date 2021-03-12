@@ -97,11 +97,11 @@ if (isset($_POST['profile'])) {
 }
 
 // If user is not logged in
-// if (!isset($_SESSION['staff_email'])) {
-// 	// Redirect to the student login with error message
-// 	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
-// 	exit();
-// }
+if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
+	// Redirect to the student login with error message
+	header('Location: ./login.php?err=' . urlencode('<strong>Error!</strong> You need to log in!'));
+	exit();
+}
 
 // Gets ID
 $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -253,10 +253,14 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+										<?php if($_SESSION['access_token'] == true): ?>
+											<img src='<?php echo $_SESSION['picture']; ?>' />
+										<?php else: ?>
+											<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] ?></span>
+										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] . $_SESSION['givenName'] . ' ' . $_SESSION['familyName'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -265,7 +269,7 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $lists['student_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
