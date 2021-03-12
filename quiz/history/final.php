@@ -130,7 +130,7 @@ $shouts = mysqli_query($con, $query);
 							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../../assets/images/avatars/avataaars.png' />
+										<img src='../../assets/images/avatars/david-avataaar.png' />
 									</span>
 									<div class="media-body  ml-2  d-none d-lg-block">
 										<span class="mb-0 text-sm  font-weight-bold">David</span>

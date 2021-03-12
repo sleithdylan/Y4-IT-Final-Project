@@ -340,7 +340,10 @@ mysqli_close($conn);
 									<tbody>
 										<?php foreach($lists as $list) : ?>
 										<tr>
-											<td>
+											<td class="d-flex align-items-center">
+											<span class="avatar avatar-sm rounded-circle mr-3">
+												<img src='../assets/images/avatars/<?php echo $list['student_avatar'] ?>' />
+											</span>
 												<?php echo $list['student_fullname'] ?>
 											</td>
 											<td>

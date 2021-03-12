@@ -257,14 +257,14 @@ staff_city VARCHAR(255) NULL,
 staff_country VARCHAR(255) NULL,
 staff_eircode VARCHAR(255) NULL,
 staff_bio TEXT NULL,
-staff_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+staff_avatar VARCHAR(255) DEFAULT 'daniel-avataaar.png',
 google_id VARCHAR(255) NULL,
 PRIMARY KEY (staff_id));
 
 -- Data for Staff
 
 INSERT INTO Staff (staff_id, staff_fullname, staff_email, staff_password, staff_phone, staff_address, staff_city, staff_country, staff_eircode, staff_bio, staff_avatar, google_id) VALUES
-(1, 'Daniel Lawson', 'daniel.lawson@gmail.com', '$2y$10$6gP5WxdxC.r4PX5VCMlUreCRTFHk5me1KAeg1zzYV5pgYoNV.4pBi', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'avataaars.png', NULL);
+(1, 'Daniel Lawson', 'daniel.lawson@gmail.com', '$2y$10$6gP5WxdxC.r4PX5VCMlUreCRTFHk5me1KAeg1zzYV5pgYoNV.4pBi', 0865992719, '10 Doughiska Rd, Doughiska, County Galway, H91 R4H9', 'Galway', 'Ireland', 'H91 R4H9', 'I`m Daniel, vice principle of Merlin Woods primary school', 'daniel-avataaar.png', NULL);
 
 -- Table Students
 
@@ -280,7 +280,7 @@ student_city VARCHAR(255) NULL,
 student_country VARCHAR(255) NULL,
 student_eircode VARCHAR(255) NULL,
 student_bio TEXT NULL,
-student_avatar VARCHAR(255) DEFAULT 'avataaars.png',
+student_avatar VARCHAR(255) DEFAULT 'david-avataaar.png',
 attendance SMALLINT(3) NULL,
 attendance_explained SMALLINT(3) NULL,
 attendance_unexplained SMALLINT(3) NULL,
@@ -290,11 +290,11 @@ PRIMARY KEY (student_id));
 -- Data for Students
 
 INSERT INTO Students (student_id, student_fullname, student_email, student_password, student_phone, student_address, student_city, student_country, student_eircode, student_bio, student_avatar, attendance, attendance_explained, attendance_unexplained, class_id) VALUES
-(1, 'David Moore', 'david.moore@gmail.com', '$2y$10$kmV5/cQZ3jkhsMmXdhEHHeZ22iFe6lQNax0NVatd7R1FVlBizGOH2', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'avataaars.png', 70, 20, 10, 1),
-(2, 'Harvey Lane', 'harvey.lane@gmail.com', '$2y$10$8gsngH.F4HVX9sUfTrIZ1..fFe7RybSvrSV2EC/atidwLJ2928Xsu', NULL, '41 Summercove, Lahinch, County Clare, V95 XE97', 'Lahinch', 'Ireland', 'V95 XE97', 'Hi, I am Harvey!', 'avataaars.png', 40, 35, 25, 1),
-(3, 'Lucy Stewart', 'lucy.stewart@gmail.com', '$2y$10$f6Ezo5BX8VwgHO2Ac4ApHeU0b1cxL9QFZopmi1nzkKHCybeL3bqBW', NULL, '40 Brookdale Road, Swords, County Dublin, K67 T9E2', 'Swords', 'Ireland', 'K67 T9E2', 'Hi, I am Lucy!', 'avataaars.png', 85, 10, 5, 1),
-(4, 'Adam Hill', 'adam.hill@gmail.com', '$2y$10$eCyqnt/D3DgbEOltd3B1a.Tojth6YkLvUE3u.08zSkcrap0nEOHha', 0863759952, '14 Woodville Heath, Athlone, County Westmeath, N37 TC95', 'Athlone', 'Ireland', 'N37 TC95', 'Hi, I am Adam!', 'avataaars.png', 50, 25, 25, 1),
-(5, 'Naomi Kerr', 'naomi.kerr@gmail.com', '$2y$10$FoYfC8NZg3v7mHYDHmQyWuwm/ori./ORJvYYPaQLf.nVhwt21nLLu', 0894538753, '22 Woodlands, Lackagh, County Galway, H65 W957', 'Lackagh', 'Ireland', 'H65 W957', 'Hi, I am Naomi!', 'avataaars.png', 75, 20, 5, 1);
+(1, 'David Moore', 'david.moore@gmail.com', '$2y$10$kmV5/cQZ3jkhsMmXdhEHHeZ22iFe6lQNax0NVatd7R1FVlBizGOH2', 0892861635, '93 Park Street, Dundalk, County Louth, A91 P868', 'Dundalk', 'Ireland', 'A91 P868', 'Hi, I am David!', 'david-avataaar.png', 70, 20, 10, 1),
+(2, 'Harvey Lane', 'harvey.lane@gmail.com', '$2y$10$8gsngH.F4HVX9sUfTrIZ1..fFe7RybSvrSV2EC/atidwLJ2928Xsu', NULL, '41 Summercove, Lahinch, County Clare, V95 XE97', 'Lahinch', 'Ireland', 'V95 XE97', 'Hi, I am Harvey!', 'harvey-avataaar.png', 40, 35, 25, 1),
+(3, 'Lucy Stewart', 'lucy.stewart@gmail.com', '$2y$10$f6Ezo5BX8VwgHO2Ac4ApHeU0b1cxL9QFZopmi1nzkKHCybeL3bqBW', NULL, '40 Brookdale Road, Swords, County Dublin, K67 T9E2', 'Swords', 'Ireland', 'K67 T9E2', 'Hi, I am Lucy!', 'lucy-avataaar.png', 85, 10, 5, 1),
+(4, 'Adam Hill', 'adam.hill@gmail.com', '$2y$10$eCyqnt/D3DgbEOltd3B1a.Tojth6YkLvUE3u.08zSkcrap0nEOHha', 0863759952, '14 Woodville Heath, Athlone, County Westmeath, N37 TC95', 'Athlone', 'Ireland', 'N37 TC95', 'Hi, I am Adam!', 'adam-avataaar.png', 50, 25, 25, 1),
+(5, 'Naomi Kerr', 'naomi.kerr@gmail.com', '$2y$10$FoYfC8NZg3v7mHYDHmQyWuwm/ori./ORJvYYPaQLf.nVhwt21nLLu', 0894538753, '22 Woodlands, Lackagh, County Galway, H65 W957', 'Lackagh', 'Ireland', 'H65 W957', 'Hi, I am Naomi!', 'naomi-avataaar.png', 75, 20, 5, 1);
 
 -- Table Subjects
 
