@@ -2,9 +2,6 @@
 
 //* Google Client
 
-// Include Google Client Library for PHP autoload file
-require_once '../vendor/autoload.php';
-
 $http = new GuzzleHttp\Client(['verify' => 'C:\MAMP\bin\php\php7.4.1\extras\ssl\cacert.pem']); //? Use for development, FIXES cURL error 60: SSL certificate problem: unable to get local issuer certificate (LOCALHOST)
 
 // Instantiate Google API Client for call Google API

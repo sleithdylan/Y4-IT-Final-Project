@@ -2,6 +2,8 @@
 // Starts session
 session_start();
 
+// Include Google Client Library for PHP autoload file
+require_once '../vendor/autoload.php';
 // Requires config
 require('../config/config.php');
 // Creates and checks connection
@@ -141,13 +143,16 @@ mysqli_close($conn);
 						<li class="nav-item">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
-								<i class='bx bxs-game'></i>
-								<span class="nav-link-text">Quizzes</span>
+								<i class='bx bxs-book'></i>
+								<span class="nav-link-text">Subjects</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../quiz/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="../quiz/english/english.php">English</a>
-								<a class="dropdown-item" href="../quiz/history/history.php">History</a>
+								<a class="dropdown-item" href="./subjects/english.php">English</a>
+								<a class="dropdown-item" href="#">Maths</a>
+								<a class="dropdown-item" href="#">History</a>
+								<a class="dropdown-item" href="#">Geography</a>
+								<a class="dropdown-item" href="#">Science</a>
+								<a class="dropdown-item" href="#">Gaeilge</a>
 							</div>
 						</li>
 						<li class="nav-item">
