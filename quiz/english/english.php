@@ -1,4 +1,7 @@
 <?php
+
+// Include Google Client Library for PHP autoload file
+require_once '../vendor/autoload.php';
 // Requires Config
 require('../config/config.php');
 // Creates and Checks Connection

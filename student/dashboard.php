@@ -2,6 +2,8 @@
 // Starts session
 session_start();
 
+// Include Google Client Library for PHP autoload file
+require_once '../vendor/autoload.php';
 // Requires config
 require('../config/config.php');
 // Creates and checks connection
