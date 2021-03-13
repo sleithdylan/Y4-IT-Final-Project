@@ -3,122 +3,21 @@
 session_start();
 
 // Include Google Client Library for PHP autoload file
-require_once '../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 // Requires config
-require('../config/config.php');
+require('../../../config/config.php');
 // Creates and checks connection
-require('../config/db.php');
-
-//* GOOGLE DATA 
-if(isset($_GET["code"])) {
-
-	$token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
-
-	if(!isset($token['error'])) {
-		$google_client->setAccessToken($token['access_token']);
-
-		//Store "access_token" value in $_SESSION variable for future use.
-		$_SESSION['access_token'] = $token['access_token'];
-	
-		//Create Object of Google Service OAuth 2 class
-		$google_service = new Google_Service_Oauth2($google_client);
-	
-		//Get user profile data from google
-		$data = $google_service->userinfo->get();
-
-		if(!empty($data['id']))
-	  {
-			$_SESSION['id'] = $data['id'];
-			$googleId = $_SESSION['id'];
-	  }
-
-	  if(!empty($data['email']))
-	  {
-			$_SESSION['email'] = $data['email'];
-			$googleEmail = $_SESSION['email'];
-	  }
-
-	  if(!empty($data['gender']))
-	  {
-			$_SESSION['gender'] = $data['gender'];
-			$googleGender = $_SESSION['gender'];
-	  }
-
-	  if(!empty($data['picture']))
-	  {
-			$_SESSION['picture'] = $data['picture'];
-			$googlePicture = $_SESSION['picture'];
-	  }
-
-	  if(!empty($data['family_name']))
-	  {
-			$_SESSION['familyName'] = $data['family_name'];
-			$googleFamilyName = $_SESSION['familyName'];
-		}
-		
-	  if(!empty($data['given_name']))
-	  {
-			$_SESSION['givenName'] = $data['given_name'];
-			$googleGivenName = $_SESSION['givenName'];
-		}
-
-		//Check if user exists
-		$checkIfExists = "SELECT * FROM staff WHERE staff_email='" . $googleEmail . "'";
-    $result = mysqli_query($conn, $checkIfExists);
-    $rowcount=mysqli_num_rows($result);
-
-    if($rowcount > 0){
-				// Return
-        header('Location: ./dashboard.php');
-
-    } else {
-       // INSERT Query
-			$query = "INSERT INTO staff(staff_fullname, staff_email, staff_avatar, google_id) 
-			VALUES('$googleGivenName $googleFamilyName', '$googleEmail', '$googlePicture', '$googleId')";
-			$queryClass = "INSERT INTO classes(class_name, staff_email) 
-			VALUES('$googleGivenName $googleFamilyName', '$googleEmail')";
-
-			$result = mysqli_query($conn, $query);
-			$result += mysqli_query($conn, $queryClass);
-
-			header('Location: ./dashboard.php');
-    }
-	}
-}
+require('../../../config/db.php');
 
 // Puts session variable into $email
 $email = $_SESSION['staff_email'];
 
-// Checks for posted data
-if (isset($_POST['delete'])) {
-  // Gets form data
-  $delete_id = mysqli_real_escape_string($conn, $_POST['delete-id']);
-
-  // DELETE Query
-  $query = "DELETE FROM students WHERE student_id = {$delete_id}";
-
-  if (mysqli_query($conn, $query)) {
-    // Passed
-    $msg = '<strong>Success!</strong> Student has been removed';
-    $msgClass = 'alert-success alert-dismissible fade show mt-4';
-    // Redirects to index.php
-    header('refresh:1; url=dashboard.php');
-  }
-  else {
-    // Failed
-    // Returns error
-    $msg = '<strong>Error!</strong> Something went wrong.. (' . mysqli_error($conn) . ')';
-    $msgClass = 'alert-danger alert-dismissible fade show my-4';
-  }
-
-}
-
 // Gets staff data
 function getStaffData($staffId) {
 	// Requires config
-	require('../config/config.php');
+	require('../../../config/config.php');
 	// Creates and checks connection
-	require('../config/db.php');
+	require('../../../config/db.php');
 	// Creates array
 	$array = array();
 	// SELECT query
@@ -138,9 +37,9 @@ function getStaffData($staffId) {
 // Get staff ID
 function getId($email) {
 	// Requires config
-	require('../config/config.php');
+	require('../../../config/config.php');
 	// Creates and checks connection
-	require('../config/db.php');
+	require('../../../config/db.php');
 	// SELECT query
 	$query = mysqli_query($conn, "SELECT staff_id FROM staff WHERE staff_email='" . $email . "'");
 	while ($row = mysqli_fetch_assoc($query)) {
@@ -161,7 +60,7 @@ if (isset($_SESSION['staff_email'])) {
 }
 
 // SELECT Query
-$query = "SELECT * FROM students JOIN classes USING(class_id) WHERE staff_email='" . $staffData['staff_email'] . "' OR staff_email='" . $_SESSION['email'] . "' ORDER BY student_id ASC";
+$query = "SELECT * FROM students JOIN classes USING(class_id) JOIN subjects USING(student_email) WHERE subject_name='English' AND staff_email='" . $staffData['staff_email'] . "' OR subject_name='English' AND staff_email='" . $_SESSION['email'] . "' ORDER BY student_id ASC";
 
 // Gets Result
 $result = mysqli_query($conn, $query);
@@ -182,7 +81,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Staff Overview | CloseApart</title>
+	<title>English Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -190,8 +89,8 @@ mysqli_close($conn);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../../assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
@@ -200,7 +99,7 @@ mysqli_close($conn);
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="../assets/css/argon.min.css">
+	<link rel="stylesheet" href="../../../assets/css/argon.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"/>
 	
 </head>
@@ -210,8 +109,8 @@ mysqli_close($conn);
 	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
-				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
-					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -220,7 +119,7 @@ mysqli_close($conn);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="./dashboard.php">
+							<a class="nav-link active" href="../../dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -235,12 +134,12 @@ mysqli_close($conn);
 								<span class="nav-link-text">Subjects</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./subjects/english/english.php">English</a>
-								<a class="dropdown-item" href="./subjects/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="./subjects/history/history.php">History</a>
-								<a class="dropdown-item" href="./subjects/geography/geography.php">Geography</a>
-								<a class="dropdown-item" href="./subjects/science/science.php">Science</a>
-								<a class="dropdown-item" href="./subjects/gaeilge/gaeilge.php">Gaeilge</a>
+								<a class="dropdown-item" href="../../subjects/english/english.php">English</a>
+								<a class="dropdown-item" href="../../subjects/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../../subjects/history/history.php">History</a>
+								<a class="dropdown-item" href="../../subjects/geography/geography.php">Geography</a>
+								<a class="dropdown-item" href="../../subjects/science/science.php">Science</a>
+								<a class="dropdown-item" href="../../subjects/gaeilge/gaeilge.php">Gaeilge</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -282,7 +181,7 @@ mysqli_close($conn);
 										<?php if($_SESSION['access_token'] == true): ?>
 											<img src='<?php echo $_SESSION['picture']; ?>' />
 										<?php else: ?>
-											<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+											<img src='../../../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
 										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
@@ -291,16 +190,16 @@ mysqli_close($conn);
 								</div>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right ">
-								<a href="./dashboard.php" class="dropdown-item">
+								<a href="../../dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
+								<a href="../../settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="./logout.php" class="dropdown-item">
+								<a href="../../logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -336,49 +235,35 @@ mysqli_close($conn);
 									<thead class="thead-light">
 										<tr>
 											<th scope="col">Full Name</th>
-											<th scope="col">Email</th>
-											<th scope="col">Phone #</th>
-											<th scope="col">Address</th>
+											<th scope="col">Grade</th>
+											<th scope="col">GPA</th>
+											<th scope="col">Attendance</th>
 											<th scope="col">Actions</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php foreach($lists as $list) : ?>
 										<tr>
-											<td class="d-flex align-items-center">
+										<td class="d-flex align-items-center">
 											<span class="avatar avatar-sm rounded-circle mr-3">
-												<img src='../assets/images/avatars/<?php echo $list['student_avatar'] ?>' />
+												<img src='../../../assets/images/avatars/<?php echo $list['student_avatar'] ?>' />
 											</span>
 												<?php echo $list['student_fullname'] ?>
 											</td>
 											<td>
-												<?php echo $list['student_email'] ?>
+												<?php echo $list['subject_grade'] . '%' ?>
 											</td>
 											<td>
-												<?php if($list['student_phone'] == ""): ?>
-												<?php echo 'No Phone # Provided' ?>
-												<?php else: ?>
-												<?php echo $list['student_phone'] ?>
-												<?php endif; ?>
+												<?php echo $list['subject_gpa'] ?>
 											</td>
 											<td>
-												<?php if($list['student_address'] == ""): ?>
-												<?php echo 'No Address Provided' ?>
-												<?php else: ?>
-												<?php echo $list['student_address'] ?>
-												<?php endif; ?>
+												<?php echo $list['subject_attendance'] . '%' ?>
 											</td>
 											<td>
 												<div class="d-flex">
 													<a href="edit.php?id=<?php echo $list['student_id']?>"
 														class="px-4 py-2 mr-2 btn text-primary shadow-none"><i
 															class='bx bxs-edit'></i> Edit</a>
-													<form class="d-flex" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
-														<input type="hidden" name="delete-id" value="<?php echo $list['student_id']; ?>">
-														<button type="submit" name="delete"
-															class="text-danger px-4 py-2 btn text-primary shadow-none"><i class='bx bxs-trash'></i>
-															Delete</button>
-													</form>
 													<div>
 											</td>
 										</tr>
@@ -398,8 +283,8 @@ mysqli_close($conn);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="../assets/js/argon-design-system-extras.min.js"></script>
-	<script src="../assets/js/main.js"></script>
+	<script src="../../../assets/js/argon-design-system-extras.min.js"></script>
+	<script src="../../../assets/js/main.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 	<script>
