@@ -3,11 +3,11 @@
 session_start();
 
 // Include Google Client Library for PHP autoload file
-require_once '../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 // Requires config
-require('../config/config.php');
+require('../../../config/config.php');
 // Creates and checks connection
-require('../config/db.php');
+require('../../../config/db.php');
 
 // Message variables
 $msg = '';
@@ -19,9 +19,9 @@ $email = $_SESSION['staff_email'];
 // Gets staff data
 function getStaffData($staffId) {
 	// Requires config
-	require('../config/config.php');
+	require('../../../config/config.php');
 	// Creates and checks connection
-	require('../config/db.php');
+	require('../../../config/db.php');
 	// Creates array
 	$array = array();
 	// SELECT query
@@ -40,9 +40,9 @@ function getStaffData($staffId) {
 // Get staff ID
 function getId($email) {
 	// Requires config
-	require('../config/config.php');
+	require('../../../config/config.php');
 	// Creates and checks connection
-	require('../config/db.php');
+	require('../../../config/db.php');
 	// SELECT query
 	$query = mysqli_query($conn, "SELECT staff_id FROM staff WHERE staff_email='" . $email . "'");
 	while ($row = mysqli_fetch_assoc($query)) {
@@ -58,35 +58,27 @@ if (isset($_SESSION['staff_email'])) {
 // Checks for posted data
 if (isset($_POST['profile'])) {
 	// Gets form data
-	$studentFullName = mysqli_real_escape_string($conn, $_POST['studentfullname']);
-	$studentPhone = mysqli_real_escape_string($conn, $_POST['studentphone']);
-	$studentAddress = mysqli_real_escape_string($conn, $_POST['studentaddress']);
-	$studentCity = mysqli_real_escape_string($conn, $_POST['studentcity']);
-	$studentCountry = mysqli_real_escape_string($conn, $_POST['studentcountry']);
-	$studentEircode = mysqli_real_escape_string($conn, $_POST['studenteircode']);
-	$studentBio = mysqli_real_escape_string($conn, $_POST['studentabout']);
+	$grade = mysqli_real_escape_string($conn, $_POST['grade']);
+	$gpa = mysqli_real_escape_string($conn, $_POST['gpa']);
+	$attendance = mysqli_real_escape_string($conn, $_POST['attendance']);
 
 	// Gets ID
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// SELECT Query
-	$query = "SELECT * FROM students ORDER BY student_id WHERE student_id = {$id}";
+	$query = "SELECT * FROM students JOIN subjects USING(student_email) ORDER BY student_id WHERE student_id = {$id}";
 
 	// UPDATE Query
-	$query = "UPDATE students SET 
-      student_fullname = '$studentFullName',
-      student_phone = '$studentPhone', 
-      student_address = '$studentAddress', 
-      student_city = '$studentCity',
-      student_country = '$studentCountry',
-      student_eircode = '$studentEircode',
-      student_bio = '$studentBio'
-  WHERE student_id = {$id}";
+	$query = "UPDATE students JOIN subjects USING(student_email) SET 
+      subject_grade = '$grade',
+      subject_gpa = '$gpa', 
+      subject_attendance = '$attendance'
+  WHERE subject_name='Gaeilge' AND student_id = {$id}";
 
 	// Checks required fields
 	if (mysqli_query($conn, $query)) {
 		//* Passed
-		$msg = '<strong>Success!</strong> Profile has been edited!';
+		$msg = '<strong>Success!</strong> Grade, GPA & Attendance has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
 	}
 	else {
@@ -109,7 +101,7 @@ if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 
 // SELECT Query
-$query = "SELECT * FROM students WHERE student_id = {$id}";
+$query = "SELECT * FROM students JOIN subjects USING(student_email) WHERE subject_name='Gaeilge' AND student_id = {$id}";
 
 // Gets result
 $result = mysqli_query($conn, $query);
@@ -130,7 +122,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title><?php echo $lists['student_fullname'] . "'s" ?> Profile | CloseApart</title>
+	<title><?php echo $lists['student_fullname'] . "'s" ?> Grade, GPA & Attendance | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -138,8 +130,8 @@ mysqli_close($conn);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../../assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../../assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
@@ -148,7 +140,7 @@ mysqli_close($conn);
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="../assets/css/argon.min.css">
+	<link rel="stylesheet" href="../../../assets/css/argon.min.css">
 </head>
 
 <body>
@@ -156,8 +148,8 @@ mysqli_close($conn);
 	<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
-				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
-					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -166,7 +158,7 @@ mysqli_close($conn);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="./dashboard.php">
+							<a class="nav-link" href="../../dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -181,12 +173,12 @@ mysqli_close($conn);
 								<span class="nav-link-text">Subjects</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./subjects/english/english.php">English</a>
-								<a class="dropdown-item" href="./subjects/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="./subjects/history/history.php">History</a>
-								<a class="dropdown-item" href="./subjects/geography/geography.php">Geography</a>
-								<a class="dropdown-item" href="./subjects/science/science.php">Science</a>
-								<a class="dropdown-item" href="./subjects/gaeilge/gaeilge.php">Gaeilge</a>
+								<a class="dropdown-item" href="../../subjects/english/english.php">English</a>
+								<a class="dropdown-item" href="../../subjects/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../../subjects/history/history.php">History</a>
+								<a class="dropdown-item" href="../../subjects/geography/geography.php">Geography</a>
+								<a class="dropdown-item" href="../../subjects/science/science.php">Science</a>
+								<a class="dropdown-item" href="../../subjects/gaeilge/gaeilge.php">Gaeilge</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -231,7 +223,7 @@ mysqli_close($conn);
 									<a href="#" class="list-group-item list-group-item-action">
 										<div class="row align-items-center">
 											<div class="col-auto">
-												<img alt="Image placeholder" src="../assets/images/testimonials/john.jpg"
+												<img alt="Image placeholder" src="../../../assets/images/testimonials/john.jpg"
 													class="avatar rounded-circle">
 											</div>
 											<div class="col ml--2">
@@ -261,7 +253,7 @@ mysqli_close($conn);
 										<?php if($_SESSION['access_token'] == true): ?>
 											<img src='<?php echo $_SESSION['picture']; ?>' />
 										<?php else: ?>
-											<img src='../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+											<img src='../../../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
 										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
@@ -270,16 +262,16 @@ mysqli_close($conn);
 								</div>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right ">
-								<a href="./dashboard.php" class="dropdown-item">
+								<a href="../../dashboard.php" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
+								<a href="../../settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="./logout.php" class="dropdown-item">
+								<a href="../../logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -303,83 +295,35 @@ mysqli_close($conn);
 						<div class="card-header">
 							<div class="row align-items-center">
 								<div class="col-8">
-									<h3 class="mb-0">Edit profile </h3>
+									<h3 class="mb-0"><?php echo $lists['student_fullname'] . "'s" ?> Grade, GPA & Attendance </h3>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="studentsettings"
+							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" id="subjectsettings"
 								enctype="multipart/form-data">
-								<h6 class="heading-small text-muted mb-4">Basic information</h6>
 								<div class="pl-lg-4">
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label class="form-control-label" for="studentfullname">Full Name</label>
-												<input type="text" id="studentfullname" name="studentfullname" class="form-control"
-													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>"
+												<label class="form-control-label" for="grade">Gaeilge Grade</label>
+												<input type="text" id="grade" name="grade" class="form-control"
+													placeholder="Grade, e.g. 85" value="<?php echo $lists['subject_grade']; ?>"
 													required>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="student-email">Email Address</label>
-												<input type="email" id="student-email" name="student-email" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>"
-													disabled>
+												<label class="form-control-label" for="gpa">Gaeilge GPA</label>
+												<input type="text" class="form-control" id="gpa" name="gpa"
+													placeholder="GPA, e.g. 4.5" value="<?php echo $lists['subject_gpa']; ?>"
+													required>
 											</div>
 											<div class="form-group">
-												<label class="form-control-label" for="studentphone">Phone Number</label>
-												<input type="text" class="form-control" id="studentphone" name="studentphone"
-													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>"
+												<label class="form-control-label" for="attendance">Gaeilge Attendance</label>
+												<input type="text" class="form-control" id="attendance" name="attendance"
+													placeholder="Attendance, e.g. 100" value="<?php echo $lists['subject_attendance']; ?>"
 													required>
 											</div>
 										</div>
-									</div>
-								</div>
-								<hr class="my-4" />
-								<!-- Address -->
-								<h6 class="heading-small text-muted mb-4">Contact information</h6>
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="form-group">
-												<label class="form-control-label" for="studentaddress">Address</label>
-												<input id="studentaddress" name="studentaddress" class="form-control" placeholder="Home Address"
-													value="<?php echo $lists['student_address']; ?>" type="text" required>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label class="form-control-label" for="studentcity">City</label>
-												<input type="text" id="studentcity" name="studentcity" class="form-control" placeholder="City"
-													value="<?php echo $lists['student_city']; ?>" required>
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label class="form-control-label" for="studentcountry">Country</label>
-												<input type="text" id="studentcountry" name="studentcountry" class="form-control"
-													placeholder="Country" value="<?php echo $lists['student_country']; ?>" required>
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<div class="form-group">
-												<label class="form-control-label" for="studenteircode">Eircode</label>
-												<input type="text" id="studenteircode" name="studenteircode" class="form-control"
-													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>" required>
-											</div>
-										</div>
-									</div>
-								</div>
-								<hr class="my-4" />
-								<!-- Description -->
-								<h6 class="heading-small text-muted mb-4">About me</h6>
-								<div class="pl-lg-4">
-									<div class="form-group">
-										<label class="form-control-label" for="studentabout">About Me</label>
-										<textarea rows="4" class="form-control" id="studentabout" name="studentabout"
-											placeholder="Tell us about youself..." required><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
@@ -400,8 +344,8 @@ mysqli_close($conn);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="../assets/js/argon-design-system-extras.min.js"></script>
-	<script src="../assets/js/main.js"></script>
+	<script src="../../../assets/js/argon-design-system-extras.min.js"></script>
+	<script src="../../../assets/js/main.js"></script>
 	<script>
 		$.validator.setDefaults({
 			errorElement: 'span',
@@ -417,41 +361,38 @@ mysqli_close($conn);
 			}
 		});
 
-		$("#studentsettings").validate({
+		$("#subjectsettings").validate({
 			rules: {
-				studentfullname: "required",
-				studentphone: {
+				grade: {
 					required: true,
 					digits: "true",
-					maxlength: 10
+					maxlength: 2
 				},
-				studentaddress: "required",
-				studentcity: "required",
-				studentcountry: "required",
-				studenteircode: "required",
-				studentabout: "required"
+				gpa: {
+					required: true,
+					maxlength: 3
+				},
+				attendance: {
+					required: true,
+					digits: "true",
+					maxlength: 3
+				}
 			},
 			messages: {
-				studentfullname: "Please enter your full name",
-				studentphone: {
-					required: "Please enter your phone number",
+				grade: {
+					required: "Please enter a grade",
 					digits: "Please enter digits only",
-					maxlength: "You phone number can only be 10 digits long"
+					maxlength: "The grade can only be 3 characters long"
 				},
-				studentaddress: {
-					required: "Please enter your address"
+				gpa: {
+					required: "Please enter a GPA",
+					digits: "Please enter digits only",
+					maxlength: "The gpa can only be 3 characters long"
 				},
-				studentcity: {
-					required: "Please enter your city"
-				},
-				studentcountry: {
-					required: "Please enter your country"
-				},
-				studenteircode: {
-					required: "Please enter your eircode"
-				},
-				studentabout: {
-					required: "Please enter something about yourself"
+				attendance: {
+					required: "Please enter an attendance",
+					digits: "Please enter digits only",
+					maxlength: "The attendance can only be 3 digits long"
 				}
 			}
 		});

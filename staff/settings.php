@@ -147,12 +147,12 @@ mysqli_close($conn);
 								<span class="nav-link-text">Subjects</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="./subjects/english.php">English</a>
-								<a class="dropdown-item" href="#">Maths</a>
-								<a class="dropdown-item" href="#">History</a>
-								<a class="dropdown-item" href="#">Geography</a>
-								<a class="dropdown-item" href="#">Science</a>
-								<a class="dropdown-item" href="#">Gaeilge</a>
+								<a class="dropdown-item" href="./subjects/english/english.php">English</a>
+								<a class="dropdown-item" href="./subjects/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="./subjects/history/history.php">History</a>
+								<a class="dropdown-item" href="./subjects/geography/geography.php">Geography</a>
+								<a class="dropdown-item" href="./subjects/science/science.php">Science</a>
+								<a class="dropdown-item" href="./subjects/gaeilge/gaeilge.php">Gaeilge</a>
 							</div>
 						</li>
 						<li class="nav-item">
