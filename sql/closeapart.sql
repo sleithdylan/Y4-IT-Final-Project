@@ -354,3 +354,19 @@ PRIMARY KEY (class_id));
 
 INSERT INTO Classes (class_id, class_name, staff_email) VALUES
 (1, "Daniel Lawson", 'daniel.lawson@gmail.com');
+
+-- Table Announcements
+
+DROP TABLE IF EXISTS Announcements;
+CREATE TABLE IF NOT EXISTS Announcements (
+  announcement_id SMALLINT(3) NOT NULL AUTO_INCREMENT,
+  announcement_subject VARCHAR(255) NOT NULL,
+  announcement_description TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  staff_email VARCHAR(255) NULL DEFAULT NULL,
+PRIMARY KEY (announcement_id));
+
+-- Data for Announcements
+
+INSERT INTO Announcements (announcement_id, announcement_subject, announcement_description, created_at, staff_email) VALUES
+(1, 'Homework', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nulla commodi fuga incidunt aliquid quibusdam.', '2021-02-01 10:30:00', 'daniel.lawson@gmail.com');
