@@ -63,7 +63,7 @@ if (isset($_SESSION['student_email'])) {
 }
 
 // SELECT Query
-$query = "SELECT * FROM announcements JOIN staff USING(staff_email) ORDER BY announcement_id ASC";
+$query = "SELECT * FROM staff ORDER BY staff_id ASC";
 
 // Gets result
 $result = mysqli_query($conn, $query);
@@ -84,7 +84,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Announcements Overview | CloseApart</title>
+	<title>Contact | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -144,13 +144,13 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="./announcements.php">
+							<a class="nav-link" href="./announcements.php">
 								<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./contact.php">
+							<a class="nav-link active" href="./contact.php">
 							<i class='bx bxs-contact'></i>
 								<span class="nav-link-text">Contact</span>
 							</a>
@@ -222,39 +222,39 @@ mysqli_close($conn);
 		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-xl-12">
-					<?php if($msg != ""): ?>
-					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<?php endif; ?>
 					<div class="card">
-						<div class="card-header bg-transparent">
+						<div class="card-header bg-transparent mb-4">
 							<div class="row align-items-center">
 								<div class="col d-flex justify-content-between align-items-center">
-									<h3 class="mb-0">Announcements</h3>
+									<h3 class="mb-0">Contact A Staff</h3>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-12">
-									<?php foreach($lists as $list) : ?>
-									<div id="cardDiv" class="card my-4 border-bottom shadow-sm">
-										<div id="cardPost" class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="mr-3 text-muted font-weight-normal">By <?php echo $list['staff_fullname'] . ' | ' . $list['created_at'] ?></h5>
-													<h3 class="mr-3"><?php echo $list['announcement_subject'] ?></h3>
-													<h4 class="font-weight-normal"><?php echo $list['announcement_description'] ?></h4>
-													</h5>
+								<?php foreach($lists as $list) : ?>
+									<div class="col-md-3">
+										<div class="card border-bottom">
+											<div class="card-body shadow-sm py-5">
+												<div class="d-flex flex-column align-items-center justify-content-center">
+													<?php if($_SESSION['access_token'] == false): ?>
+														<img class="rounded-circle" style="width: 30%;" onerror="this.style.display='none'" src="../assets/images/avatars/<?php echo $list['staff_avatar'] ?>">
+														<img class="rounded-circle" style="width: 30%;margin-bottom:0.4rem" onerror="this.style.display='none'" src="<?php echo $list['staff_avatar'] ?>">
+													<?php endif; ?>
+													<h3 class="card-text text-center font-weight-bold mt-4"><?php echo $list['staff_fullname'] ?></h3>
+													<div class="d-flex">
+														<?php if($list['staff_phone'] != ''): ?>
+															<a href="tel:<?php echo $list['staff_phone'] ?>" class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-phone' ></i></i></a>
+														<?php else: ?>
+															<a href="tel:<?php echo $list['staff_phone'] ?>" class="px-2 py-1 btn text-primary shadow-none" style="display: none;"><i class='bx bxs-phone' ></i></i></a>
+														<?php endif; ?>
+														<a href="mailto:<?php echo $list['staff_email']?>" class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-envelope'></i></i></a>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<?php endforeach; ?>
-								</div>
+								<?php endforeach; ?>
 							</div>
 						</div>
 					</div>

@@ -152,6 +152,18 @@ mysqli_close($conn);
 								<a class="dropdown-item" href="../quiz/history/history.php">History</a>
 							</div>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./announcements.php">
+								<i class='bx bxs-megaphone'></i>
+								<span class="nav-link-text">Announcements</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./contact.php">
+							<i class='bx bxs-contact'></i>
+								<span class="nav-link-text">Contact</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

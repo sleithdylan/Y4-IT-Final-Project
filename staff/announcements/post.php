@@ -163,7 +163,7 @@ if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="./announcements.php">
+							<a class="nav-link active" href="./announcements.php">
 								<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
