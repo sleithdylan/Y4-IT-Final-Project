@@ -173,6 +173,12 @@ mysqli_close($conn);
 								<span class="nav-link-text">Announcements</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./contact.php">
+							<i class='bx bxs-contact'></i>
+								<span class="nav-link-text">Contact</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

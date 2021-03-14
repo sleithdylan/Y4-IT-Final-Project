@@ -119,7 +119,7 @@ mysqli_close($conn);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="../../dashboard.php">
+							<a class="nav-link" href="../../dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -128,7 +128,7 @@ mysqli_close($conn);
 					<hr class="my-3">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
 								<i class='bx bxs-book'></i>
 								<span class="nav-link-text">Subjects</span>
@@ -143,7 +143,7 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#announcements">
+							<a class="nav-link" href="../../announcements/announcements.php">
 							<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
