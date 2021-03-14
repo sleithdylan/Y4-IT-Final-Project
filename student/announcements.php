@@ -1,4 +1,5 @@
 <?php
+
 // Starts session
 session_start();
 
@@ -36,28 +37,6 @@ function getStudentsData($studentId) {
 	return $array;
 }
 
-// Gets subjects data
-function getSubjectsData($studentEmail) {
-	// Requires config
-	require('../config/config.php');
-	// Creates and checks connection
-	require('../config/db.php');
-	// Creates array
-	$array = array();
-	// SELECT query
-	$query = mysqli_query($conn, "SELECT * FROM subjects WHERE subject_id=" . $studentEmail . " ORDER BY subject_id DESC");
-	// Loops through array
-	while ($row = mysqli_fetch_assoc($query)) {
-		$array['subject_id'] = $row['subject_id'];
-		$array['subject_name'] = $row['subject_name'];
-		$array['subject_grade'] = $row['subject_grade'];
-		$array['subject_gpa'] = $row['subject_gpa'];
-		$array['subject_attendance'] = $row['subject_attendance'];
-		$array['student_email'] = $row['student_email'];
-	}
-	return $array;
-}
-
 // Get student ID
 function getId($email) {
 	// Requires config
@@ -81,22 +60,16 @@ if (!isset($_SESSION['student_email'])) {
 // Gets user data from id
 if (isset($_SESSION['student_email'])) {
 	$studentData = getStudentsData(getId($_SESSION['student_email']));
-	$subjectData = getSubjectsData(getId($_SESSION['student_email']));
 }
 
-// SELECT all subjects
-$query = "SELECT * FROM subjects JOIN students USING(student_email) WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
-
-// SELECT subject GPA
-$gpaQuery = "SELECT subject_name, subject_gpa FROM subjects JOIN students USING(student_email) WHERE student_id=" . $studentData['student_id'] . " ORDER BY subject_id";
+// SELECT Query
+$query = "SELECT * FROM announcements JOIN staff USING(staff_email) ORDER BY announcement_id ASC";
 
 // Gets result
 $result = mysqli_query($conn, $query);
-$gpaResult = mysqli_query($conn, $gpaQuery);
 
-// Fetches data
-$subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$subjectsGPA = mysqli_fetch_all($gpaResult, MYSQLI_ASSOC);
+// Fetch Data
+$lists = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 // Frees result from memory
 mysqli_free_result($result);
@@ -111,7 +84,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Student Overview | CloseApart</title>
+	<title>Announcements Overview | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -130,6 +103,8 @@ mysqli_close($conn);
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="../assets/css/argon.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" />
+
 </head>
 
 <body>
@@ -138,7 +113,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
-					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -196,39 +172,6 @@ mysqli_close($conn);
 								</div>
 							</div>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class='bx bxs-bell'></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden">
-								<div class="px-3 py-3">
-									<h6 class="text-sm text-muted m-0">You have <strong class="text-primary">1</strong> notification.</h6>
-								</div>
-								<div class="list-group list-group-flush">
-									<a href="#" class="list-group-item list-group-item-action">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<img alt="Image placeholder" src="../assets/images/testimonials/john.jpg"
-													class="avatar rounded-circle">
-											</div>
-											<div class="col ml--2">
-												<div class="d-flex justify-content-between align-items-center">
-													<div>
-														<h4 class="mb-0 text-sm">John</h4>
-													</div>
-													<div class="text-right text-muted">
-														<small>4 hrs ago</small>
-													</div>
-												</div>
-												<p class="text-sm mb-0">I uploaded tonight's homework</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
-							</div>
-						</li>
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
@@ -236,10 +179,15 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
+										<?php if($_SESSION['access_token'] == true): ?>
+										<img src='<?php echo $_SESSION['picture']; ?>' />
+										<?php else: ?>
 										<img src='../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>' />
+										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
+										<span
+											class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] . $_SESSION['givenName'] . ' ' . $_SESSION['familyName'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -248,12 +196,13 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="./settings.php?id=<?php echo $studentData['student_id'] ?>" class="dropdown-item">
+								<a href="./settings.php?id=<?php echo $studentData['student_id'] . $_SESSION['id'] ?>"
+									class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a href="../student/logout.php" class="dropdown-item">
+								<a href="./logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
 									<span>Logout</span>
 								</a>
@@ -263,91 +212,50 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</nav>
+		<!-- Data -->
 		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-xl-12">
+					<?php if($msg != ""): ?>
+					<div class="alert <?php echo $msgClass; ?> alert-dismissible fade show" role="alert"><?php echo $msg; ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<?php endif; ?>
 					<div class="card">
 						<div class="card-header bg-transparent">
 							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">
-										Your Grade Point Average
-									</h5>
+								<div class="col d-flex justify-content-between align-items-center">
+									<h3 class="mb-0">Announcements</h3>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Bar Chart -->
-							<div class="chart">
-								<canvas id="bar-chart" width="800" height="450"></canvas>
+							<div class="row">
+								<div class="col-md-12">
+									<?php foreach($lists as $list) : ?>
+									<div id="cardDiv" class="card my-4 border-bottom shadow-sm">
+										<div id="cardPost" class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="mr-3 text-muted font-weight-normal">By <?php echo $list['staff_fullname'] . ' | ' . $list['created_at'] ?></h5>
+													<h3 class="mr-3"><?php echo $list['announcement_subject'] ?></h3>
+													<h4 class="font-weight-normal"><?php echo $list['announcement_description'] ?></h4>
+													</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<?php endforeach; ?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Data -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xl-8">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h3 class="mb-0">Your Subjects</h3>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Table of Subjects -->
-							<div class="table-responsive">
-								<table class="table align-items-center table-flush">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">Subject</th>
-											<th scope="col">Grade</th>
-											<th scope="col">Attendance</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php foreach($subjects as $subject) : ?>
-										<tr>
-											<th scope="row">
-												<?php echo $subject['subject_name'] ?>
-											</th>
-											<td>
-												<?php echo $subject['subject_grade'] . '%' ?>
-											</td>
-											<td>
-												<?php echo $subject['subject_attendance'] . '%' ?>
-											</td>
-										</tr>
-										<?php endforeach; ?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4">
-					<div class="card">
-						<div class="card-header bg-transparent">
-							<div class="row align-items-center">
-								<div class="col">
-									<h5 class="h3 mb-0">Your Attendance</h5>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!-- Pie Chart -->
-							<div class="chart">
-								<canvas id="pie-chart" class="chart-canvas"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	</div>
 	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -357,73 +265,8 @@ mysqli_close($conn);
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="../assets/js/argon-design-system-extras.min.js"></script>
 	<script src="../assets/js/main.js"></script>
-	<script>
-		var PieChart = (function () {
-				var a = $('#pie-chart');
-				a.length &&
-					(function (a) {
-						var e = new Chart(a, {
-							type: 'pie',
-							data: {
-								labels: ['Attendance', 'Absence (Explained)', 'Absence (Unexplained)'],
-								datasets: [{
-									label: 'Population (millions)',
-									backgroundColor: ['#2dce89', '#ffda09', '#f5365c'],
-									data: [<?php echo $studentData['attendance'] ?>, <?php echo $studentData['attendance_explained'] ?>, <?php echo $studentData['attendance_unexplained'] ?>]
-								}]
-							}
-						});
-						a.data('chart', e);
-					})(a);
-			})(),
-			BarChart = (function () {
-				var a = $('#bar-chart');
-				a.length &&
-					(function (a) {
-						var e = new Chart(a, {
-							type: 'bar',
-							data: {
-								labels: [
-									<?php
-										foreach($subjectsGPA as $subjectGPA) {
-											echo "'" . $subjectGPA['subject_name'] . "'" . ",";
-										} 
-									?>
-								],
-								datasets: [{
-									backgroundColor: ['#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4', '#5e72e4'],
-									data: [
-										<?php
-											foreach($subjectsGPA as $subjectGPA) {
-												echo $subjectGPA['subject_gpa'] . ",";
-											} 
-										?>
-									]
-								}]
-							},
-							options: {
-								legend: {
-									display: false
-								},
-								title: {
-									display: true,
-									text: 'Total GPA of ' + new Date().getFullYear()
-								},
-								scales: {
-									yAxes: [{
-										ticks: {
-											callback: function (value, index, values) {
-												return value;
-											}
-										}
-									}]
-								}
-							}
-						});
-						a.data('chart', e);
-					})(a);
-			})();
-	</script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 </body>
 
 </html>
