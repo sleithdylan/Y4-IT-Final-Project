@@ -171,6 +171,12 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link" href="../attendances/attendances.php">
+								<i class='bx bxs-calendar-check'></i>
+								<span class="nav-link-text">Attendances</span>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link active" href="../announcements/announcements.php">
 								<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
