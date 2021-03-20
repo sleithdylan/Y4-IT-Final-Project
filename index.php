@@ -40,6 +40,7 @@
 </head>
 
 <body>
+	<div id="overlay"></div>
 	<!-- Navigation -->
 	<?php include('includes/navs/nav.php'); ?>
 	<!-- Hero -->
@@ -254,7 +255,8 @@
 		var tl = gsap.timeline({ defaults: { duration: 1 } });
 
 		// GSAP
-		tl.from('nav', { y: -50, opacity: 0 }, '-=.1') // Fade Down
+		tl.to('#overlay', { opacity: 0, display: 'none' }, '-=.1') // Fade Down
+			.from('nav', { y: -50, opacity: 0 }, '-=.3') // Fade Down
 			.from('.stagger-brand', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
 			.from('.stagger-sub', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
 			.from('.stagger-cta', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
