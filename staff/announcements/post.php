@@ -116,6 +116,17 @@ if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
+	<!-- PWA -->
+  <link rel='manifest' href='../../manifest.json'>
+  <script>
+    // Registering our Service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('../../sw.js', {
+        scope: './'
+      })
+    }
+  </script>
+
 	<!-- Icons -->
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
