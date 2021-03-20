@@ -173,7 +173,7 @@ mysqli_close($conn);
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#announcements">
+							<a class="nav-link" href="./announcements/announcements.php">
 							<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
