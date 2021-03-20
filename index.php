@@ -17,6 +17,17 @@
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
+	<!-- PWA -->
+  <link rel='manifest' href='./manifest.json'>
+  <script>
+    // Registering our Service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js', {
+        scope: './'
+      })
+    }
+  </script>
+
 	<!-- Icons -->
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
@@ -238,6 +249,17 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
 	<script src="./assets/js/main.js"></script>
+	<script>
+		// Create GSAP Instance
+		var tl = gsap.timeline({ defaults: { duration: 1 } });
+
+		// GSAP
+		tl.from('nav', { y: -50, opacity: 0 }, '-=.1') // Fade Down
+			.from('.stagger-brand', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+			.from('.stagger-sub', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+			.from('.stagger-cta', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
+			.from('.stagger-image', { scaleX: 0.8, scaleY: 0.8, opacity: 0 }, '-=1'); // Zoom In with Delay
+	</script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script>
 		// Carousel
