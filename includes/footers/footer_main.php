@@ -9,19 +9,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="col-md col-sm-6">
-					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
-						<li class="nav-item">
-							<a class="nav-link active disabled pt-0" href="#">Support</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link py-2" href="./contact.php">Contact Us</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link py-2" href="#help-centre">Help Centre</a>
-						</li>
-					</ul>
-				</div>
+				<div class="col-md col-xs-6"></div>
 				<div class="col-md col-sm-6">
 					<ul class="navbar-nav mb-5 ml-md-0 ml-lg-5">
 						<li class="nav-item">
@@ -34,7 +22,10 @@
 							<a class="nav-link py-2" href="./index.php#testimonials">Testimonials</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link py-2" href="#sitemap">Sitemap</a>
+							<a class="nav-link py-2" href="./contact.php">Contact Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link py-2" href="./sitemap.xml">Sitemap</a>
 						</li>
 					</ul>
 				</div>
