@@ -49,13 +49,26 @@ if (isset($_POST['profile'])) {
       student_avatar = '$studentAvatar'
   WHERE student_id = {$id}";
 
+	$noAvatarSelected = "UPDATE students SET 
+      student_fullname = '$studentFullName',
+      student_phone = '$studentPhone', 
+      student_address = '$studentAddress', 
+      student_city = '$studentCity',
+      student_country = '$studentCountry',
+      student_eircode = '$studentEircode',
+      student_bio = '$studentBio'
+  WHERE student_id = {$id}";
+
 	// Checks required fields
-	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['studentavatar']['tmp_name'], $target)) {
+	if (mysqli_query($conn, $noAvatarSelected) && empty($_FILES['studentavatar']['name'])) {
 		//* Passed
 		$msg = '<strong>Success!</strong> Profile has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
-	}
-	else {
+	} else if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['studentavatar']['tmp_name'], $target)) {
+		//* Passed
+		$msg = '<strong>Success!</strong> Profile has been edited!';
+		$msgClass = 'alert-success alert-dismissible fade show';
+	} else {
 		//! Failed
 		// Returns error
 		$msg = '<strong>Error!</strong> Please fill in all fields correctly';
@@ -198,39 +211,6 @@ mysqli_close($conn);
 								</div>
 							</div>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class='bx bxs-bell'></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right  py-0 overflow-hidden">
-								<div class="px-3 py-3">
-									<h6 class="text-sm text-muted m-0">You have <strong class="text-primary">1</strong> notification.</h6>
-								</div>
-								<div class="list-group list-group-flush">
-									<a href="#" class="list-group-item list-group-item-action">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<img alt="Image placeholder" src="../assets/images/testimonials/john.jpg"
-													class="avatar rounded-circle">
-											</div>
-											<div class="col ml--2">
-												<div class="d-flex justify-content-between align-items-center">
-													<div>
-														<h4 class="mb-0 text-sm">John</h4>
-													</div>
-													<div class="text-right text-muted">
-														<small>4 hrs ago</small>
-													</div>
-												</div>
-												<p class="text-sm mb-0">I uploaded tonight's homework</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
-							</div>
-						</li>
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
@@ -296,7 +276,7 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="studentavatar">Avatar</label>
 												<input type="file" id="input-picture" class="form-control" name="studentavatar"
-													placeholder="Insert Image" required>
+													placeholder="Insert Image">
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="studentfullname">Full Name</label>
@@ -403,7 +383,6 @@ mysqli_close($conn);
 
 		$("#studentsettings").validate({
 			rules: {
-				studentavatar: "required",
 				studentfullname: "required",
 				studentphone: {
 					required: true,
@@ -417,7 +396,6 @@ mysqli_close($conn);
 				studentabout: "required"
 			},
 			messages: {
-				studentavatar: "Please choose a avatar",
 				studentfullname: "Please enter your full name",
 				studentphone: {
 					required: "Please enter your phone number",

@@ -172,15 +172,6 @@ if (isset($_POST['register'])) {
 									</div>
 									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>
-								<!-- <div class="row my-4">
-									<div class="col-12">
-										<div class="custom-control custom-control-alternative custom-checkbox">
-											<input class="custom-control-input" id="customCheckRegister" type="checkbox">
-											<label class="custom-control-label" for="customCheckRegister"><span>I agree with the <a
-														href="#">Privacy Policy</a></span></label>
-										</div>
-									</div>
-								</div> -->
 								<div class="text-center">
 									<button type="submit" name="register" class="btn btn-primary my-4 btn-block text-capitalize">Create
 										account</button>

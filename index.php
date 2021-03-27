@@ -229,7 +229,7 @@
 	<div id="cta" class="pb-5 mb-5">
 		<div class="container">
 			<div class="row">
-				<h4 class="col-md text-left text-primary mt-5" data-aos="fade-up">Got any questions?</h4>
+				<h6 class="col-md text-left text-primary mt-5" data-aos="fade-up">Got any questions?</h6>
 			</div>
 			<div class="row">
 				<h4 class="col-md text-left" data-aos="fade-up" data-aos-duration="1000">Contact us directly or visit the help centre</h4>
