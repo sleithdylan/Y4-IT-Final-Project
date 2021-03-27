@@ -227,15 +227,14 @@
 	</div>
 	<!-- CTA -->
 	<div id="cta" class="pb-5 mb-5">
-		<div class="container">
+		<div class="container mb-5">
 			<div class="row">
-				<h6 class="col-md text-left text-primary mt-5" data-aos="fade-up">Got any questions?</h6>
+				<h6 class="col-md text-left text-primary mt-5 text-sm-center text-md-left" data-aos="fade-up">Got any questions?</h6>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-left" data-aos="fade-up" data-aos-duration="1000">Contact us directly or visit the help centre</h4>
+				<h4 class="col-md text-left text-sm-center text-md-left" data-aos="fade-up" data-aos-duration="1000">Contact us directly</h4>
 				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center" data-aos="fade-up" data-aos-duration="1000">
-					<a href="./contact.php" class="btn btn-outline-primary text-capitalize px-4">Contact Us</a>
-					<a href="#help-centre" class="btn btn-outline-primary text-capitalize px-4">Help Centre</a>
+					<a href="./contact.php" class="btn btn-outline-primary text-capitalize px-6 mx-sm-auto mx-md-0 mt-sm-2 mt-md-0">Contact Us</a>
 				</div>
 			</div>
 		</div>
