@@ -11,7 +11,7 @@
 			<div class="navbar-collapse-header">
 				<div class="row">
 					<div class="col-6 collapse-brand">
-						<a class="navbar-brand" href="../index.php">
+						<a class="navbar-brand text-dark" href="../index.php">
 							<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
 						</a>
 					</div>

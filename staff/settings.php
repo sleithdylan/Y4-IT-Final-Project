@@ -49,13 +49,26 @@ if (isset($_POST['profile'])) {
       staff_avatar = '$staffAvatar'
   WHERE staff_id = {$id} OR google_id = {$id}";
 
+	$noAvatarSelected = "UPDATE staff SET 
+      staff_fullname = '$staffFullName',
+      staff_phone = '$staffPhone', 
+      staff_address = '$staffAddress', 
+      staff_city = '$staffCity',
+      staff_country = '$staffCountry',
+      staff_eircode = '$staffEircode',
+      staff_bio = '$staffBio'
+  WHERE staff_id = {$id} OR google_id = {$id}";
+
 	// Checks required fields
-	if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['staffavatar']['tmp_name'], $target)) {
+	if(mysqli_query($conn, $noAvatarSelected) && empty($_FILES['staffavatar']['name'])){
 		//* Passed
 		$msg = '<strong>Success!</strong> Profile has been edited!';
 		$msgClass = 'alert-success alert-dismissible fade show';
-	}
-	else {
+	} else if (mysqli_query($conn, $query) && move_uploaded_file($_FILES['staffavatar']['tmp_name'], $target)) {
+		//* Passed
+		$msg = '<strong>Success!</strong> Profile has been edited!';
+		$msgClass = 'alert-success alert-dismissible fade show';
+	} else {
 		//! Failed
 		// Returns error
 		$msg = '<strong>Error!</strong> Please fill in all fields correctly';
@@ -201,39 +214,6 @@ mysqli_close($conn);
 								</div>
 							</div>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class='bx bxs-bell'></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-xl dropdown-menu-right  py-0 overflow-hidden">
-								<div class="px-3 py-3">
-									<h6 class="text-sm text-muted m-0">You have <strong class="text-primary">1</strong> notification.</h6>
-								</div>
-								<div class="list-group list-group-flush">
-									<a href="#" class="list-group-item list-group-item-action">
-										<div class="row align-items-center">
-											<div class="col-auto">
-												<img alt="Image placeholder" src="../assets/images/testimonials/john.jpg"
-													class="avatar rounded-circle">
-											</div>
-											<div class="col ml--2">
-												<div class="d-flex justify-content-between align-items-center">
-													<div>
-														<h4 class="mb-0 text-sm">John</h4>
-													</div>
-													<div class="text-right text-muted">
-														<small>4 hrs ago</small>
-													</div>
-												</div>
-												<p class="text-sm mb-0">I uploaded tonight's homework</p>
-											</div>
-										</div>
-									</a>
-								</div>
-								<a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
-							</div>
-						</li>
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
@@ -257,10 +237,17 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
+								<?php if($_SESSION['access_token'] == true): ?>
 								<a href="./settings.php?id=<?php echo $lists['google_id'] ?>" class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
+								<?php else: ?>
+								<a href="./settings.php?id=<?php echo $lists['staff_id'] ?>" class="dropdown-item">
+									<i class="ni ni-settings-gear-65"></i>
+									<span>Profile Settings</span>
+								</a>
+								<?php endif; ?>
 								<div class="dropdown-divider"></div>
 								<a href="./logout.php" class="dropdown-item">
 									<i class="ni ni-user-run"></i>
@@ -303,7 +290,7 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="staffavatar">Avatar</label>
 												<input type="file" id="input-picture" class="form-control" name="staffavatar"
-													placeholder="Insert Image" required>
+													placeholder="Insert Image">
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="stafffullname">Full Name</label>
@@ -410,7 +397,6 @@ mysqli_close($conn);
 
 		$("#staffsettings").validate({
 			rules: {
-				staffavatar: "required",
 				stafffullname: "required",
 				staffphone: {
 					required: true,
@@ -424,7 +410,6 @@ mysqli_close($conn);
 				staffabout: "required"
 			},
 			messages: {
-				staffavatar: "Please choose a avatar",
 				stafffullname: "Please enter your full name",
 				staffphone: {
 					required: "Please enter your phone number",

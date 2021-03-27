@@ -51,7 +51,7 @@
 				<div class="navbar-collapse-header">
 					<div class="row">
 						<div class="col-6 collapse-brand">
-							<a class="navbar-brand" href="./index.php">
+							<a class="navbar-brand text-dark" href="./index.php">
 								<span class="font-weight-bold">Close</span><span class="font-weight-light">Apart</span>
 							</a>
 						</div>
@@ -99,9 +99,9 @@
 	</nav>
 	<!-- Contact Us Form -->
 	<section class="section section-shaped bg-primary section-md">
-		<div class="container pt-2 pt-lg-6">
+		<div class="container pt-6">
 			<div class="row justify-content-center">
-				<div class="col-md-6">
+				<div class="col-md-8 col-lg-6">
 					<div class="card bg-secondary shadow border-0">
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
