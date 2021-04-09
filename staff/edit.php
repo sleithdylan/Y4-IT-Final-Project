@@ -311,19 +311,19 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="studentfullname">Full Name</label>
 												<input type="text" id="studentfullname" name="studentfullname" class="form-control"
-													placeholder="First Name, e.g. John Doe" value="<?php echo $lists['student_fullname']; ?>"
+													placeholder="First Name, e.g. John Doe (Required)" value="<?php echo $lists['student_fullname']; ?>"
 													required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="student-email">Email Address</label>
 												<input type="email" id="student-email" name="student-email" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com" value="<?php echo $lists['student_email']; ?>"
+													placeholder="Email Address e.g. jdoe@gmail.com (Required)" value="<?php echo $lists['student_email']; ?>"
 													disabled>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="studentphone">Phone Number</label>
 												<input type="text" class="form-control" id="studentphone" name="studentphone"
-													placeholder="Phone Number, e.g. 0891234567" value="<?php echo $lists['student_phone']; ?>"
+													placeholder="Phone Number, e.g. 0891234567 (Required)" value="<?php echo $lists['student_phone']; ?>"
 													required>
 											</div>
 										</div>
@@ -337,8 +337,8 @@ mysqli_close($conn);
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="form-control-label" for="studentaddress">Address</label>
-												<input id="studentaddress" name="studentaddress" class="form-control" placeholder="Home Address"
-													value="<?php echo $lists['student_address']; ?>" type="text" required>
+												<input id="studentaddress" name="studentaddress" class="form-control" placeholder="Home Address (Optional)"
+													value="<?php echo $lists['student_address']; ?>" type="text">
 											</div>
 										</div>
 									</div>
@@ -346,22 +346,22 @@ mysqli_close($conn);
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="studentcity">City</label>
-												<input type="text" id="studentcity" name="studentcity" class="form-control" placeholder="City"
-													value="<?php echo $lists['student_city']; ?>" required>
+												<input type="text" id="studentcity" name="studentcity" class="form-control" placeholder="City (Optional)"
+													value="<?php echo $lists['student_city']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="studentcountry">Country</label>
 												<input type="text" id="studentcountry" name="studentcountry" class="form-control"
-													placeholder="Country" value="<?php echo $lists['student_country']; ?>" required>
+													placeholder="Country (Optional)" value="<?php echo $lists['student_country']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="studenteircode">Eircode</label>
 												<input type="text" id="studenteircode" name="studenteircode" class="form-control"
-													placeholder="Eircode" value="<?php echo $lists['student_eircode']; ?>" required>
+													placeholder="Eircode (Optional)" value="<?php echo $lists['student_eircode']; ?>">
 											</div>
 										</div>
 									</div>
@@ -373,7 +373,7 @@ mysqli_close($conn);
 									<div class="form-group">
 										<label class="form-control-label" for="studentabout">About Me</label>
 										<textarea rows="4" class="form-control" id="studentabout" name="studentabout"
-											placeholder="Tell us about youself..." required><?php echo $lists['student_bio']; ?></textarea>
+											placeholder="Tell us about youself... (Optional)"><?php echo $lists['student_bio']; ?></textarea>
 									</div>
 								</div>
 								<hr class="my-4" />
@@ -419,33 +419,43 @@ mysqli_close($conn);
 					digits: "true",
 					maxlength: 10
 				},
-				studentaddress: "required",
-				studentcity: "required",
-				studentcountry: "required",
-				studenteircode: "required",
-				studentabout: "required"
+				studentaddress: {
+					required: false,
+				},
+				studentcity: {
+					required: false,
+				},
+				studentcountry: {
+					required: false,
+				},
+				studenteircode: {
+					required: false,
+				},
+				studentabout: {
+					required: false,
+				}
 			},
 			messages: {
-				studentfullname: "Please enter your full name",
+				studentfullname: "Please enter their full name",
 				studentphone: {
-					required: "Please enter your phone number",
+					required: "Please enter their phone number",
 					digits: "Please enter digits only",
 					maxlength: "You phone number can only be 10 digits long"
 				},
 				studentaddress: {
-					required: "Please enter your address"
+					required: "Please enter their address"
 				},
 				studentcity: {
-					required: "Please enter your city"
+					required: "Please enter their city"
 				},
 				studentcountry: {
-					required: "Please enter your country"
+					required: "Please enter their country"
 				},
 				studenteircode: {
-					required: "Please enter your eircode"
+					required: "Please enter their eircode"
 				},
 				studentabout: {
-					required: "Please enter something about yourself"
+					required: "Please enter something about them"
 				}
 			}
 		});
