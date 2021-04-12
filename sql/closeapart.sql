@@ -10,237 +10,236 @@ CREATE DATABASE closeapart CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE closeapart;
 
--- Table MathsQuestions
+-- Table EnglishQuiz
+DROP TABLE IF EXISTS EnglishQuiz;
+CREATE TABLE IF NOT EXISTS EnglishQuiz (
+english_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (english_quiz_id));
 
-DROP TABLE IF EXISTS MathsQuestions;
-CREATE TABLE IF NOT EXISTS MathsQuestions (
-question_number int(11) NOT NULL,
-question text COLLATE utf16_bin NOT NULL
-);
+-- Data for EnglishQuiz
+INSERT INTO EnglishQuiz (english_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'My grandfather walks very________', 'quick', 'fastly', 'fast', 'nice', 3),
+(2, 'Choose the correct word order', 'Why she did leave so early?', 'Why did she leave so early?', 'Why did so early she leave?', 'Why so early did she leave?', 2),
+(3, 'Please give me a ______________ Of paper','peice', 'piece', 'piese', 'peace', 2),
+(4, 'Which is the longest pause?', 'Apostrophe', 'Dash', 'Hyphen', 'Full-stop', 2),
+(5, 'Sorry, she cannot come to the phone. She _______ a bath.', 'is having', 'having', 'have', 'has', 1),
+(6, 'Please _____ your dog.', 'prevent', 'stop', 'restrain', 'subdue', 3),
+(7, 'A ______ of books.', 'group', 'liberty', 'pack', 'course', 2),
+(8, 'The teacher is popular _____ his pupils.', 'for', 'to', 'with', 'among', 4),
+(9, 'One who travels from place to place', 'Mendicant', 'Tramp', 'Itinerant', 'Journeyman', 3),
+(10, 'KINDLE (Find word with opposite in meaning)', 'Ignite', 'Encourage', 'Ignore', 'Extinguish', 4);
 
--- Data for MathsQuestions
+-- Table EnglishResults
+DROP TABLE IF EXISTS EnglishResults;
+CREATE TABLE IF NOT EXISTS EnglishResults (
+    english_result_id int(11) NOT NULL AUTO_INCREMENT,
+    english_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    english_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (english_result_id));
 
-INSERT INTO MathsQuestions (question_number, question) VALUES
-(1, 'What is four-fifths as a decimal?'),
-(2, 'What is the volume of a cube which has edges measuring 5cm?'),
-(3, 'How many months are there in twelve years?'),
-(4, 'What is the next number in the series: 2, 9, 30, 93, ?'),
-(5, 'What is the cube root of 512?'),
+-- Data for EnglishResults
+INSERT INTO EnglishResults (english_result_id, english_result_date, english_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+
+-- Table MathsQuiz
+DROP TABLE IF EXISTS MathsQuiz;
+CREATE TABLE IF NOT EXISTS MathsQuiz (
+maths_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (maths_quiz_id));
+
+-- Data for MathsQuiz
+INSERT INTO MathsQuiz (maths_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'What is four-fifths as a decimal?', '0.4', '0.8', '0.1', '0.6', 2),
+(2, 'What is the volume of a cube which has edges measuring 5cm?', '111 centimetres cubed', '200 centimetres cubed', '125 centimetres cubed', '150 centimetres cubed', 3),
+(3, 'How many months are there in twelve years?', '144', '120', '168', '96', 1),
+(4, 'What is the next number in the series: 2, 9, 30, 93, ?', '123', '141', '321', '282', 4),
+(5, 'What is the cube root of 512?', '10', '6', '8', '4', 3),
 (6, 'If a recipe requires 400 grams of potatoes for four people, how many kilograms would be required for twelve
-people?'),
+people?', '1200kg', '1.2kg', '12kg', '0.12kg', 2),
 (7, 'A dress has a thirty percent discount applied and is on sale for 63 euro. What was the original price of the dress
-before the reduction?'),
+before the reduction?', '90 euro', '100 euro', '93 euro', '110 euro', 1),
 (8, 'Geoff thinks of a number. He deducts five from it and then divides the result by three. His answer is 25. What
-number did he start with?'),
-(9, 'What is nine-tenths of 2000?'),
-(10, 'How many months of the year have only 30 days?');
+number did he start with?', '60', '40', '20', '80', 4),
+(9, 'What is nine-tenths of 2000?', '1950', '1800', '1750', '1850', 2),
+(10, 'How many months of the year have only 30 days?', '3', '2', '4', '1', 3);
 
--- Table MathsChoices
+-- Table MathsResults
+DROP TABLE IF EXISTS MathsResults;
+CREATE TABLE IF NOT EXISTS MathsResults (
+    maths_result_id int(11) NOT NULL AUTO_INCREMENT,
+    maths_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    maths_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (maths_result_id));
 
-DROP TABLE IF EXISTS MathsChoices;
-CREATE TABLE IF NOT EXISTS MathsChoices (
-id int(11) NOT NULL,
-question_number int(11) NOT NULL,
-is_correct tinyint(4) NOT NULL DEFAULT '0',
-choice text COLLATE utf16_bin NOT NULL,
-PRIMARY KEY (id));
+-- Data for MathsResults
+INSERT INTO MathsResults (maths_result_id, maths_result_date, maths_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
 
--- Data for MathsChoices
+-- Table HistoryQuiz
+DROP TABLE IF EXISTS HistoryQuiz;
+CREATE TABLE IF NOT EXISTS HistoryQuiz (
+history_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (history_quiz_id));
 
-INSERT INTO MathsChoices (id, question_number, is_correct, choice) VALUES
-(12, 1, 0, '0.4'),
-(13, 1, 1, '0.8'),
-(14, 1, 0, '0.1'),
-(15, 1, 0, '0.6'),
-(16, 2, 0, '111 centimetres cubed'),
-(17, 2, 0, '200 centimetres cubed'),
-(18, 2, 1, '125 centimetres cubed'),
-(19, 2, 0, '150 centimetres cubed'),
-(20, 3, 1, '144'),
-(21, 3, 0, '120'),
-(22, 3, 0, '168'),
-(23, 3, 0, '96'),
-(24, 4, 0, '123'),
-(25, 4, 0, '141'),
-(26, 4, 0, '321'),
-(27, 4, 1, '282'),
-(28, 5, 0, '10'),
-(29, 5, 0, '6'),
-(30, 5, 1, '8'),
-(31, 5, 0, '4'),
-(32, 6, 0, '1200kg'),
-(33, 6, 1, '1.2kg'),
-(34, 6, 0, '12kg'),
-(35, 6, 0, '0.12kg'),
-(36, 7, 1, '90 euro'),
-(37, 7, 0, '100 euro'),
-(38, 7, 0, '93 euro'),
-(39, 7, 0, '110 euro'),
-(40, 8, 0, '60'),
-(41, 8, 0, '40'),
-(42, 8, 0, '20'),
-(43, 8, 1, '80'),
-(44, 9, 0, '1950'),
-(45, 9, 1, '1800'),
-(46, 9, 0, '1750'),
-(47, 9, 0, '1850'),
-(48, 10, 0, '3'),
-(49, 10, 0, '2'),
-(50, 10, 1, '4'),
-(51, 10, 0, '1');
+-- Data for HistoryQuiz
+INSERT INTO HistoryQuiz (history_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'What was special about the types of roads built by the Romans?', 'They were narrow', 'They were winding', 'They were straight', 'They were wide', 3),
+(2, 'During which year did World War I begin?', '1904', '1914', '1910', '1941', 2),
+(3, 'What was the name of the German leader during World War II?', 'Adolf Hitler', 'Josef Stalin', 'Mao Zedong', 'Genghis Khan', 1),
+(4, 'In which country are the famous Pyramids of Giza?', 'Algeria', 'Libya', 'Syria', 'Egypt', 4),
+(5, 'What type of flower is worn on Remembrance Day in Britain?', 'Windflower', 'Satin Flower', 'Poppy Flower', 'Lily Flower', 3),
+(6, 'Which three countries did the Vikings come from?', 'Norway, Sweden, Finland', 'Denmark, Norway and Sweden', 'Estonia, Denmark, Norway', 'Finland, Netherlands, Belgium', 2),
+(7, 'Which famous explorer discovered Cuba?', 'Marco Polo', 'Pedro Alvares Cabral', 'John Cabot', 'Christopher Columbus', 4),
+(8, 'How many wives did King Henry VIII have?', '4', '6', '8', '10', 2),
+(9, 'What year was the Battle of Hastings?', '1066', '1966', '1696', '1016', 1),
+(10, 'Who was the President of America before Barack Obama?', 'Bill Clinton', 'Ronald Reagan', 'George Bush', 'Donald Trump', 3);
 
--- Table EnglishQuestions
+-- Table HistoryResults
+DROP TABLE IF EXISTS HistoryResults;
+CREATE TABLE IF NOT EXISTS HistoryResults (
+    history_result_id int(11) NOT NULL AUTO_INCREMENT,
+    history_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    history_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (history_result_id));
 
-DROP TABLE IF EXISTS EnglishQuestions;
-CREATE TABLE IF NOT EXISTS EnglishQuestions (
-question_number int(11) NOT NULL,
-question text COLLATE utf16_bin NOT NULL
-);
+-- Data for HistoryResults
+INSERT INTO HistoryResults (history_result_id, history_result_date, history_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
 
--- Data for EnglishQuestions
+-- Table GeographyQuiz
+DROP TABLE IF EXISTS GeographyQuiz;
+CREATE TABLE IF NOT EXISTS GeographyQuiz (
+geography_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (geography_quiz_id));
 
-INSERT INTO EnglishQuestions (question_number, question) VALUES
-(1, 'My grandfather walks very________'),
-(2, 'Choose the correct word order'),
-(3, 'Please give me a ______________ Of paper'),
-(4, 'Which is the longest pause?'),
-(5, 'Sorry, she cannot come to the phone. She _______ a bath.'),
-(6, 'Please _____ your dog.'),
-(7, 'A ______ of books.'),
-(8, 'The teacher is popular _____ his pupils.'),
-(9, 'One who travels from place to place'),
-(10, 'KINDLE (Find word with opposite in meaning)');
+-- Data for GeographyQuiz
+INSERT INTO GeographyQuiz (geography_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'Apart from Dutch and French, what is the other official language of Belgium?', 'German', 'Polish', 'Spanish', 'English', 1),
+(2, 'In which hemisphere is Australia in?', 'Northern', 'Southern', 'Western', 'Eastern', 2),
+(3, 'In which country is the Yellow River, also known as Huang He, located?', 'Singapore', 'India', 'Japan', 'China', 4),
+(4, 'Which state did the US purchase from Russia?', 'Alaska', 'Washington', 'Oregon', 'California', 1),
+(5, 'Which country is called the Land of Rising Sun?', 'Indonesia', 'Japan', 'Vietnam', 'Malaysia', 2),
+(6, 'How many countries surround the Czech Republic?', '3', '2', '6', '4', 4),
+(7, 'In which ocean is Fiji?', 'Pacific', 'Atlantic', 'Indian', 'Arctic', 1),
+(8, 'Which Irish city is the second largest in the Republic of Ireland?', 'Galway', 'Limerick', 'Cork', 'Waterford', 3),
+(9, 'What is the largest country in Scandinavia?', 'Denmark', 'Sweden', 'Norway', 'Iceland', 2),
+(10, 'Madagascar is surrounded by which ocean?', 'Pacific', 'Atlantic', 'Indian', 'Arctic', 3);
 
+-- Table GeographyResults
+DROP TABLE IF EXISTS GeographyResults;
+CREATE TABLE IF NOT EXISTS GeographyResults (
+    geography_result_id int(11) NOT NULL AUTO_INCREMENT,
+    geography_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    geography_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (geography_result_id));
 
--- Table EnglishChoices
+-- Data for GeographyResults
+INSERT INTO GeographyResults (geography_result_id, geography_result_date, geography_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
 
-DROP TABLE IF EXISTS EnglishChoices;
-CREATE TABLE IF NOT EXISTS EnglishChoices (
-id int(11) NOT NULL,
-question_number int(11) NOT NULL,
-is_correct tinyint(4) NOT NULL DEFAULT '0',
-choice text COLLATE utf16_bin NOT NULL,
-PRIMARY KEY (id));
+-- Table ScienceQuiz
+DROP TABLE IF EXISTS ScienceQuiz;
+CREATE TABLE IF NOT EXISTS ScienceQuiz (
+science_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (science_quiz_id));
 
--- Data for EnglishChoices
+-- Data for ScienceQuiz
+INSERT INTO ScienceQuiz (science_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'What is the name of a frog’s young one?', 'Infant', 'Puppy', 'Tadpole', 'Calf', 3),
+(2, 'What part of the skeletal system protects the brain?', 'Skull', 'Pelvis', 'Thigh', 'Spine', 1),
+(3, 'Which animal from the below list is best adapted to the desert?', 'Tiger', 'Camel', 'Deer', 'Cheetah', 2),
+(4, 'Which material from the following has the highest transparency?', 'Paper', 'Wood', 'Metal', 'Glass', 4),
+(5, 'Where does our food collect after we chew and swallow it?', 'Stomach', 'Small intestine', 'Large intestine', 'Liver', 1),
+(6, 'When you push something, what do you apply?.', 'Acceleration', 'Force', 'Mass', 'Compression', 2),
+(7, 'What does boiling water convert into?', 'Mist', 'Clouds', 'Snow', 'Steam', 4),
+(8, 'How does a dog express happiness?', 'Twitching ears', 'Wagging tail', 'Closing eyes', 'Moving head', 2),
+(9, 'What pumps blood through the entire body?', 'Brain', 'Kidneys', 'Lungs', 'Heart', 4),
+(10, 'What part of the plant conducts photosynthesis?', 'Branch', 'Root', 'Leaf', 'Trunk', 3);
 
-INSERT INTO EnglishChoices (id, question_number, is_correct, choice) VALUES
-(12, 1, 0, 'quick'),
-(13, 1, 0, 'fastly'),
-(14, 1, 1, 'fast'),
-(15, 1, 0, 'nice'),
-(16, 2, 0, 'Why she did leave so early?'),
-(17, 2, 1, 'Why did she leave so early?'),
-(18, 2, 0, 'Why did so early she leave?'),
-(19, 2, 0, 'Why so early did she leave?'),
-(20, 3, 0, 'peice'),
-(21, 3, 1, 'piece'),
-(22, 3, 0, 'piese'),
-(23, 3, 0, 'peace'),
-(24, 4, 0, 'Apostrophe'),
-(25, 4, 1, 'Dash'),
-(26, 4, 0, 'Hyphen'),
-(27, 4, 0, 'Full-stop'),
-(28, 5, 1, 'is having'),
-(29, 5, 0, 'having'),
-(30, 5, 0, 'have'),
-(31, 5, 0, 'has'),
-(32, 6, 0, 'prevent'),
-(33, 6, 0, 'stop'),
-(34, 6, 1, 'restrain'),
-(35, 6, 0, 'subdue'),
-(36, 7, 0, 'group'),
-(37, 7, 1, 'liberty'),
-(38, 7, 0, 'pack'),
-(39, 7, 0, 'course'),
-(40, 8, 0, 'for'),
-(41, 8, 0, 'to'),
-(42, 8, 0, 'with'),
-(43, 8, 1, 'among'),
-(44, 9, 0, 'Mendicant'),
-(45, 9, 0, 'Tramp'),
-(46, 9, 1, 'Itinerant'),
-(47, 9, 0, 'Journeyman'),
-(48, 10, 0, 'Ignite'),
-(49, 10, 0, 'Encourage'),
-(50, 10, 0, 'Ignore'),
-(51, 10, 1, 'Extinguish');
+-- Table ScienceResults
+DROP TABLE IF EXISTS ScienceResults;
+CREATE TABLE IF NOT EXISTS ScienceResults (
+    science_result_id int(11) NOT NULL AUTO_INCREMENT,
+    science_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    science_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (science_result_id));
 
--- Table HistoryQuestions
+-- Data for ScienceResults
+INSERT INTO ScienceResults (science_result_id, science_result_date, science_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
 
-DROP TABLE IF EXISTS HistoryQuestions;
-CREATE TABLE IF NOT EXISTS HistoryQuestions (
-question_number int(11) NOT NULL,
-question text COLLATE utf16_bin NOT NULL
-);
+-- Table GaeilgeQuiz
+DROP TABLE IF EXISTS GaeilgeQuiz;
+CREATE TABLE IF NOT EXISTS GaeilgeQuiz (
+gaeilge_quiz_id int(11) NOT NULL AUTO_INCREMENT,
+question varchar(500) NOT NULL,
+answer_one varchar(256) NOT NULL,
+answer_two varchar(256) NOT NULL,
+answer_three varchar(256) NOT NULL,
+answer_four varchar(256) NOT NULL,
+correct_answer tinyint(4) NOT NULL,
+PRIMARY KEY (gaeilge_quiz_id));
 
--- Data for HistoryQuestions
+-- Data for GaeilgeQuiz
+INSERT INTO GaeilgeQuiz (gaeilge_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
+(1, 'What’s “Laptop” in Irish?', 'Ríomhaire', 'Tábla', 'Bosca isteach', 'Teilifís', 1),
+(2, 'What’s “Cow” in Irish?', 'Madra', 'Asal', 'Bó', 'Cangarú', 3),
+(3, 'What’s “Ice cream” in Irish?', 'Cáca milis', 'Uachtar reoite', 'Seacláid', 'Torthaí', 2),
+(4, 'What’s “Potato” in Irish?', 'cóilis', 'Trátaí', 'Cairéad', 'Prátaí', 4),
+(5, 'What’s “Jam” in Irish?', 'Subh', 'Sú', 'Torthaí', 'Glasraí', 1),
+(6, 'What’s “Ambulance” in Irish?', 'Póilíní', 'Altra', 'Otharcharr', 'Dochtúir', 3),
+(7, 'What’s “Fork” in Irish?', 'Spúnóg', 'Forc', 'Scian', 'Pláta', 2),
+(8, 'What’s “Fire” in Irish?', 'Domhan', 'Gaoth', 'Uisce', 'Dóiteáin', 4),
+(9, 'What’s “Car” in Irish?', 'Bád', 'Gluaisteán', 'Gluaisrothar', 'Rothar', 2),
+(10, 'What’s “Italy” in Irish?', 'An Íoslainn', 'An Indinéis', 'An Iodáil', 'An Iaráic', 3);
 
-INSERT INTO HistoryQuestions (question_number, question) VALUES
-(1, 'What was special about the types of roads built by the Romans?'),
-(2, 'During which year did World War I begin?'),
-(3, 'What was the name of the German leader during World War II?'),
-(4, 'In which country are the famous Pyramids of Giza?'),
-(5, 'What type of flower is worn on Remembrance Day in Britain?'),
-(6, 'Which three countries did the Vikings come from?'),
-(7, 'Which famous explorer discovered Cuba?'),
-(8, 'How many wives did King Henry VIII have?'),
-(9, 'What year was the Battle of Hastings?'),
-(10, 'Who was the President of America before Barack Obama?');
+-- Table GaeilgeResults
+DROP TABLE IF EXISTS GaeilgeResults;
+CREATE TABLE IF NOT EXISTS GaeilgeResults (
+    gaeilge_result_id int(11) NOT NULL AUTO_INCREMENT,
+    gaeilge_result_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    gaeilge_result_marks int(11) NOT NULL,
+    student_fullname varchar(255) NOT NULL,
+PRIMARY KEY (gaeilge_result_id));
 
--- Table HistoryChoices
-
-DROP TABLE IF EXISTS HistoryChoices;
-CREATE TABLE IF NOT EXISTS HistoryChoices (
-id int(11) NOT NULL,
-question_number int(11) NOT NULL,
-is_correct tinyint(4) NOT NULL DEFAULT '0',
-choice text COLLATE utf16_bin NOT NULL,
-PRIMARY KEY (id));
-
--- Data for HistoryChoices
-
-INSERT INTO HistoryChoices (id, question_number, is_correct, choice) VALUES
-(12, 1, 0, 'They were narrow'),
-(13, 1, 0, 'They were winding'),
-(14, 1, 1, 'They were straight'),
-(15, 1, 0, 'They were wide'),
-(16, 2, 0, '1904'),
-(17, 2, 1, '1914'),
-(18, 2, 0, '1910'),
-(19, 2, 0, '1941'),
-(20, 3, 1, 'Adolf Hitler'),
-(21, 3, 0, 'Josef Stalin'),
-(22, 3, 0, 'Mao Zedong'),
-(23, 3, 0, 'Genghis Khan'),
-(24, 4, 0, 'Algeria'),
-(25, 4, 0, 'Libya'),
-(26, 4, 0, 'Syria'),
-(27, 4, 1, 'Egypt'),
-(28, 5, 0, 'Windflower'),
-(29, 5, 0, 'Satin Flower'),
-(30, 5, 1, 'Poppy Flower'),
-(31, 5, 0, 'Lily Flower'),
-(32, 6, 0, 'Norway, Sweden, Finland'),
-(33, 6, 1, 'Denmark, Norway and Sweden'),
-(34, 6, 0, 'Estonia, Denmark, Norway'),
-(35, 6, 0, 'Finland, Netherlands, Belgium'),
-(36, 7, 0, 'Marco Polo'),
-(37, 7, 0, 'Pedro Alvares Cabral'),
-(38, 7, 0, 'John Cabot'),
-(39, 7, 1, 'Christopher Columbus'),
-(40, 8, 0, '4'),
-(41, 8, 1, '6'),
-(42, 8, 0, '8'),
-(43, 8, 0, '10'),
-(44, 9, 1, '1066'),
-(45, 9, 0, '1966'),
-(46, 9, 0, '1696'),
-(47, 9, 0, '1016'),
-(48, 10, 0, 'Bill Clinton'),
-(49, 10, 0, 'Ronald Reagan'),
-(50, 10, 1, 'George Bush'),
-(51, 10, 0, 'Donald Trump');
+-- Data for GaeilgeResults
+INSERT INTO GaeilgeResults (gaeilge_result_id, gaeilge_result_date, gaeilge_result_marks, student_fullname) VALUES
+(1, '2021-02-06 21:15:10', 7, 'David Ryan');
 
 
 -- Table Staff

@@ -181,9 +181,12 @@ mysqli_close($conn);
 								<span class="nav-link-text">Quizzes</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../quiz/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="../quiz/english/english.php">English</a>
-								<a class="dropdown-item" href="../quiz/history/history.php">History</a>
+								<a class="dropdown-item" href="../quizzes/english/result/startenglishquiz.php">English</a>
+								<a class="dropdown-item" href="../quizzes/maths/result/startmathsquiz.php">Maths</a>
+								<a class="dropdown-item" href="../quizzes/history/result/starthistoryquiz.php">History</a>
+								<a class="dropdown-item" href="../quizzes/geography/result/startgeographyquiz.php">Geography</a>
+								<a class="dropdown-item" href="../quizzes/science/result/startsciencequiz.php">Science</a>
+								<a class="dropdown-item" href="../quizzes/gaeilge/result/startgaeilgequiz.php">Gaeilge</a>
 							</div>
 						</li>
 						<li class="nav-item">
