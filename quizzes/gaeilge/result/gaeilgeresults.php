@@ -225,7 +225,7 @@ mysqli_close($conn);
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="../../../staff/dashboard.php">
+							<a class="nav-link" href="../../../staff/dashboard.php">
 								<i class='bx bx-bar-chart-alt'></i>
 								<span class="nav-link-text">Overview</span>
 							</a>
@@ -233,6 +233,21 @@ mysqli_close($conn);
 					</ul>
 					<hr class="my-3">
 					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<i class='bx bxs-book'></i>
+								<span class="nav-link-text">Subjects</span>
+							</a>
+							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="../../../staff/subjects/english/english.php">English</a>
+								<a class="dropdown-item" href="../../../staff/subjects/maths/maths.php">Maths</a>
+								<a class="dropdown-item" href="../../../staff/subjects/history/history.php">History</a>
+								<a class="dropdown-item" href="../../../staff/subjects/geography/geography.php">Geography</a>
+								<a class="dropdown-item" href="../../../staff/subjects/science/science.php">Science</a>
+								<a class="dropdown-item" href="../../../staff/subjects/gaeilge/gaeilge.php">Gaeilge</a>
+							</div>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
@@ -249,7 +264,7 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes Results</span>
@@ -264,19 +279,10 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class='bx bxs-book'></i>
-								<span class="nav-link-text">Subjects</span>
+							<a class="nav-link" href="../../../staff/attendances/attendances.php">
+								<i class='bx bxs-calendar-check'></i>
+								<span class="nav-link-text">Attendances</span>
 							</a>
-							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../../../staff/subjects/english/english.php">English</a>
-								<a class="dropdown-item" href="../../../staff/subjects/maths/maths.php">Maths</a>
-								<a class="dropdown-item" href="../../../staff/subjects/history/history.php">History</a>
-								<a class="dropdown-item" href="../../../staff/subjects/geography/geography.php">Geography</a>
-								<a class="dropdown-item" href="../../../staff/subjects/science/science.php">Science</a>
-								<a class="dropdown-item" href="../../../staff/subjects/gaeilge/gaeilge.php">Gaeilge</a>
-							</div>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="../../../staff/announcements/announcements.php">
@@ -362,7 +368,7 @@ mysqli_close($conn);
 						<div class="card-body">
 							<!-- Table of Subjects -->
 							<div class="table-responsive">
-								<table id="sorttable" class="table align-items-center table-flush hover stripe" style="border: none;">
+								<table id="sorttable" class="table align-items-center table-flush hover stripe" style="border: none; width: 100% !important;">
 									<thead class="thead-light">
 										<tr>
                                             <th scope="col">Students Name</th>
@@ -379,7 +385,7 @@ mysqli_close($conn);
 										{
 									?>
 										<tr>
-											<td class="d-flex align-items-center">
+											<td>
 												
 												<?php echo $result["student_fullname"]; ?>
 											</td>
@@ -423,5 +429,20 @@ mysqli_close($conn);
 	<script src="../../../assets/js/main.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#sorttable').DataTable({
+				"paging": true,
+				"scrollX": true,
+				"ordering": true,
+				"info": true,
+				"pagingType": "numbers",
+				"lengthMenu": [
+					[5, 10, 15, 20, -1],
+					[5, 10, 15, 20, "All"]
+				]
+			});
+		});
+	</script>
 </body>
 </html>
