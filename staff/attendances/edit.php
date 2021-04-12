@@ -205,6 +205,36 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<i class='bx bxs-game'></i>
+								<span class="nav-link-text">Quizzes Panel</span>
+							</a>
+							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="../../quizzes/english/questions/viewquestion.php">English</a>
+								<a class="dropdown-item" href="../../quizzes/maths/questions/viewquestion.php">Maths</a>
+								<a class="dropdown-item" href="../../quizzes/history/questions/viewquestion.php">History</a>
+								<a class="dropdown-item" href="../../quizzes/geography/questions/viewquestion.php">Geography</a>
+								<a class="dropdown-item" href="../../quizzes/science/questions/viewquestion.php">Science</a>
+								<a class="dropdown-item" href="../../quizzes/gaeilge/questions/viewquestion.php">Gaeilge</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<i class='bx bxs-game'></i>
+								<span class="nav-link-text">Quizzes Results</span>
+							</a>
+							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="../../quizzes/english/result/englishresults.php">English</a>
+								<a class="dropdown-item" href="../../quizzes/maths/result/mathsresults.php">Maths</a>
+								<a class="dropdown-item" href="../../quizzes/history/result/historyresults.php">History</a>
+								<a class="dropdown-item" href="../../quizzes/geography/result/geographyresults.php">Geography</a>
+								<a class="dropdown-item" href="../../quizzes/science/result/scienceresults.php">Science</a>
+								<a class="dropdown-item" href="../../quizzes/gaeilge/result/gaeilgeresults.php">Gaeilge</a>
+							</div>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link active" href="./attendances.php">
 								<i class='bx bxs-calendar-check'></i>
 								<span class="nav-link-text">Attendances</span>
