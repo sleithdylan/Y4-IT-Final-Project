@@ -179,7 +179,7 @@ PRIMARY KEY (science_quiz_id));
 
 -- Data for ScienceQuiz
 INSERT INTO ScienceQuiz (science_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
-(1, 'What is the name of a frog’s young one?', 'Infant', 'Puppy', 'Tadpole', 'Calf', 3),
+(1, 'What is the name of a frogs young one?', 'Infant', 'Puppy', 'Tadpole', 'Calf', 3),
 (2, 'What part of the skeletal system protects the brain?', 'Skull', 'Pelvis', 'Thigh', 'Spine', 1),
 (3, 'Which animal from the below list is best adapted to the desert?', 'Tiger', 'Camel', 'Deer', 'Cheetah', 2),
 (4, 'Which material from the following has the highest transparency?', 'Paper', 'Wood', 'Metal', 'Glass', 4),
@@ -217,16 +217,16 @@ PRIMARY KEY (gaeilge_quiz_id));
 
 -- Data for GaeilgeQuiz
 INSERT INTO GaeilgeQuiz (gaeilge_quiz_id, question, answer_one, answer_two, answer_three, answer_four, correct_answer) VALUES
-(1, 'What’s “Laptop” in Irish?', 'Ríomhaire', 'Tábla', 'Bosca isteach', 'Teilifís', 1),
-(2, 'What’s “Cow” in Irish?', 'Madra', 'Asal', 'Bó', 'Cangarú', 3),
-(3, 'What’s “Ice cream” in Irish?', 'Cáca milis', 'Uachtar reoite', 'Seacláid', 'Torthaí', 2),
-(4, 'What’s “Potato” in Irish?', 'cóilis', 'Trátaí', 'Cairéad', 'Prátaí', 4),
-(5, 'What’s “Jam” in Irish?', 'Subh', 'Sú', 'Torthaí', 'Glasraí', 1),
-(6, 'What’s “Ambulance” in Irish?', 'Póilíní', 'Altra', 'Otharcharr', 'Dochtúir', 3),
-(7, 'What’s “Fork” in Irish?', 'Spúnóg', 'Forc', 'Scian', 'Pláta', 2),
-(8, 'What’s “Fire” in Irish?', 'Domhan', 'Gaoth', 'Uisce', 'Dóiteáin', 4),
-(9, 'What’s “Car” in Irish?', 'Bád', 'Gluaisteán', 'Gluaisrothar', 'Rothar', 2),
-(10, 'What’s “Italy” in Irish?', 'An Íoslainn', 'An Indinéis', 'An Iodáil', 'An Iaráic', 3);
+(1, 'What’s Laptop in Irish?', 'Riomhaire', 'Tabla', 'Bosca isteach', 'Teilifis', 1),
+(2, 'What’s Cow in Irish?', 'Madra', 'Asal', 'Bo', 'Cangaru', 3),
+(3, 'What’s Ice cream in Irish?', 'Caca milis', 'Uachtar reoite', 'Seaclaid', 'Torthai', 2),
+(4, 'What’s Potato in Irish?', 'coilis', 'Tratai', 'Cairead', 'Pratai', 4),
+(5, 'What’s Jam in Irish?', 'Subh', 'Su', 'Torthai', 'Glasrai', 1),
+(6, 'What’s Ambulance in Irish?', 'Poilini', 'Altra', 'Otharcharr', 'Dochtuir', 3),
+(7, 'What’s Fork in Irish?', 'Spunog', 'Forc', 'Scian', 'Plata', 2),
+(8, 'What’s Fire in Irish?', 'Domhan', 'Gaoth', 'Uisce', 'Doiteain', 4),
+(9, 'What’s Car in Irish?', 'Bad', 'Gluaistean', 'Gluaisrothar', 'Rothar', 2),
+(10, 'What’s Italy in Irish?', 'An Ioslainn', 'An Indineis', 'An Iodail', 'An Iaraic', 3);
 
 -- Table GaeilgeResults
 DROP TABLE IF EXISTS GaeilgeResults;
