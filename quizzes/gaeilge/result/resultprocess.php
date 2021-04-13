@@ -17,7 +17,7 @@ public function add_result($gaeilge_result_marks, $student_fullname)
         $dbconn = $conn->getConnection();
 
         $insertQuery = "INSERT INTO GaeilgeResults(gaeilge_result_marks,student_fullname) 
-        VALUES('$gaeilge_result_marks', '$student_fullname')";
+        VALUES(:gaeilge_result_marks, :student_fullname)";
         
         
         $preparedQuery = $dbconn->prepare($insertQuery);
