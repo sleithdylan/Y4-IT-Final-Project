@@ -17,8 +17,7 @@ public function add_result($english_result_marks, $student_fullname)
         $dbconn = $conn->getConnection();
 
         $insertQuery = "INSERT INTO EnglishResults(english_result_marks,student_fullname) 
-        VALUES('$english_result_marks', '$student_fullname')";
-        
+        VALUES(:english_result_marks, :student_fullname)";
         
         $preparedQuery = $dbconn->prepare($insertQuery);
         $result = $preparedQuery->execute($reslt);

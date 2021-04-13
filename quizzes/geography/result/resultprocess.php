@@ -17,7 +17,7 @@ public function add_result($geography_result_marks, $student_fullname)
         $dbconn = $conn->getConnection();
 
         $insertQuery = "INSERT INTO GeographyResults(geography_result_marks,student_fullname) 
-        VALUES('$geography_result_marks', '$student_fullname')";
+        VALUES(:geography_result_marks, :student_fullname)";
         
         
         $preparedQuery = $dbconn->prepare($insertQuery);

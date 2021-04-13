@@ -17,7 +17,7 @@ public function add_result($maths_result_marks, $student_fullname)
         $dbconn = $conn->getConnection();
 
         $insertQuery = "INSERT INTO MathsResults(maths_result_marks,student_fullname) 
-        VALUES('$maths_result_marks', '$student_fullname')";
+        VALUES(:maths_result_marks, :student_fullname)";
         
         
         $preparedQuery = $dbconn->prepare($insertQuery);

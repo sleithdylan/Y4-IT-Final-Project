@@ -103,21 +103,6 @@ if(isset($_POST["submitmcq"]))
     $_SESSION["current_mcq_no"] = $current_mcq_no + 1;
 }
 
-// Gets ID
-$id = mysqli_real_escape_string($conn, $_GET['id']);
-
-// SELECT Query
-$query = "SELECT * FROM students WHERE student_id = {$id}";
-
-// Gets result
-$result = mysqli_query($conn, $query);
-
-// Fetches data
-$lists = mysqli_fetch_assoc($result);
-
-// Free's result from memory
-mysqli_free_result($result);
-
 // Closes connection
 mysqli_close($conn);
 
