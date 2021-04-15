@@ -81,7 +81,7 @@ mysqli_close($conn);
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>Maths Overview | CloseApart</title>
+	<title>Maths Class | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -281,7 +281,7 @@ mysqli_close($conn);
 						<div class="card-header bg-transparent">
 							<div class="row align-items-center">
 								<div class="col">
-									<h3 class="mb-0">Your Students</h3>
+									<h3 class="mb-0">Maths Class</h3>
 								</div>
 							</div>
 						</div>
