@@ -1,4 +1,6 @@
 <?php
+// Starts session
+session_start();
 
 require_once("../../../config/dbconnection.php");
 
@@ -40,10 +42,12 @@ public function get_results_by_user($student_fullname)
 {
     try
     {
+        $email = $_SESSION["staff_email"];
+        $googleEmail = $_SESSION["email"];
         $conn = new Connection();
         $dbconn = $conn->getConnection();
 
-        $selectQuery = "SELECT * FROM `HistoryResults`;";
+        $selectQuery = "SELECT * FROM HistoryResults JOIN students USING(student_fullname) JOIN classes USING(class_id) WHERE staff_email='" . $email . $googleEmail . "';";
         
         $reslts = NULL;
         foreach( $dbconn->query($selectQuery, PDO::FETCH_ASSOC) as $rslt)

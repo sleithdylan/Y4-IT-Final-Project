@@ -385,8 +385,10 @@ mysqli_close($conn);
 										{
 									?>
 										<tr>
-											<td>
-												
+											<td class="d-flex align-items-center">
+												<span class="avatar avatar-sm rounded-circle mr-3">
+													<img src='../../../assets/images/avatars/<?php echo $result['student_avatar'] ?>' />
+												</span>
 												<?php echo $result["student_fullname"]; ?>
 											</td>
 											<td>
