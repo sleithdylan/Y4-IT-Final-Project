@@ -46,7 +46,7 @@ PRIMARY KEY (english_result_id));
 
 -- Data for EnglishResults
 INSERT INTO EnglishResults (english_result_id, english_result_date, english_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 -- Table MathsQuiz
 DROP TABLE IF EXISTS MathsQuiz;
@@ -87,7 +87,7 @@ PRIMARY KEY (maths_result_id));
 
 -- Data for MathsResults
 INSERT INTO MathsResults (maths_result_id, maths_result_date, maths_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 -- Table HistoryQuiz
 DROP TABLE IF EXISTS HistoryQuiz;
@@ -125,7 +125,7 @@ PRIMARY KEY (history_result_id));
 
 -- Data for HistoryResults
 INSERT INTO HistoryResults (history_result_id, history_result_date, history_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 -- Table GeographyQuiz
 DROP TABLE IF EXISTS GeographyQuiz;
@@ -163,7 +163,7 @@ PRIMARY KEY (geography_result_id));
 
 -- Data for GeographyResults
 INSERT INTO GeographyResults (geography_result_id, geography_result_date, geography_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 -- Table ScienceQuiz
 DROP TABLE IF EXISTS ScienceQuiz;
@@ -201,7 +201,7 @@ PRIMARY KEY (science_result_id));
 
 -- Data for ScienceResults
 INSERT INTO ScienceResults (science_result_id, science_result_date, science_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 -- Table GaeilgeQuiz
 DROP TABLE IF EXISTS GaeilgeQuiz;
@@ -239,7 +239,7 @@ PRIMARY KEY (gaeilge_result_id));
 
 -- Data for GaeilgeResults
 INSERT INTO GaeilgeResults (gaeilge_result_id, gaeilge_result_date, gaeilge_result_marks, student_fullname) VALUES
-(1, '2021-02-06 21:15:10', 7, 'David Ryan');
+(1, '2021-02-06 21:15:10', 7, 'David Moore');
 
 
 -- Table Staff
