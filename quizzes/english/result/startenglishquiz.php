@@ -84,6 +84,7 @@ if(isset($_POST["startQuizBtn"]))
 }
 require_once("resultprocess.php");
 $resultObject = new Result();
+
 $results = $resultObject->get_results_by_user($_SESSION["student_fullname"]);
 
 // Closes connection
