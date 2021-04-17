@@ -270,7 +270,7 @@ mysqli_close($conn);
 								<span class="nav-link-text">Quizzes Results</span>
 							</a>
 							<div class="dropdown-menu shadow-none pl-5" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../../english//englishresults.php">English</a>
+								<a class="dropdown-item" href="../../english/englishresults.php">English</a>
 								<a class="dropdown-item" href="../../maths/result/mathsresults.php">Maths</a>
 								<a class="dropdown-item" href="../../history/result/historyresults.php">History</a>
 								<a class="dropdown-item" href="../../geography/result/geographyresults.php">Geography</a>
