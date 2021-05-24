@@ -218,7 +218,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
-					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -251,8 +252,8 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes Panel</span>
 							</a>
@@ -356,7 +357,7 @@ mysqli_close($conn);
 			</div>
 		</nav>
 		<!-- Add Question -->
-        <div class="container-fluid mt-4">
+		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="card">
@@ -370,10 +371,11 @@ mysqli_close($conn);
 						<div class="card-body">
 							<!-- Add Question Form -->
 							<form action="#" method="post">
-                                <div class="form-group">
-                                    <label for="question">New Question:</label>
-                                    <textarea class="form-control" name="question" cols="100" rows="2"><?php echo isset($_POST["question"]) ? $_POST["question"] : ""; ?></textarea>
-                                </div>
+								<div class="form-group">
+									<label for="question">New Question:</label>
+									<textarea class="form-control" name="question" cols="100"
+										rows="2"><?php echo isset($_POST["question"]) ? $_POST["question"] : ""; ?></textarea>
+								</div>
 
 								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
@@ -395,7 +397,7 @@ mysqli_close($conn);
 										<label>Select correct answer</label>
 									</div>
 								</div>
-                                <div class="form-group form-row d-flex align-items-end">
+								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
 										<label for="answer_three">Answer three:</label>
 										<input type="text" class="form-control" name="answer_three" placeholder="Answer three" required>
@@ -415,16 +417,16 @@ mysqli_close($conn);
 										<label>Select correct answer</label>
 									</div>
 								</div>
-                                <input class="btn btn-primary text-capitalize px-5" type="submit" name="addmcq" value="Add Question" />
+								<input class="btn btn-primary text-capitalize px-5" type="submit" name="addmcq" value="Add Question" />
 								<a href="./viewquestion.php" class="btn btn-outline-primary text-capitalize px-5">Return</a>
-                            </form>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-    </div>
-							
+	</div>
+
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -436,4 +438,5 @@ mysqli_close($conn);
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 </body>
+
 </html>

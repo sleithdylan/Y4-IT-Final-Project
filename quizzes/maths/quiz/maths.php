@@ -180,7 +180,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="../../../student/contact.php">
-							<i class='bx bxs-contact'></i>
+								<i class='bx bxs-contact'></i>
 								<span class="nav-link-text">Contact</span>
 							</a>
 						</li>
@@ -214,7 +214,7 @@ mysqli_close($conn);
 								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-									 <img src='../../../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>'/>
+										<img src='../../../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
@@ -226,7 +226,8 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="../../../student/settings.php?id=<?php echo $studentData['student_id'] ?>" class="dropdown-item">
+								<a href="../../../student/settings.php?id=<?php echo $studentData['student_id'] ?>"
+									class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -257,11 +258,16 @@ mysqli_close($conn);
 										<p class="display-4 text-align-left"><?php echo $current_mcq["question"] ?></p>
 
 										<form class="d-flex flex-column flex-wrap align-items-start" method="post" action="maths.php">
-											<div><input class="mr-3" type="radio" name="answer" value="1"/><?php echo $current_mcq["answer_one"] ?><br/><br/></div>
-											<div><input class="mr-3" type="radio" name="answer" value="2"/><?php echo $current_mcq["answer_two"] ?><br/><br/></div>
-											<div><input class="mr-3" type="radio" name="answer" value="3"/><?php echo $current_mcq["answer_three"] ?><br/><br/></div>
-											<div><input class="mr-3" type="radio" name="answer" value="4"/><?php echo $current_mcq["answer_four"] ?><br/><br/></div>
-										<div><input class="btn btn-primary text-capitalize" type="submit" name="submitmcq" value="Submit Answer" />
+											<div><input class="mr-3" type="radio" name="answer"
+													value="1" /><?php echo $current_mcq["answer_one"] ?><br /><br /></div>
+											<div><input class="mr-3" type="radio" name="answer"
+													value="2" /><?php echo $current_mcq["answer_two"] ?><br /><br /></div>
+											<div><input class="mr-3" type="radio" name="answer"
+													value="3" /><?php echo $current_mcq["answer_three"] ?><br /><br /></div>
+											<div><input class="mr-3" type="radio" name="answer"
+													value="4" /><?php echo $current_mcq["answer_four"] ?><br /><br /></div>
+											<div><input class="btn btn-primary text-capitalize" type="submit" name="submitmcq"
+													value="Submit Answer" />
 										</form>
 									</div>
 								</div>

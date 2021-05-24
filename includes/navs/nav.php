@@ -4,7 +4,8 @@
 			<img src="./assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo">
 			<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown"
+			aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="navbar-collapse collapse" id="navbarDropdown">
@@ -16,7 +17,8 @@
 						</a>
 					</div>
 					<div class="col-6 collapse-close">
-						<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown"
+							aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 							<span></span>
 							<span></span>
 						</button>
@@ -33,7 +35,8 @@
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
 						Log in
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +45,8 @@
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
 						Sign up
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">

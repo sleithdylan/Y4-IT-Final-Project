@@ -124,24 +124,27 @@ mysqli_close($conn);
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -227,7 +230,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="./announcements/announcements.php">
-							<i class='bx bxs-megaphone'></i>
+								<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
 						</li>
@@ -262,9 +265,9 @@ mysqli_close($conn);
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
 										<?php if($_SESSION['access_token'] == true): ?>
-											<img src='<?php echo $_SESSION['picture']; ?>' />
+										<img src='<?php echo $_SESSION['picture']; ?>' />
 										<?php else: ?>
-											<img src='../assets/images/avatars/<?php echo $lists['staff_avatar'] ?>' />
+										<img src='../assets/images/avatars/<?php echo $lists['staff_avatar'] ?>' />
 										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
@@ -335,20 +338,20 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="stafffullname">Full Name</label>
 												<input type="text" id="stafffullname" name="stafffullname" class="form-control"
-													placeholder="First Name, e.g. John Doe (Required)" value="<?php echo $lists['staff_fullname'] ?>"
-													required>
+													placeholder="First Name, e.g. John Doe (Required)"
+													value="<?php echo $lists['staff_fullname'] ?>" required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="studentemail">Email Address</label>
 												<input type="email" id="studentemail" name="studentemail" class="form-control"
-													placeholder="Email Address e.g. jdoe@gmail.com (Required)" value="<?php echo $lists['staff_email'] ?>"
-													disabled>
+													placeholder="Email Address e.g. jdoe@gmail.com (Required)"
+													value="<?php echo $lists['staff_email'] ?>" disabled>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="staffphone">Phone Number</label>
 												<input type="text" class="form-control" id="staffphone" name="staffphone"
-													placeholder="Phone Number, e.g. 0891234567 (Required)" value="<?php echo $lists['staff_phone']; ?>"
-													required>
+													placeholder="Phone Number, e.g. 0891234567 (Required)"
+													value="<?php echo $lists['staff_phone']; ?>" required>
 											</div>
 										</div>
 									</div>
@@ -361,8 +364,9 @@ mysqli_close($conn);
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="form-control-label" for="staffaddress">Address</label>
-												<input id="staffaddress" name="staffaddress" class="form-control" placeholder="Home Address (Optional)"
-													value="<?php echo $lists['staff_address']; ?>" type="text">
+												<input id="staffaddress" name="staffaddress" class="form-control"
+													placeholder="Home Address (Optional)" value="<?php echo $lists['staff_address']; ?>"
+													type="text">
 											</div>
 										</div>
 									</div>
@@ -370,8 +374,8 @@ mysqli_close($conn);
 										<div class="col-lg-4">
 											<div class="form-group">
 												<label class="form-control-label" for="staffcity">City</label>
-												<input type="text" id="staffcity" name="staffcity" class="form-control" placeholder="City (Optional)"
-													value="<?php echo $lists['staff_city']; ?>">
+												<input type="text" id="staffcity" name="staffcity" class="form-control"
+													placeholder="City (Optional)" value="<?php echo $lists['staff_city']; ?>">
 											</div>
 										</div>
 										<div class="col-lg-4">

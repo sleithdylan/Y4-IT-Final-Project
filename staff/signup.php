@@ -99,24 +99,27 @@ if (isset($_POST['register'])) {
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -146,8 +149,9 @@ if (isset($_POST['register'])) {
 						<div class="card-header bg-white pb-4">
 							<div class="text-muted text-center mb-3"><small>Sign up with</small></div>
 							<div class="btn-wrapper text-center">
-							<input type="button" class="btn btn-neutral btn-icon" onclick="window.location = '<?php echo $loginURL ?>';" name="google" value="Google">
-						</div>
+								<input type="button" class="btn btn-neutral btn-icon"
+									onclick="window.location = '<?php echo $loginURL ?>';" name="google" value="Google">
+							</div>
 						</div>
 						<div class="card-body bg-secondary px-lg-5 py-lg-5">
 							<div class="text-center text-muted mb-4">
@@ -177,8 +181,8 @@ if (isset($_POST['register'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input id="password-field" type="password" class="form-control" id="staffpassword" name="staffpassword"
-											placeholder="Password" required>
+										<input id="password-field" type="password" class="form-control" id="staffpassword"
+											name="staffpassword" placeholder="Password" required>
 									</div>
 									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>

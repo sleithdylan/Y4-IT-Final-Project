@@ -139,24 +139,27 @@ mysqli_close($conn);
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -172,7 +175,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../index.php">
-					<img src="../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -242,7 +246,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="../announcements/announcements.php">
-							<i class='bx bxs-megaphone'></i>
+								<i class='bx bxs-megaphone'></i>
 								<span class="nav-link-text">Announcements</span>
 							</a>
 						</li>
@@ -277,13 +281,14 @@ mysqli_close($conn);
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
 										<?php if($_SESSION['access_token'] == true): ?>
-											<img src='<?php echo $_SESSION['picture']; ?>' />
+										<img src='<?php echo $_SESSION['picture']; ?>' />
 										<?php else: ?>
-											<img src='../../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
+										<img src='../../assets/images/avatars/<?php echo $staffData['staff_avatar'] ?>' />
 										<?php endif; ?>
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] . $_SESSION['givenName'] . ' ' . $_SESSION['familyName'] ?></span>
+										<span
+											class="mb-0 text-sm font-weight-bold"><?php echo $staffData['staff_fullname'] . $_SESSION['givenName'] . ' ' . $_SESSION['familyName'] ?></span>
 									</div>
 								</div>
 							</a>
@@ -292,7 +297,8 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="../settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>" class="dropdown-item">
+								<a href="../settings.php?id=<?php echo $staffData['staff_id'] . $_SESSION['id'] ?>"
+									class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -334,20 +340,19 @@ mysqli_close($conn);
 											<div class="form-group">
 												<label class="form-control-label" for="attendance">Attendance</label>
 												<input type="text" id="attendance" name="attendance" class="form-control"
-													placeholder="Attendance, e.g. 50" value="<?php echo $lists['attendance']; ?>"
-													required>
+													placeholder="Attendance, e.g. 50" value="<?php echo $lists['attendance']; ?>" required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="explained">Attendance (Explained)</label>
 												<input type="text" class="form-control" id="explained" name="explained"
-													placeholder="Attendance (Explained), e.g. 20" value="<?php echo $lists['attendance_explained']; ?>"
-													required>
+													placeholder="Attendance (Explained), e.g. 20"
+													value="<?php echo $lists['attendance_explained']; ?>" required>
 											</div>
 											<div class="form-group">
 												<label class="form-control-label" for="unexplained">Attendance (Unexplained)</label>
 												<input type="text" class="form-control" id="unexplained" name="unexplained"
-													placeholder="Attendance (Unexplained), e.g. 30" value="<?php echo $lists['attendance_unexplained']; ?>"
-													required>
+													placeholder="Attendance (Unexplained), e.g. 30"
+													value="<?php echo $lists['attendance_unexplained']; ?>" required>
 											</div>
 										</div>
 									</div>

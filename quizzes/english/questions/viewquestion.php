@@ -220,7 +220,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
-					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -253,8 +254,8 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes Panel</span>
 							</a>
@@ -364,8 +365,8 @@ mysqli_close($conn);
 					<div class="card">
 						<div class="card-header bg-transparent">
 							<div class="d-flex justify-content-between">
-									<h3 class="mb-0">English Quiz Questions</h3>
-									<a href="addquestion.php" class="btn btn-primary">Add New Question</a>
+								<h3 class="mb-0">English Quiz Questions</h3>
+								<a href="addquestion.php" class="btn btn-primary">Add New Question</a>
 							</div>
 						</div>
 						<div class="card-body">
@@ -391,26 +392,27 @@ mysqli_close($conn);
 												foreach($mcqs as $mcq)
 												{
 										?>
-										
-											<tr class="pb-2">
-												<td><?php echo $mcq["english_quiz_id"]; ?></td>
-												<td>
-													<strong><?php echo $mcq["question"]; ?></strong>
-												</td>
-												<td><?php echo $mcq["answer_one"]; ?></td>
-												<td><?php echo $mcq["answer_two"]; ?></td>
-												<td><?php echo $mcq["answer_three"]; ?></td>
-												<td><?php echo $mcq["answer_four"]; ?></td>
-												<td><?php echo $mcq["correct_answer"]; ?></td>
-												<td>
-												<a href="editquestion.php?english_quiz_id=<?php echo $mcq["english_quiz_id"]; ?>"class="px-4 py-2 mr-2 btn text-primary shadow-none"><i class='bx bxs-edit'></i> Edit</a>
-												<a <a href="viewquestion.php?english_quiz_id=<?php echo $mcq["english_quiz_id"]; ?>"class="px-4 py-2 mr-2 btn text-danger shadow-none"><i class='bx bxs-trash'></i> Delete</a>
-												</td>
-										    </tr>
-                                                    <?php 
-                                                    }
-                                                }
-                                                ?>
+										<tr class="pb-2">
+											<td><?php echo $mcq["english_quiz_id"]; ?></td>
+											<td>
+												<strong><?php echo $mcq["question"]; ?></strong>
+											</td>
+											<td><?php echo $mcq["answer_one"]; ?></td>
+											<td><?php echo $mcq["answer_two"]; ?></td>
+											<td><?php echo $mcq["answer_three"]; ?></td>
+											<td><?php echo $mcq["answer_four"]; ?></td>
+											<td><?php echo $mcq["correct_answer"]; ?></td>
+											<td>
+												<a href="editquestion.php?english_quiz_id=<?php echo $mcq["english_quiz_id"]; ?>"
+													class="px-4 py-2 mr-2 btn text-primary shadow-none"><i class='bx bxs-edit'></i> Edit</a>
+												<a <a href="viewquestion.php?english_quiz_id=<?php echo $mcq["english_quiz_id"]; ?>"
+													class="px-4 py-2 mr-2 btn text-danger shadow-none"><i class='bx bxs-trash'></i> Delete</a>
+											</td>
+										</tr>
+										<?php 
+	                        }
+	                    }
+                    ?>
 									</tbody>
 								</table>
 							</div>
@@ -419,7 +421,7 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</div>
-	</div>			
+	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
