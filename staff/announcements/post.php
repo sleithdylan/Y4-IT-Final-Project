@@ -117,24 +117,27 @@ if (!isset($_SESSION['staff_email']) && !isset($_SESSION['access_token'])) {
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->

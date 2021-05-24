@@ -99,24 +99,27 @@ mysqli_close($conn);
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -134,8 +137,7 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
-					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
-						alt="closeapart logo">
+					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -175,7 +177,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="./contact.php">
-							<i class='bx bxs-contact'></i>
+								<i class='bx bxs-contact'></i>
 								<span class="nav-link-text">Contact</span>
 							</a>
 						</li>
@@ -269,7 +271,8 @@ mysqli_close($conn);
 										<div id="cardPost" class="card-body">
 											<div class="row">
 												<div class="col">
-													<h5 class="mr-3 text-muted font-weight-normal">By <?php echo $list['staff_fullname'] . ' | ' . $list['created_at'] ?></h5>
+													<h5 class="mr-3 text-muted font-weight-normal">By
+														<?php echo $list['staff_fullname'] . ' | ' . $list['created_at'] ?></h5>
 													<h3 class="mr-3"><?php echo $list['announcement_subject'] ?></h3>
 													<h4 class="font-weight-normal"><?php echo $list['announcement_description'] ?></h4>
 													</h5>

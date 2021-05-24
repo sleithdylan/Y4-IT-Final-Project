@@ -99,7 +99,8 @@ mysqli_close($conn);
 	<title>Science Quiz | CloseApart</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="description" content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
+	<meta name="description"
+		content="Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
@@ -123,7 +124,8 @@ mysqli_close($conn);
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
 					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo">
-					<span class="font-weight-bold text-primary">Close</span><span class="font-weight-light text-primary">Apart</span>
+					<span class="font-weight-bold text-primary">Close</span><span
+						class="font-weight-light text-primary">Apart</span>
 				</a>
 			</div>
 			<div class="navbar-inner">
@@ -139,7 +141,8 @@ mysqli_close($conn);
 					<hr class="my-3">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes</span>
 							</a>
@@ -160,7 +163,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="../../../student/contact.php">
-							<i class='bx bxs-contact'></i>
+								<i class='bx bxs-contact'></i>
 								<span class="nav-link-text">Contact</span>
 							</a>
 						</li>
@@ -178,7 +181,8 @@ mysqli_close($conn);
 					<ul class="navbar-nav align-items-center ml-auto">
 						<li class="nav-item d-xl-none">
 							<!-- Hamburger Menu -->
-							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+							<div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin"
+								data-target="#sidenav-main">
 								<div class="sidenav-toggler-inner">
 									<i class="sidenav-toggler-line"></i>
 									<i class="sidenav-toggler-line"></i>
@@ -189,10 +193,11 @@ mysqli_close($conn);
 					</ul>
 					<ul class="navbar-nav align-items-center">
 						<li class="nav-item dropdown">
-							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<div class="media align-items-center">
 									<span class="avatar avatar-sm rounded-circle">
-										<img src='../../../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>'/>
+										<img src='../../../assets/images/avatars/<?php echo $studentData['student_avatar'] ?>' />
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
 										<span class="mb-0 text-sm font-weight-bold"><?php echo $studentData['student_fullname'] ?></span>
@@ -204,7 +209,8 @@ mysqli_close($conn);
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Overview</span>
 								</a>
-								<a href="../../../student/settings.php?id=<?php echo $studentData['student_id'] ?>" class="dropdown-item">
+								<a href="../../../student/settings.php?id=<?php echo $studentData['student_id'] ?>"
+									class="dropdown-item">
 									<i class="ni ni-settings-gear-65"></i>
 									<span>Profile Settings</span>
 								</a>
@@ -233,7 +239,8 @@ mysqli_close($conn);
 							<div class="my-3"> <strong>Type: </strong>Multiple Choice</div>
 							<div class="my-3"> <strong>Estimatd Time: </strong> 5 minutes</div>
 							<form method="post" action="#">
-								<input class="btn btn-primary text-capitalize px-5" type="submit" name="startQuizBtn" value="Start Quiz" />
+								<input class="btn btn-primary text-capitalize px-5" type="submit" name="startQuizBtn"
+									value="Start Quiz" />
 							</form>
 						</div>
 					</div>

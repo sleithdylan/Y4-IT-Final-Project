@@ -87,24 +87,27 @@ if (isset($_POST['login'])) {
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -123,8 +126,8 @@ if (isset($_POST['login'])) {
 		<div class="container pt-6">
 			<div class="row">
 				<div class="col">
-					<img class="d-none d-sm-none d-md-block login-image"
-							src="../assets/images/illustrations/closeapart-room.png" alt="student bedroom">
+					<img class="d-none d-sm-none d-md-block login-image" src="../assets/images/illustrations/closeapart-room.png"
+						alt="student bedroom">
 				</div>
 				<div class="col-md-5 col-lg-5">
 					<?php if($msg != ""): ?>
@@ -168,13 +171,14 @@ if (isset($_POST['login'])) {
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input id="password-field" type="password" class="form-control" id="studentpassword" name="studentpassword"
-											placeholder="Password" required>
+										<input id="password-field" type="password" class="form-control" id="studentpassword"
+											name="studentpassword" placeholder="Password" required>
 									</div>
 									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>
 								<div class="text-center">
-									<button type="submit" name="login" class="btn btn-primary my-4 btn-block text-capitalize">Log in</button>
+									<button type="submit" name="login" class="btn btn-primary my-4 btn-block text-capitalize">Log
+										in</button>
 								</div>
 							</form>
 						</div>

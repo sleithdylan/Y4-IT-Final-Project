@@ -99,24 +99,27 @@ mysqli_close($conn);
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -134,8 +137,7 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../index.php">
-					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
-						alt="closeapart logo">
+					<img src="../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -175,7 +177,7 @@ mysqli_close($conn);
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" href="./contact.php">
-							<i class='bx bxs-contact'></i>
+								<i class='bx bxs-contact'></i>
 								<span class="nav-link-text">Contact</span>
 							</a>
 						</li>
@@ -257,27 +259,34 @@ mysqli_close($conn);
 						<div class="card-body">
 							<div class="row">
 								<?php foreach($lists as $list) : ?>
-									<div class="col-md-3">
-										<div class="card border-bottom">
-											<div class="card-body shadow-sm py-5">
-												<div class="d-flex flex-column align-items-center justify-content-center">
-													<?php if($_SESSION['access_token'] == false): ?>
-														<img class="rounded-circle" style="width: 30%;" onerror="this.style.display='none'" src="../assets/images/avatars/<?php echo $list['staff_avatar'] ?>">
-														<img class="rounded-circle" style="width: 30%;margin-bottom:0.4rem" onerror="this.style.display='none'" src="<?php echo $list['staff_avatar'] ?>">
+								<div class="col-md-3">
+									<div class="card border-bottom">
+										<div class="card-body shadow-sm py-5">
+											<div class="d-flex flex-column align-items-center justify-content-center">
+												<?php if($_SESSION['access_token'] == false): ?>
+												<img class="rounded-circle" style="width: 30%;" onerror="this.style.display='none'"
+													src="../assets/images/avatars/<?php echo $list['staff_avatar'] ?>">
+												<img class="rounded-circle" style="width: 30%;margin-bottom:0.4rem"
+													onerror="this.style.display='none'" src="<?php echo $list['staff_avatar'] ?>">
+												<?php endif; ?>
+												<h3 class="card-text text-center font-weight-bold mt-4"><?php echo $list['staff_fullname'] ?>
+												</h3>
+												<div class="d-flex">
+													<?php if($list['staff_phone'] != ''): ?>
+													<a href="tel:<?php echo $list['staff_phone'] ?>"
+														class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-phone'></i></i></a>
+													<?php else: ?>
+													<a href="tel:<?php echo $list['staff_phone'] ?>"
+														class="px-2 py-1 btn text-primary shadow-none" style="display: none;"><i
+															class='bx bxs-phone'></i></i></a>
 													<?php endif; ?>
-													<h3 class="card-text text-center font-weight-bold mt-4"><?php echo $list['staff_fullname'] ?></h3>
-													<div class="d-flex">
-														<?php if($list['staff_phone'] != ''): ?>
-															<a href="tel:<?php echo $list['staff_phone'] ?>" class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-phone' ></i></i></a>
-														<?php else: ?>
-															<a href="tel:<?php echo $list['staff_phone'] ?>" class="px-2 py-1 btn text-primary shadow-none" style="display: none;"><i class='bx bxs-phone' ></i></i></a>
-														<?php endif; ?>
-														<a href="mailto:<?php echo $list['staff_email']?>" class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-envelope'></i></i></a>
-													</div>
+													<a href="mailto:<?php echo $list['staff_email']?>"
+														class="px-2 py-1 btn text-primary shadow-none"><i class='bx bxs-envelope'></i></i></a>
 												</div>
 											</div>
 										</div>
 									</div>
+								</div>
 								<?php endforeach; ?>
 							</div>
 						</div>

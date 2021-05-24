@@ -18,24 +18,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='./manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='./manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -54,7 +57,8 @@
 				<img src="./assets/images/brand/closeapart-logo-white.svg" class="mr-2 brand-logo">
 				<span class="font-weight-bold text-white">Close</span><span class="font-weight-light text-white">Apart</span>
 			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDropdown"
+				aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse" id="navbarDropdown">
@@ -66,7 +70,8 @@
 							</a>
 						</div>
 						<div class="col-6 collapse-close">
-							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+							<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarDropdown"
+								aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
 								<span></span>
 								<span></span>
 							</button>
@@ -86,7 +91,8 @@
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
 							Log in
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -95,7 +101,8 @@
 						</div>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
 							Sign up
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -125,8 +132,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-user'></i></span>
 										</div>
-										<input type="text" class="form-control" id="name" name="name"
-											placeholder="Full Name" required>
+										<input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -135,8 +141,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-envelope'></i></span>
 										</div>
-										<input type="email" class="form-control" id="email" name="_replyto" placeholder="Email"
-											required>
+										<input type="email" class="form-control" id="email" name="_replyto" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -145,19 +150,19 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-message-square-detail'></i></span>
 										</div>
-										<input type="text" class="form-control" id="subject" name="subject"
-											placeholder="Subject" required>
+										<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="message">Your Message</label>
 									<div class="input-group input-group-alternative mb-2">
-										<textarea class="form-control p-3" id="message" name="message"
-											placeholder="Message..." cols="10" rows="5" required></textarea>
+										<textarea class="form-control p-3" id="message" name="message" placeholder="Message..." cols="10"
+											rows="5" required></textarea>
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" id="contact-form-button" class="btn btn-primary my-4 btn-block text-capitalize">Send message</button>
+									<button type="submit" id="contact-form-button"
+										class="btn btn-primary my-4 btn-block text-capitalize">Send message</button>
 								</div>
 							</form>
 						</div>
@@ -220,51 +225,53 @@
 		});
 	</script>
 	<script>
-  window.addEventListener("DOMContentLoaded", function() {
+		window.addEventListener("DOMContentLoaded", function () {
 
-    // get the form elements defined in your form HTML above
-    
-    var form = document.getElementById("contact-form");
-    var button = document.getElementById("contact-form-button");
-    var status = document.getElementById("contact-form-status");
+			// get the form elements defined in your form HTML above
 
-    // Success and Error functions for after the form is submitted
-    
-    function success() {
-      form.reset();
-			status.innerHTML = "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>Success!</strong> Message has been sent<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-    }
+			var form = document.getElementById("contact-form");
+			var button = document.getElementById("contact-form-button");
+			var status = document.getElementById("contact-form-status");
 
-    function error() {
-			status.innerHTML = "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Error!</strong> There was a problem<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-    }
+			// Success and Error functions for after the form is submitted
 
-    // handle the form submission event
+			function success() {
+				form.reset();
+				status.innerHTML =
+					"<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>Success!</strong> Message has been sent<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+			}
 
-    form.addEventListener("submit", function(ev) {
-      ev.preventDefault();
-      var data = new FormData(form);
-      ajax(form.method, form.action, data, success, error);
-    });
-  });
-  
-  // helper function for sending an AJAX request
+			function error() {
+				status.innerHTML =
+					"<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Error!</strong> There was a problem<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+			}
 
-  function ajax(method, url, data, success, error) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        success(xhr.response, xhr.responseType);
-      } else {
-        error(xhr.status, xhr.response, xhr.responseType);
-      }
-    };
-    xhr.send(data);
-  }
-</script>
+			// handle the form submission event
+
+			form.addEventListener("submit", function (ev) {
+				ev.preventDefault();
+				var data = new FormData(form);
+				ajax(form.method, form.action, data, success, error);
+			});
+		});
+
+		// helper function for sending an AJAX request
+
+		function ajax(method, url, data, success, error) {
+			var xhr = new XMLHttpRequest();
+			xhr.open(method, url);
+			xhr.setRequestHeader("Accept", "application/json");
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState !== XMLHttpRequest.DONE) return;
+				if (xhr.status === 200) {
+					success(xhr.response, xhr.responseType);
+				} else {
+					error(xhr.status, xhr.response, xhr.responseType);
+				}
+			};
+			xhr.send(data);
+		}
+	</script>
 </body>
 
 </html>

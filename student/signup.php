@@ -114,24 +114,27 @@ mysqli_close($conn);
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='../manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('../sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='../manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('../sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -186,8 +189,8 @@ mysqli_close($conn);
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class='bx bxs-lock-open-alt'></i></span>
 										</div>
-										<input id="password-field" type="password" class="form-control" id="studentpassword" name="studentpassword"
-											placeholder="Password" required>
+										<input id="password-field" type="password" class="form-control" id="studentpassword"
+											name="studentpassword" placeholder="Password" required>
 									</div>
 									<span toggle="#password-field" class="bx bx-hide field-icon toggle-password"></span>
 								</div>
@@ -197,15 +200,17 @@ mysqli_close($conn);
 											<span class="input-group-text"><i class='bx bxs-chalkboard'></i></span>
 										</div>
 										<select class="form-control" id="studentclass" name="studentclass" required>
-			                <option value="">Choose Class</option>
+											<option value="">Choose Class</option>
 											<?php foreach($lists as $list) : ?>
-			                <option value="<?php echo $list['class_id']?>"><?php echo $list['class_name'] . "'s Class"?></option>
+											<option value="<?php echo $list['class_id']?>"><?php echo $list['class_name'] . "'s Class"?>
+											</option>
 											<?php endforeach; ?>
-			              </select>
+										</select>
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" name="register" class="btn btn-primary my-4 btn-block text-capitalize">Create account</button>
+									<button type="submit" name="register" class="btn btn-primary my-4 btn-block text-capitalize">Create
+										account</button>
 								</div>
 							</form>
 						</div>

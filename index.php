@@ -3,7 +3,8 @@
 
 <head>
 	<!-- Basic Page Needs -->
-	<title>CloseApart | Student’s online second home – participate in quizzes, communicate with teachers, complete your work online! Get comfortable with us</title>
+	<title>CloseApart | Student’s online second home – participate in quizzes, communicate with teachers, complete your
+		work online! Get comfortable with us</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="description"
@@ -18,24 +19,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
 	<!-- PWA -->
-  <link rel='manifest' href='./manifest.json'>
-  <script>
-    // Registering our Service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js', {
-        scope: './'
-      })
-    }
-  </script>
+	<link rel='manifest' href='./manifest.json'>
+	<script>
+		// Registering our Service worker
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('sw.js', {
+				scope: './'
+			})
+		}
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5271QT8X93"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-5271QT8X93');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5271QT8X93');
 	</script>
 
 	<!-- Icons -->
@@ -59,7 +63,8 @@
 			<div class="row d-flex flex-md-column flex-lg-row justify-content-center align-items-center py-5">
 				<div class="col-md-8 col-lg-6">
 					<h1 class="display-1 text-left stagger-brand">CloseApart</h1>
-					<p class="text-left stagger-sub">Student’s online second home – participate in quizzes, communicate with teachers,
+					<p class="text-left stagger-sub">Student’s online second home – participate in quizzes, communicate with
+						teachers,
 						complete your work online!</p>
 					<div class="stagger-cta">
 						<p>Sign up as a:</p>
@@ -77,9 +82,11 @@
 	<!-- Who we are -->
 	<div id="who-we-are" class="py-5">
 		<div class="container">
-			<div class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5 drone-image" data-aos="fade-right">
+			<div
+				class="row d-flex flex-md-column-reverse flex-lg-row justify-content-center align-items-center py-5 drone-image"
+				data-aos="fade-right">
 				<img class="d-none d-sm-none d-md-none d-lg-block shadow" style="height: 500px; width: 425px"
-						src="./assets/images/drone-school.png" alt="drone image of a school">
+					src="./assets/images/drone-school.png" alt="drone image of a school">
 				<div class="col-md col-lg"></div>
 				<div class="col-md col-lg-8 bg-white p-4 drone-text" data-aos="fade-left">
 					<h6 class="text-left text-primary mt-3">Who we are</h6>
@@ -181,7 +188,8 @@
 							<div class="icon icon-lg text-primary">
 								<i class='bx bxs-quote-alt-left'></i>
 							</div>
-							<p class="card-text">My son enjoys his new way of working. <br> This whole online thing was a step in the right
+							<p class="card-text">My son enjoys his new way of working. <br> This whole online thing was a step in the
+								right
 								direction!</p>
 							<div class="d-flex align-items-center">
 								<img class="rounded-circle" style="width: 17.5%;" src="./assets/images/testimonials/david.jpg"
@@ -239,12 +247,16 @@
 	<div id="cta" class="pb-5 mb-5">
 		<div class="container mb-5">
 			<div class="row">
-				<h6 class="col-md text-left text-primary mt-5 text-sm-center text-md-left" data-aos="fade-up">Got any questions?</h6>
+				<h6 class="col-md text-left text-primary mt-5 text-sm-center text-md-left" data-aos="fade-up">Got any questions?
+				</h6>
 			</div>
 			<div class="row">
-				<h4 class="col-md text-left text-sm-center text-md-left" data-aos="fade-up" data-aos-duration="1000">Contact us directly</h4>
-				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center" data-aos="fade-up" data-aos-duration="1000">
-					<a href="./contact.php" class="btn btn-outline-primary text-capitalize px-6 mx-sm-auto mx-md-0 mt-sm-2 mt-md-0">Contact Us</a>
+				<h4 class="col-md text-left text-sm-center text-md-left" data-aos="fade-up" data-aos-duration="1000">Contact us
+					directly</h4>
+				<div class="col-md-7 d-flex justify-content-sm-start justify-content-md-end align-items-center"
+					data-aos="fade-up" data-aos-duration="1000">
+					<a href="./contact.php"
+						class="btn btn-outline-primary text-capitalize px-6 mx-sm-auto mx-md-0 mt-sm-2 mt-md-0">Contact Us</a>
 				</div>
 			</div>
 		</div>
@@ -261,15 +273,41 @@
 	<script src="./assets/js/main.js"></script>
 	<script>
 		// Create GSAP Instance
-		var tl = gsap.timeline({ defaults: { duration: 1 } });
+		var tl = gsap.timeline({
+			defaults: {
+				duration: 1
+			}
+		});
 
 		// GSAP
-		tl.to('#overlay', { opacity: 0, display: 'none' }, '-=.1') // Fade Down
-			.from('nav', { y: -50, opacity: 0 }, '-=.3') // Fade Down
-			.from('.stagger-brand', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
-			.from('.stagger-sub', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
-			.from('.stagger-cta', { y: 50, opacity: 0, stagger: 0.7 }, '-=.3') // Fade Up
-			.from('.stagger-image', { scaleX: 0.8, scaleY: 0.8, opacity: 0 }, '-=1'); // Zoom In with Delay
+		tl.to('#overlay', {
+				opacity: 0,
+				display: 'none'
+			}, '-=.1') // Reveal
+			.from('nav', {
+				y: -50,
+				opacity: 0
+			}, '-=.3') // Fade Down
+			.from('.stagger-brand', {
+				y: 50,
+				opacity: 0,
+				stagger: 0.7
+			}, '-=.3') // Fade Up
+			.from('.stagger-sub', {
+				y: 50,
+				opacity: 0,
+				stagger: 0.7
+			}, '-=.3') // Fade Up
+			.from('.stagger-cta', {
+				y: 50,
+				opacity: 0,
+				stagger: 0.7
+			}, '-=.3') // Fade Up
+			.from('.stagger-image', {
+				scaleX: 0.8,
+				scaleY: 0.8,
+				opacity: 0
+			}, '-=1'); // Zoom In with Delay
 	</script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script>
@@ -299,12 +337,12 @@
 				},
 			});
 		});
-		
+
 		// AOS
 		AOS.init({
-		  easing: 'ease-in-out',
-		  once: true,
-		  duration: 1000,
+			easing: 'ease-in-out',
+			once: true,
+			duration: 1000,
 			offset: 190
 		});
 	</script>

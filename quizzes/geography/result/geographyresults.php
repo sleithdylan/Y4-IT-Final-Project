@@ -216,7 +216,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
-					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -264,8 +265,8 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes Results</span>
 							</a>
@@ -368,17 +369,18 @@ mysqli_close($conn);
 						<div class="card-body">
 							<!-- Table of Subjects -->
 							<div class="table-responsive">
-								<table id="sorttable" class="table align-items-center table-flush hover stripe" style="border: none; width: 100% !important;">
+								<table id="sorttable" class="table align-items-center table-flush hover stripe"
+									style="border: none; width: 100% !important;">
 									<thead class="thead-light">
 										<tr>
-                      <th scope="col">Students Name</th>
+											<th scope="col">Students Name</th>
 											<th scope="col">Date Submitted</th>
 											<th scope="col">Result</th>
 											<th scope="col">Delete</th>
 										</tr>
 									</thead>
 									<tbody>
-									<?php
+										<?php
 										if(isset($results))
 										{
 										foreach($results as $result)
@@ -405,7 +407,7 @@ mysqli_close($conn);
 															class="text-danger px-4 py-2 btn text-primary shadow-none"><i class='bx bxs-trash'></i>
 															Delete</button>
 													</form>
-												<div>
+													<div>
 											</td>
 										</tr>
 										<?php 
@@ -420,31 +422,32 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</div>
-							
-	<!-- Scripts -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="../../../assets/js/argon-design-system-extras.min.js"></script>
-	<script src="../../../assets/js/main.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('#sorttable').DataTable({
-				"paging": true,
-				"scrollX": true,
-				"ordering": true,
-				"info": true,
-				"pagingType": "numbers",
-				"lengthMenu": [
-					[5, 10, 15, 20, -1],
-					[5, 10, 15, 20, "All"]
-				]
+
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+		<script src="../../../assets/js/argon-design-system-extras.min.js"></script>
+		<script src="../../../assets/js/main.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				$('#sorttable').DataTable({
+					"paging": true,
+					"scrollX": true,
+					"ordering": true,
+					"info": true,
+					"pagingType": "numbers",
+					"lengthMenu": [
+						[5, 10, 15, 20, -1],
+						[5, 10, 15, 20, "All"]
+					]
+				});
 			});
-		});
-	</script>
+		</script>
 </body>
+
 </html>

@@ -224,7 +224,8 @@ mysqli_close($conn);
 		<div class="scrollbar-inner">
 			<div class="sidenav-header align-items-center">
 				<a class="navbar-brand d-flex justify-content-center" href="../../../index.php">
-					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo" alt="closeapart logo">
+					<img src="../../../assets/images/brand/closeapart-logo-primary.svg" class="mr-2 brand-logo"
+						alt="closeapart logo">
 					<span class="font-weight-bold text-primary">Close</span><span
 						class="font-weight-light text-primary">Apart</span>
 				</a>
@@ -257,8 +258,8 @@ mysqli_close($conn);
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">
 								<i class='bx bxs-game'></i>
 								<span class="nav-link-text">Quizzes Panel</span>
 							</a>
@@ -362,7 +363,7 @@ mysqli_close($conn);
 			</div>
 		</nav>
 		<!-- Edit Question -->
-        <div class="container-fluid mt-4">
+		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="card">
@@ -375,69 +376,79 @@ mysqli_close($conn);
 						</div>
 						<div class="card-body">
 							<!-- Edit Form -->
-                            <?php
-                            if(count($mcq) > 0)
-                            {
-                            ?>
+							<?php
+              if(count($mcq) > 0)
+              {
+              ?>
 							<form action="editquestion.php" method="post">
-                                <div class="form-group">
-                                    <input type="hidden" name="maths_quiz_id" value="<?php echo $mcq["maths_quiz_id"]; ?>" />
-                                    <label for="question">Edit Question:</label>
-                                    <textarea class="form-control" name="question" cols="100" rows="2"><?php echo $mcq["question"]; ?></textarea>
-                                </div>
+								<div class="form-group">
+									<input type="hidden" name="maths_quiz_id" value="<?php echo $mcq["maths_quiz_id"]; ?>" />
+									<label for="question">Edit Question:</label>
+									<textarea class="form-control" name="question" cols="100"
+										rows="2"><?php echo $mcq["question"]; ?></textarea>
+								</div>
 
 								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
 										<label for="answer_one">Answer one:</label>
-										<input type="text" class="form-control" name="answer_one" value="<?php echo $mcq["answer_one"]; ?>" required>
+										<input type="text" class="form-control" name="answer_one" value="<?php echo $mcq["answer_one"]; ?>"
+											required>
 									</div>
 									<div class="form-check col-md-6 pl-5">
-										<input class="form-check-input py-5" type="radio" name="correct_answer" value="1" <?php echo $mcq["correct_answer"] == "1" ? "checked" : "" ; ?>>
+										<input class="form-check-input py-5" type="radio" name="correct_answer" value="1"
+											<?php echo $mcq["correct_answer"] == "1" ? "checked" : "" ; ?>>
 										<label>Select correct answer</label>
 									</div>
 								</div>
 								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
 										<label for="answer_two">Answer two:</label>
-										<input type="text" class="form-control" name="answer_two" value="<?php echo $mcq["answer_two"]; ?>" required>
+										<input type="text" class="form-control" name="answer_two" value="<?php echo $mcq["answer_two"]; ?>"
+											required>
 									</div>
 									<div class="form-check col-md-6 pl-5">
-										<input class="form-check-input py-5" type="radio" name="correct_answer" value="2" <?php echo $mcq["correct_answer"] == "2" ? "checked" : "" ; ?>>
+										<input class="form-check-input py-5" type="radio" name="correct_answer" value="2"
+											<?php echo $mcq["correct_answer"] == "2" ? "checked" : "" ; ?>>
 										<label>Select correct answer</label>
 									</div>
 								</div>
 								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
 										<label for="answer_three">Answer three:</label>
-										<input type="text" class="form-control" name="answer_three" value="<?php echo $mcq["answer_three"]; ?>" required>
+										<input type="text" class="form-control" name="answer_three"
+											value="<?php echo $mcq["answer_three"]; ?>" required>
 									</div>
 									<div class="form-check col-md-6 pl-5">
-										<input class="form-check-input py-5" type="radio" name="correct_answer" value="3" <?php echo $mcq["correct_answer"] == "3" ? "checked" : "" ; ?>>
+										<input class="form-check-input py-5" type="radio" name="correct_answer" value="3"
+											<?php echo $mcq["correct_answer"] == "3" ? "checked" : "" ; ?>>
 										<label>Select correct answer</label>
 									</div>
 								</div>
 								<div class="form-group form-row d-flex align-items-end">
 									<div class="form-control-label col-md-6">
 										<label for="answer_four">Answer four:</label>
-										<input type="text" class="form-control" name="answer_four" value="<?php echo $mcq["answer_four"]; ?>" required>
+										<input type="text" class="form-control" name="answer_four"
+											value="<?php echo $mcq["answer_four"]; ?>" required>
 									</div>
 									<div class="form-check col-md-6 pl-5">
-										<input class="form-check-input py-5" type="radio" name="correct_answer" value="4" <?php echo $mcq["correct_answer"] == "4" ? "checked" : "" ; ?>>
+										<input class="form-check-input py-5" type="radio" name="correct_answer" value="4"
+											<?php echo $mcq["correct_answer"] == "4" ? "checked" : "" ; ?>>
 										<label>Select correct answer</label>
 									</div>
 								</div>
-                                <input class="btn btn-primary text-capitalize px-5" type="submit" name="updatemcq" value="Update Question" />
+								<input class="btn btn-primary text-capitalize px-5" type="submit" name="updatemcq"
+									value="Update Question" />
 								<a href="./viewquestion.php" class="btn btn-outline-primary text-capitalize px-5">Return</a>
-                                <?php
-                                } // end if
-                                ?>
-                            </form>
+								<?php
+	                } // end if
+                ?>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-    </div>					
+	</div>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -449,4 +460,5 @@ mysqli_close($conn);
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 </body>
+
 </html>
